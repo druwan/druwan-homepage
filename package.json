@@ -1,0 +1,31 @@
+{
+  "name": "druwan-homepage",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Christopher's website",
+  "author": "Christopher Vestman",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@fontsource/varela-round": "^4.5.8",
+    "@fontsource/yaldevi": "^4.5.9",
+    "framer-motion": "^6.3.3",
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-icons": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "8.14.0",
+    "eslint-config-next": "12.1.6"
+  }
+}
