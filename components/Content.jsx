@@ -59,7 +59,7 @@ const Content = () => {
             overflow='hidden'
           >
             <ProfileImage
-              src='/images/chris.jpg'
+              src='/images/Chris.jpg'
               alt='profile image'
               borderRadius='full'
               width='100%'
