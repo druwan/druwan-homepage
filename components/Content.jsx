@@ -106,13 +106,13 @@ const Content = () => {
         </Heading>
         <List>
           <ListItem>
-            <Link href='mailto:christophervestman@gmail.com' target='_blank'>
+            <Link href='mailto:contact@christophervestman.dev' target='_blank'>
               <Button
                 variant='ghost'
                 colorScheme='teal'
                 leftIcon={<EmailIcon />}
               >
-                druwan
+                contact@christophervestman.dev
               </Button>
             </Link>
           </ListItem>
@@ -136,20 +136,6 @@ const Content = () => {
                 variant='ghost'
                 colorScheme='teal'
                 leftIcon={<FaLinkedin />}
-              >
-                christophervestman
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link
-              href='https://instagram.com/christophervestman/'
-              target='_blank'
-            >
-              <Button
-                variant='ghost'
-                colorScheme='teal'
-                leftIcon={<FaInstagram />}
               >
                 christophervestman
               </Button>
