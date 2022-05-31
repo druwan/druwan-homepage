@@ -11,20 +11,16 @@ const Main = ({ children, router }) => {
         <meta name='description' content="Christopher's homepage" />
         <meta name='author' content='Takuya Matsuyama' />
         <meta name='author' content='Christopher Vestman' />
-        <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
-        <meta name='twitter:title' content='Christopher Vestman' />
-        <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:site' content='@druwan92' />
-        <meta name='twitter:creator' content='@craftzdog' />
+        <link rel='shortcut icon' href='/favicon.ico' />
         <meta property='og:site_name' content='Christopher Vestman' />
         <meta property='og:title' content='Christopher Vestman' />
         <meta property='og:type' content='website' />
-        <title>Christopher Vestman - Homepage</title>
+        <title>Christopher Vestman</title>
       </Head>
 
       <Navbar path={router.asPath} />
 
-      <Container maxW='container.md' pt={14}>
+      <Container maxW='container.xl' pt={14}>
         {children}
         <Footer />
       </Container>
