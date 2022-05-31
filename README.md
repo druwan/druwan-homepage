@@ -1,5 +1,5 @@
 ## First attempt on a portfolio
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+My first attempt on creating a portfolio / personal website.
 
-Will change this to a reactjs project.
+It is build with React and NextJS, styled with Chakra-UI and hosted at vercel.
