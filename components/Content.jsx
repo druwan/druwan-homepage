@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  chakra,
   Container,
   Heading,
   Link,
@@ -9,17 +8,12 @@ import {
   ListItem,
   useColorModeValue,
 } from '@chakra-ui/react';
-// import Image from 'next/image';
 import React from 'react';
 import { BioSection, BioYear } from './Bio';
 import Paragraph from './Paragraph';
 import Section from './Section';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { EmailIcon } from '@chakra-ui/icons';
-
-// const ProfileImage = chakra(Image, {
-//   shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt'].includes(prop),
-// });
 
 const Content = () => {
   return (
@@ -47,26 +41,7 @@ const Content = () => {
           mt={{ base: 4, md: 0 }}
           ml={{ md: 6 }}
           textAlign='center'
-        >
-          <Box
-            borderColor='whiteAlpha.800'
-            borderWidth={2}
-            borderStyle='none'
-            w='100px'
-            h='100px'
-            display='inline-block'
-            borderRadius='none'
-            overflow='hidden'
-          >
-            {/* <ProfileImage
-              src='/images/Chris.jpg'
-              alt='profile image'
-              borderRadius='full'
-              width='100%'
-              height='100%'
-            /> */}
-          </Box>
-        </Box>
+        ></Box>
       </Box>
 
       <Section delay={0.1}>
