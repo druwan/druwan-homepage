@@ -9,16 +9,17 @@ import {
   ListItem,
   useColorModeValue,
 } from '@chakra-ui/react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import React from 'react';
 import { BioSection, BioYear } from './Bio';
 import Paragraph from './Paragraph';
 import Section from './Section';
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { EmailIcon } from '@chakra-ui/icons';
-const ProfileImage = chakra(Image, {
-  shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt'].includes(prop),
-});
+
+// const ProfileImage = chakra(Image, {
+//   shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt'].includes(prop),
+// });
 
 const Content = () => {
   return (
@@ -31,8 +32,7 @@ const Content = () => {
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.300')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m a full-stack developer and aerospace engineer based in
-        southern Sweden!
+        Hi! I&apos;m a full-stack developer and aerospace engineer!
       </Box>
 
       <Box display={{ md: 'flex' }}>
@@ -40,7 +40,7 @@ const Content = () => {
           <Heading as='h2' variant='page-title'>
             Christopher Vestman
           </Heading>
-          <p>Tech geek / developer / engineer</p>
+          <p>Engineer / developer / food geek </p>
         </Box>
         <Box
           flexShrink={0}
@@ -51,20 +51,20 @@ const Content = () => {
           <Box
             borderColor='whiteAlpha.800'
             borderWidth={2}
-            borderStyle='solid'
+            borderStyle='none'
             w='100px'
             h='100px'
             display='inline-block'
-            borderRadius='full'
+            borderRadius='none'
             overflow='hidden'
           >
-            <ProfileImage
+            {/* <ProfileImage
               src='/images/Chris.jpg'
               alt='profile image'
               borderRadius='full'
               width='100%'
               height='100%'
-            />
+            /> */}
           </Box>
         </Box>
       </Box>
@@ -76,7 +76,7 @@ const Content = () => {
         <Paragraph>
           Christopher is an Aerospace Engineer and a full-stack developer based
           in Trelleborg with a passion for building digital services. When not
-          online, he loves hanging out with his friends and playing guitar.
+          online, he plays guitar and likes to cook.
         </Paragraph>
       </Section>
 
@@ -91,12 +91,13 @@ const Content = () => {
         <BioSection>
           <BioYear>2021</BioYear>
           Completed the Master&apos;s program in Space Engineering at Luleå
-          University of Technology.
+          University of Technology with a specialisation in Aerospace
+          Engineering.
         </BioSection>
         <BioSection>
-          <BioYear>2022 -</BioYear>
-          Completed full-stack developer program and employed as an
-          IT-consultant as Experis Sweden
+          <BioYear>2022</BioYear>
+          Currently employed as an IT-consultant at Experis Sweden after
+          completing their full-stack developer program in Java
         </BioSection>
       </Section>
 
@@ -112,7 +113,7 @@ const Content = () => {
                 colorScheme='teal'
                 leftIcon={<EmailIcon />}
               >
-                contact@christophervestman.dev
+                Email: contact@christophervestman.dev
               </Button>
             </Link>
           </ListItem>
@@ -123,7 +124,7 @@ const Content = () => {
                 colorScheme='teal'
                 leftIcon={<FaGithub />}
               >
-                druwan
+                GitHub: druwan
               </Button>
             </Link>
           </ListItem>
@@ -137,7 +138,7 @@ const Content = () => {
                 colorScheme='teal'
                 leftIcon={<FaLinkedin />}
               >
-                christophervestman
+                LinkedIn: christophervestman
               </Button>
             </Link>
           </ListItem>
