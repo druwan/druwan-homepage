@@ -61,7 +61,7 @@ const Navbar = () => {
       <Container
         display='flex'
         p={4}
-        maxW='container.md'
+        maxW='container.xl'
         wrap='wrap'
         alignItems='center'
       >
