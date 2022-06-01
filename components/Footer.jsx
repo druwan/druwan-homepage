@@ -1,10 +1,12 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Link } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Box align='center' opacity={0.4} fontSize='sm'>
+    <Box align='center' opacity={0.6} fontSize='md'>
       &copy; {new Date().getFullYear()} Christopher Vestman. With help from{' '}
-      <a href='https://www.craftz.dog/'>Takuya (Craftz.dog)</a>
+      <Link href='https://www.craftz.dog/' isExternal>
+        Takuya (Craftz.dog)
+      </Link>
     </Box>
   );
 };
