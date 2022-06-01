@@ -23,7 +23,7 @@ const Content = () => {
         mb={6}
         p={3}
         textAlign='center'
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.300')}
+        bg={useColorModeValue('gray.100', 'whiteAlpha.300')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
         Hi! I&apos;m a full-stack developer and aerospace engineer!
