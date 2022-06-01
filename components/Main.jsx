@@ -5,7 +5,7 @@ import Navbar from './Navbar/Navbar';
 
 const Main = ({ children, router }) => {
   return (
-    <Box as='main' pb={8} bg={useColorModeValue('light', 'dark')}>
+    <Box>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='description' content="Christopher's homepage" />
@@ -20,7 +20,12 @@ const Main = ({ children, router }) => {
 
       <Navbar path={router.asPath} />
 
-      <Container maxW='container.xl' pt={14}>
+      <Container
+        as='main'
+        maxW='container.xl'
+        pt={14}
+        bg={useColorModeValue('white', 'dark')}
+      >
         {children}
         <Footer />
       </Container>

@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Text,
+  useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
@@ -38,7 +39,7 @@ const Logo = () => {
         <LogoBox>
           <Image src={aeroPrintImg} width={80} height={40} alt='logo' />
           <Text
-            color={useColorModeValue('gray.800', 'white.900')}
+            color={useColorModeValue('black', 'white.900')}
             fontSize='20'
             ml={3}
           >
@@ -51,19 +52,27 @@ const Logo = () => {
 };
 
 const Navbar = () => {
+  const { colorMode } = useColorMode();
+
   return (
-    <Box
-      position='fixed'
-      as='nav'
-      w='100%'
-      bg={useColorModeValue('light', 'dark')}
+    <Flex
+      as='header'
+      top={0}
+      w={'full'}
+      position='sticky'
+      zIndex={1}
+      display='block'
+      bg={colorMode === 'light' ? 'white' : 'gray.800'}
     >
       <Container
+        as={'nav'}
         display='flex'
         p={4}
-        maxW='container.xl'
+        width={'full'}
+        maxW='container.lg'
         wrap='wrap'
         alignItems='center'
+        justifyContent='center'
       >
         <Flex align='center' mr={5}>
           <Heading as='h1' size='lg' letterSpacing={'tighter'}>
@@ -75,7 +84,7 @@ const Navbar = () => {
           <ToggleTheme />
         </Box>
       </Container>
-    </Box>
+    </Flex>
   );
 };
 
