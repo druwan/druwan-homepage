@@ -39,7 +39,7 @@ const Logo = () => {
         <LogoBox>
           <Image src={aeroPrintImg} width={80} height={40} alt='logo' />
           <Text
-            color={useColorModeValue('black', 'white.900')}
+            color={useColorModeValue('slBlue.900', 'slYellow.400')}
             fontSize='20'
             ml={3}
           >
@@ -62,7 +62,7 @@ const Navbar = () => {
       position='sticky'
       zIndex={1}
       display='block'
-      bg={colorMode === 'light' ? 'white' : 'gray.800'}
+      bg={colorMode === 'light' ? 'slOrange.50' : 'slBlue.900'}
     >
       <Container
         as={'nav'}
