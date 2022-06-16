@@ -9,7 +9,7 @@ import { AnimatePresence } from 'framer-motion';
 
 const theme = extendTheme({
   fonts: {
-    heading: 'Yaldevi, sans-serif',
+    heading: 'Varela round, sans-serif',
     body: 'Yaldevi, sans-serif',
   },
   colors: {
