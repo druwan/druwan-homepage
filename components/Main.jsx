@@ -24,7 +24,7 @@ const Main = ({ children, router }) => {
         as='main'
         maxW='container.xl'
         pt={14}
-        bg={useColorModeValue('white', 'dark')}
+        bg={useColorModeValue('slOrange.50', 'slBlue.900')}
       >
         {children}
         <Footer />
