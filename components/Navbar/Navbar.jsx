@@ -3,7 +3,6 @@ import {
   Container,
   Flex,
   Heading,
-  Text,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -14,13 +13,9 @@ import React from 'react';
 import ToggleTheme from '../ToggleTheme/ToggleTheme';
 
 const LogoBox = styled.span`
-  font-weight: bold;
-  font-size: 20px;
   display: inline-flex;
   align-items: center;
   height: 40px;
-  line-height: 20px;
-  padding: 10px;
 
   img {
     transition: 200ms ease;
@@ -38,13 +33,14 @@ const Logo = () => {
       <a>
         <LogoBox>
           <Image src={aeroPrintImg} width={80} height={40} alt='logo' />
-          <Text
-            color={useColorModeValue('slBlue.900', 'slYellow.400')}
-            fontSize='20'
+          <Heading
+            as={'h3'}
+            color={useColorModeValue('black', 'white')}
+            fontSize='24'
             ml={3}
           >
             Christopher Vestman
-          </Text>
+          </Heading>
         </LogoBox>
       </a>
     </Link>
@@ -62,7 +58,7 @@ const Navbar = () => {
       position='sticky'
       zIndex={1}
       display='block'
-      bg={colorMode === 'light' ? 'slOrange.50' : 'slBlue.900'}
+      bg={colorMode === 'light' ? 'personalGray.100' : 'personalBlue.900'}
       px={4}
     >
       <Container
@@ -70,7 +66,7 @@ const Navbar = () => {
         display='flex'
         p={4}
         width={'full'}
-        maxW='container.md'
+        maxW='container.sm'
         wrap='wrap'
         alignItems='center'
         justifyContent='center'
