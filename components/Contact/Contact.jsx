@@ -16,7 +16,7 @@ const Contact = () => {
 
   return (
     <>
-      <List>
+      <List spacing={3}>
         <ListItem>
           <Link href='mailto:contact@christophervestman.dev' target='_blank'>
             <Button
