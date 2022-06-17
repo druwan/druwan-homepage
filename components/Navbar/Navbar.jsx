@@ -15,7 +15,6 @@ import ToggleTheme from '../ToggleTheme/ToggleTheme';
 const LogoBox = styled.span`
   display: inline-flex;
   align-items: center;
-  height: 40px;
 
   img {
     transition: 200ms ease;
@@ -32,7 +31,7 @@ const Logo = () => {
     <Link href='/' scroll={false}>
       <a>
         <LogoBox>
-          <Image src={aeroPrintImg} width={80} height={40} alt='logo' />
+          <Image src={aeroPrintImg} alt='logo' width={96} height={63} />
           <Heading
             as={'h3'}
             color={useColorModeValue('black', 'white')}
