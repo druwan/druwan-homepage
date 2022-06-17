@@ -11,7 +11,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import ToggleTheme from './ToggleTheme';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
 
 const LogoBox = styled.span`
   font-weight: bold;
@@ -63,13 +63,14 @@ const Navbar = () => {
       zIndex={1}
       display='block'
       bg={colorMode === 'light' ? 'slOrange.50' : 'slBlue.900'}
+      px={4}
     >
       <Container
         as={'nav'}
         display='flex'
         p={4}
         width={'full'}
-        maxW='container.lg'
+        maxW='container.md'
         wrap='wrap'
         alignItems='center'
         justifyContent='center'
