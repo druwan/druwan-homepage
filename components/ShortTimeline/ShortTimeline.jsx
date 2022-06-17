@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, List } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 const BioSection = styled(Box)`
@@ -10,13 +10,12 @@ const BioSection = styled(Box)`
 
 const BioYear = styled.span`
   font-weight: bold;
-  font-size: large;
   margin-right: 1em;
 `;
 
 const ShortTimeline = () => {
   return (
-    <>
+    <List spacing={3}>
       <BioSection>
         <BioYear>2022</BioYear>
         Currently employed as an IT-consultant at Experis Sweden after
@@ -31,7 +30,7 @@ const ShortTimeline = () => {
         <BioYear>1992</BioYear>
         Born in Trelleborg, Sweden.
       </BioSection>
-    </>
+    </List>
   );
 };
 
