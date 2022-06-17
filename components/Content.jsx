@@ -9,21 +9,21 @@ const Content = () => {
   return (
     <Container>
       <Section delay={0.2}>
-        <Heading as='h3' variant='section-title'>
-          Christopher Vestman
+        <Heading as='h2' size={'lg'}>
+          About
         </Heading>
         <About />
       </Section>
 
       <Section delay={0.2}>
-        <Heading as='h3' variant='section-title'>
+        <Heading as='h2' size={'lg'}>
           Projects
         </Heading>
       </Section>
 
       {/* Short Timeline */}
       <Section delay={0.2}>
-        <Heading as='h3' variant='section-title'>
+        <Heading as='h2' size={'lg'}>
           Timeline
         </Heading>
         <ShortTimeline />
@@ -31,7 +31,7 @@ const Content = () => {
 
       {/* Contact me */}
       <Section delay={0.2}>
-        <Heading as='h3' variant='section-title'>
+        <Heading as='h2' size={'lg'}>
           Contact
         </Heading>
         <Contact />
