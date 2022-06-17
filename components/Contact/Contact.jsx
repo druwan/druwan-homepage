@@ -1,23 +1,43 @@
 import { EmailIcon } from '@chakra-ui/icons';
-import { Button, Link, List, ListItem } from '@chakra-ui/react';
+import {
+  Button,
+  Link,
+  List,
+  ListItem,
+  Text,
+  useColorMode,
+} from '@chakra-ui/react';
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contact = () => {
+  const { colorMode } = useColorMode();
+  const colorScheme = colorMode === 'light' ? 'black' : 'personalOrange';
+
   return (
     <>
       <List>
         <ListItem>
           <Link href='mailto:contact@christophervestman.dev' target='_blank'>
-            <Button variant='ghost' colorScheme='teal' leftIcon={<EmailIcon />}>
-              Email: contact@christophervestman.dev
+            <Button
+              variant={'link'}
+              colorScheme={colorScheme}
+              leftIcon={<EmailIcon />}
+              size={'lg'}
+            >
+              <Text fontSize={'sm'}>contact@christophervestman.dev</Text>
             </Button>
           </Link>
         </ListItem>
         <ListItem>
           <Link href='https://github.com/druwan' target='_blank'>
-            <Button variant='ghost' colorScheme='teal' leftIcon={<FaGithub />}>
-              GitHub: druwan
+            <Button
+              variant={'link'}
+              colorScheme={colorScheme}
+              leftIcon={<FaGithub />}
+              size={'lg'}
+            >
+              <Text fontSize={'sm'}>druwan</Text>
             </Button>
           </Link>
         </ListItem>
@@ -27,11 +47,12 @@ const Contact = () => {
             target='_blank'
           >
             <Button
-              variant='ghost'
-              colorScheme='teal'
+              variant={'link'}
+              colorScheme={colorScheme}
               leftIcon={<FaLinkedin />}
+              size={'lg'}
             >
-              LinkedIn: christophervestman
+              <Text fontSize={'sm'}>christophervestman</Text>
             </Button>
           </Link>
         </ListItem>
