@@ -4,6 +4,7 @@ import Section from './Section';
 import Contact from './Contact/Contact';
 import ShortTimeline from './ShortTimeline/ShortTimeline';
 import About from './About/About';
+import Projects from './Projects/Projects';
 
 const Content = () => {
   return (
@@ -19,6 +20,7 @@ const Content = () => {
         <Heading as='h2' size={'lg'}>
           Projects
         </Heading>
+        <Projects />
       </Section>
 
       {/* Short Timeline */}
