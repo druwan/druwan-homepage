@@ -55,21 +55,6 @@ const Projects = () => {
               <ExternalLinkIcon mx={'px'} />
             </Link>
           </Flex>
-          <HStack mt={'5'}>
-            <Image src='/images/logos/react.svg' alt='React' boxSize={'40px'} />
-            <Image src='/images/logos/mongodb.svg' alt='Mongo DB' h={'40px'} />
-            <Image src='/images/logos/auth0.svg' alt='Auth0' h={'40px'} />
-            <Image
-              src='/images/logos/nodejs-icon.svg'
-              alt='NodeJs'
-              boxSize={'40px'}
-            />
-            <Image
-              src='https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/logo/logo-colored@2x.png?'
-              alt='Chakra-ui'
-              h={'40px'}
-            />
-          </HStack>
         </TabPanel>
 
         {/* 2nd Project */}
@@ -103,41 +88,6 @@ const Projects = () => {
               Live Demonstration <ExternalLinkIcon mx={'2px'} />
             </Link>
           </Flex>
-
-          {/* Tech Stack */}
-          <HStack mt={'5'}>
-            <Image
-              src='/images/logos/angular-icon.svg'
-              alt='Angular'
-              boxSize={'40px'}
-            />
-            <Image
-              src='/images/logos/leaflet.svg'
-              alt='Leaflet'
-              maxHeight={'40px'}
-            />
-            <Image src='/images/logos/java.svg' alt='Java' maxHeight={'40px'} />
-            <Image
-              src='/images/logos/bootstrap.svg'
-              alt='Bootstrap'
-              maxHeight={'40px'}
-            />
-            <Image
-              src='/images/logos/socket.io.svg'
-              alt='Socket.io'
-              maxH={'40px'}
-            />
-            <Image
-              src='/images/logos/docker-icon.svg'
-              alt='Docker'
-              maxH={'40px'}
-            />
-            <Image
-              src='/images/logos/postgresql.svg'
-              alt='Postgresql'
-              maxH={'40px'}
-            />
-          </HStack>
         </TabPanel>
       </TabPanels>
     </Tabs>
