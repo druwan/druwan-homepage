@@ -2,7 +2,8 @@ name: Main Pipeline
 
 on:
   push:
-    - main
+    branches:
+      - main
   pull_request:
     branches: [main]
     type: [opened, synchronized]
