@@ -1,0 +1,26 @@
+name: Main Pipeline
+
+on:
+  push:
+    - main
+  pull_request:
+    branches: [main]
+    type: [opened, synchronized]
+
+jobs:
+  Initial Pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Format code
+        run: npm run format
+
+      - name: Lint
+        run: npm run lint
