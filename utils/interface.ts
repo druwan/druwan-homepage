@@ -3,6 +3,11 @@ export interface IProject {
   liveUrl: string | null;
   repoUrl: string;
   shortSummary: string;
-  stack: string[];
+  stack: {
+    name: string;
+    url: string;
+  }[];
+
+  status: 'Incomplete' | 'Complete';
   title: string;
 }
