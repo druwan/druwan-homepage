@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ES6",
+    "moduleResolution": "Node",
+    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "strict": true,
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "jsx": "preserve"
+    "target": "ES6"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.js"],
   "exclude": ["node_modules"]
