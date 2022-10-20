@@ -1,10 +1,8 @@
 name: Main Pipeline
 
 on:
-  push:
-    branches: [dev, staged]
   pull_request:
-    branches: [main]
+    branches: [main, staged]
     type: [opened, synchronized]
 
 jobs:
