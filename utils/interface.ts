@@ -1,6 +1,6 @@
 export interface IProject {
   id: number;
-  liveUrl: string;
+  liveUrl: string | null;
   repoUrl: string;
   shortSummary: string;
   stack: string[];
