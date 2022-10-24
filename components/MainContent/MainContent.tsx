@@ -12,14 +12,15 @@ const MainContent = () => {
   const textColor = useColorModeValue('snow.500', 'princetonOrange.500');
 
   return (
-    <Container maxW={'75%'}>
+    <Container maxW={'70%'}>
       <Box my={'16px'}>
-        <Heading size={'3xl'}>Christopher Vestman</Heading>
-
-        <Text as={'em'} fontSize={'xl'} color={textColor}>
+        <Heading
+          as={'em'}
+          color={textColor}
+          fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }}>
           Engineer &amp; Developer
-        </Text>
-        <Text my={4}>
+        </Heading>
+        <Text my={4} fontSize={{ base: 'md' }}>
           I am currently employed by Experis. I have a passion for math,
           physics, web &amp; football. When not online, I like to{' '}
           <Text as={'s'} color={textColor}>
@@ -29,7 +30,6 @@ const MainContent = () => {
         </Text>
       </Box>
       <Box my={'32px'}>
-        <Heading>Latest works</Heading>
         <Projects />
       </Box>
     </Container>
