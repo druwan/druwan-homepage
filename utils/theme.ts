@@ -7,18 +7,6 @@ import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 
 const customTheme = extendTheme({
   colors: {
-    spaceCadet: {
-      50: '#e5e5e8',
-      100: '#bebfc5',
-      200: '#92949e',
-      300: '#666977',
-      400: '#46485a',
-      500: '#25283d',
-      600: '#212437',
-      700: '#1b1e2f',
-      800: '#161827',
-      900: '#0d0f1a',
-    },
     princetonOrange: {
       50: '#fdeee0',
       100: '#f9d5b3',
@@ -43,6 +31,18 @@ const customTheme = extendTheme({
       800: '#f3e9e9',
       900: '#f1e5e5',
     },
+    xiketic: {
+      50: '#e3e3e4',
+      100: '#b8b9bc',
+      200: '#898a90',
+      300: '#595b64',
+      400: '#363842',
+      500: '#121521',
+      600: '#10121d',
+      700: '#0d0f18',
+      800: '#0a0c14',
+      900: '#05060b',
+    },
   },
 
   fonts: {
@@ -53,7 +53,7 @@ const customTheme = extendTheme({
   styles: {
     global: (props: StyleFunctionProps) => ({
       body: {
-        bg: mode('snowWhite.500', 'spaceCadet.500')(props),
+        bg: mode('snowWhite.500', 'xiketic.500')(props),
       },
     }),
   },
