@@ -9,9 +9,10 @@ const Footer = () => {
 
   return (
     <Flex justify={'center'}>
-      <Stack as="footer" maxW={'20%'}>
+      <Stack as="footer" maxW={'50%'}>
         <Socials />
         <Text
+          w={'100%'}
           align={'center'}
           fontSize={'sm'}
           color={footerTextColor}
