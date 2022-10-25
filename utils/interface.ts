@@ -1,5 +1,6 @@
 export interface IProject {
   id: number;
+  imageUrl: string | null;
   liveUrl: string | null;
   repoUrl: string;
   shortSummary: string;
@@ -10,4 +11,9 @@ export interface IProject {
 
   status: 'Incomplete' | 'Complete';
   title: string;
+}
+
+export interface ISocials {
+  name: string;
+  link: string;
 }
