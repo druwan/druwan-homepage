@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "format": "npx prettier --write .",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest -t"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
