@@ -26,7 +26,7 @@ const Socials = () => {
               </Link>
             </NextLink>
           ))}
-        <NextLink href={`mailto:hello@christophervestman.com`} passHref>
+        <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
           <Link isExternal>
             <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
           </Link>
