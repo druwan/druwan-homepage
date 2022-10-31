@@ -1,7 +1,12 @@
-## First attempt on a portfolio
+## Second iteration on a portfolio
 
-My first attempt on creating a portfolio / personal website.
+My second iteration on creating a portfolio / personal website
 
-It is built with React and NextJS, styled with Chakra-UI and hosted at vercel followed [Tutorial by devaslife](https://www.youtube.com/watch?v=bSMZgXzC9AA)
+Main difference from the 1st version is better utilization of the space, better responsive layout, dynamic icons and better theme.
 
-Will most likely rebuild this at some point later as I'm currently not satisfied with it.
+## Built with
+
+[![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Chakra](https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white)](https://chakra-ui.com/)

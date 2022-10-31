@@ -1,6 +1,8 @@
 name: Main Pipeline
 
 on:
+  push:
+    branches: [main, staged]
   pull_request:
     branches: [main, staged]
     type: [opened, synchronized]
@@ -22,3 +24,6 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Test
+        run: npm run test

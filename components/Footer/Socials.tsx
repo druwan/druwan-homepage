@@ -1,6 +1,7 @@
 import { Flex, Link, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import useSWR from 'swr';
+import { motion } from 'framer-motion';
 
 import CustomIcons from '../CustomIcons';
 import { ISocials } from '../../utils/interface';
@@ -26,11 +27,20 @@ const Socials = () => {
               </Link>
             </NextLink>
           ))}
-        <NextLink href={`mailto:hello@christophervestman.com`} passHref>
-          <Link isExternal>
-            <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
-          </Link>
-        </NextLink>
+        <motion.div
+          animate={{ scale: 2 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 1.2,
+            repeat: Infinity,
+            repeatType: 'mirror',
+          }}>
+          <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
+            <Link isExternal>
+              <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+            </Link>
+          </NextLink>
+        </motion.div>
       </Flex>
     </>
   );
