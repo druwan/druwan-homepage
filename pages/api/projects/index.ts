@@ -5,7 +5,7 @@ const projects: IProject[] = [
   {
     id: 0,
     imageUrl: '/images/sinhala-quiz-app.png',
-    liveUrl: null,
+    liveUrl: 'https://sinhalaquizapp.vercel.app/',
     repoUrl: 'https://github.com/druwan/sinhalaquizapp',
     shortSummary:
       'Simple web application in the form of a quiz to help an user (and me 😅) to learn Sinhala. It consists of different categories from which an user can select. The user then gets 5 different questions that needs to be answered. The user is informed both of how many questions are answered, and the current score by a simple progressbar.',
@@ -16,7 +16,7 @@ const projects: IProject[] = [
       { name: 'React', url: 'https://reactjs.org/' },
       { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
     ],
-    status: 'Incomplete',
+    status: 'Complete',
     title: 'Sinhala Quiz App',
   },
   {
