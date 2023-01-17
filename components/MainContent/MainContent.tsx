@@ -17,12 +17,12 @@ const MainContent = () => {
             Engineer &amp; Developer
           </Heading>
           <Text my={4} fontSize={{ base: 'md' }}>
-            I am currently employed by Experis. I have a passion for math,
-            physics, web &amp; football. When not online, I like to{' '}
+            I have a passion for math, physics, web &amp; football. When not
+            online, I like to{' '}
             <Text as={'s'} color={textColor}>
               eat,
             </Text>{' '}
-            cook, play the guitar or listening to podcasts.
+            cook, game or listening to podcasts.
           </Text>
         </Box>
       </Flex>
