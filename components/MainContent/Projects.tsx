@@ -97,7 +97,7 @@ const Projects = () => {
                       </NextLink>
                     )}
                     <Spacer />
-                    <NextLink href={`${project.liveUrl!}`} passHref>
+                    <NextLink href={`${project.repoUrl!}`} passHref>
                       <Link isExternal>
                         <Text fontSize={textFontSizes}>
                           <Icon
