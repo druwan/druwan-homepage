@@ -4,7 +4,7 @@ import { IProject } from '../../../utils/interface';
 const projects: IProject[] = [
   {
     id: 0,
-    imageUrl: '/images/sinhala-quiz-app.png',
+    imageUrl: '/images/sinhala-quiz-app.webp',
     liveUrl: 'https://sinhalaquizapp.vercel.app/',
     repoUrl: 'https://github.com/druwan/sinhalaquizapp',
     shortSummary:
@@ -21,7 +21,7 @@ const projects: IProject[] = [
   },
   {
     id: 1,
-    imageUrl: '/images/lunch-reservations.png',
+    imageUrl: '/images/lunch-reservations.webp',
     liveUrl: null,
     repoUrl: 'https://github.com/druwan/lunch-reservations',
     shortSummary:
@@ -38,7 +38,7 @@ const projects: IProject[] = [
   },
   {
     id: 2,
-    imageUrl: '/images/tretton37.png',
+    imageUrl: '/images/tretton37.webp',
     liveUrl: 'https://cv-tretton37.herokuapp.com/',
     repoUrl: 'https://github.com/druwan/tretton37',
     shortSummary:
@@ -55,7 +55,7 @@ const projects: IProject[] = [
   },
   {
     id: 3,
-    imageUrl: '/images/humans-vs-zombies.png',
+    imageUrl: '/images/humans-vs-zombies.webp',
     liveUrl: 'https://se-java-hvz-frontend.netlify.app/',
     repoUrl: 'https://gitlab.com/druwan/se-java-hvz-frontend',
     shortSummary:
