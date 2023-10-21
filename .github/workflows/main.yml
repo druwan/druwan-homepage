@@ -5,7 +5,7 @@ on:
     branches: [main, staged]
   pull_request:
     branches: [main, staged]
-    type: [opened, synchronized]
+    types: [opened, synchronize]
 
 jobs:
   setup-pipeline:
