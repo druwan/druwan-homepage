@@ -20,7 +20,7 @@ const ToggleTheme = (props: ToggleThemeProps) => {
   if (!props) return <h1>error</h1>;
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={text}
         style={{ display: 'inline-block' }}
