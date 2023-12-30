@@ -1,5 +1,6 @@
-import { Flex, Link, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
-import NextLink from 'next/link';
+'use client';
+import { Flex, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
+import { Link } from '@chakra-ui/next-js';
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
 
@@ -19,13 +20,11 @@ const Socials = () => {
       <Flex justifyContent={'space-evenly'}>
         {data.socials &&
           data.socials.map((social: ISocials, idx: number) => (
-            <NextLink key={idx} href={`${social.link}`} passHref>
-              <Link isExternal>
-                <Text fontSize={'lg'}>
-                  <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
-                </Text>
-              </Link>
-            </NextLink>
+            <Link key={idx} href={`${social.link}`} isExternal>
+              <Text fontSize={'lg'}>
+                <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
+              </Text>
+            </Link>
           ))}
         <motion.div
           animate={{ scale: 2 }}
@@ -35,11 +34,9 @@ const Socials = () => {
             repeat: Infinity,
             repeatType: 'mirror',
           }}>
-          <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
-            <Link isExternal>
-              <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
-            </Link>
-          </NextLink>
+          <Link href={`mailto:hello@christophervestman.dev`} isExternal>
+            <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+          </Link>
         </motion.div>
       </Flex>
     </>

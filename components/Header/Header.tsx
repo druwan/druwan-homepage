@@ -1,3 +1,4 @@
+'use client';
 import { Flex, Heading, useColorModeValue } from '@chakra-ui/react';
 
 import React from 'react';

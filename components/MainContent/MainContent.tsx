@@ -1,3 +1,4 @@
+'use client';
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 
 import Projects from './Projects';

@@ -1,10 +1,10 @@
+'use client';
 import { Flex } from '@chakra-ui/react';
 
-import React, { ReactNode } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
-type LayoutProps = { children?: ReactNode };
+type LayoutProps = { children?: React.ReactNode };
 
 const Layout = (props: LayoutProps) => {
   return (

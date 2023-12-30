@@ -1,6 +1,3 @@
-import '@fontsource/yaldevi/400.css';
-import '@fontsource/varela-round/400.css';
-
 import { extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 import type { StyleFunctionProps } from '@chakra-ui/styled-system';
@@ -46,8 +43,8 @@ const customTheme = extendTheme({
   },
 
   fonts: {
-    heading: 'Varela round, sans-serif',
-    body: 'Yaldevi, sans-serif',
+    heading: 'var(--font-varela_round)',
+    body: 'var(--font-yaldevi)',
   },
 
   styles: {

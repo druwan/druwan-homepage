@@ -22,11 +22,13 @@ const CustomIcons = ({
       createIconName;
   }
 
-  const MyIcon = dynamic(async () => {
-    const importedIcons = await import(
+  const MyIcon: React.ComponentType = dynamic(async () => {
+    const importedIcon: IconType = await import(
       `react-icons/${iconLibrary.toLowerCase()}/`
     );
-    return importedIcons[createIconName as keyof IconType];
+    console.log(`${importedIcon[createIconName as keyof IconType]}`);
+
+    return importedIcon[createIconName as keyof IconType];
   });
 
   return <MyIcon />;

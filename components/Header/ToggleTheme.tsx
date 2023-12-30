@@ -1,3 +1,4 @@
+'use client';
 import { MoonIcon } from '@chakra-ui/icons';
 import { GiSun } from 'react-icons/gi';
 

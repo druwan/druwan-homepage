@@ -1,3 +1,4 @@
+'use client';
 import { Flex, Stack, Text, useColorModeValue } from '@chakra-ui/react';
 import Socials from './Socials';
 

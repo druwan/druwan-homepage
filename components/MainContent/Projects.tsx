@@ -1,3 +1,4 @@
+'use client';
 import { SlGlobe } from 'react-icons/sl';
 import { VscGithub } from 'react-icons/vsc';
 
@@ -12,7 +13,6 @@ import {
   HStack,
   Icon,
   Image,
-  Link,
   Spacer,
   Spinner,
   Stack,
@@ -20,7 +20,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import NextLink from 'next/link';
+import { Link } from '@chakra-ui/next-js';
 import useSWR from 'swr';
 import { IProject } from '../../utils/interface';
 import { fetcher } from '../../utils/loadProjects';
@@ -82,34 +82,31 @@ const Projects = () => {
                   {/* Links */}
                   <HStack mt={4}>
                     {project.liveUrl !== null && (
-                      <NextLink href={`${project.liveUrl!}`} passHref>
-                        <Link isExternal>
-                          <Text fontSize={textFontSizes}>
-                            <Icon
-                              as={SlGlobe}
-                              ml={'2px'}
-                              color={textColor}
-                              boxSize={iconSize}
-                            />{' '}
-                            Live preview
-                          </Text>
-                        </Link>
-                      </NextLink>
-                    )}
-                    <Spacer />
-                    <NextLink href={`${project.repoUrl!}`} passHref>
-                      <Link isExternal>
+                      <Link href={`${project.liveUrl!}`} isExternal>
                         <Text fontSize={textFontSizes}>
                           <Icon
-                            as={VscGithub}
+                            as={SlGlobe}
                             ml={'2px'}
                             color={textColor}
                             boxSize={iconSize}
                           />{' '}
-                          GitHub repository
+                          Live preview
                         </Text>
                       </Link>
-                    </NextLink>
+                    )}
+                    <Spacer />
+
+                    <Link href={`${project.repoUrl!}`} isExternal>
+                      <Text fontSize={textFontSizes}>
+                        <Icon
+                          as={VscGithub}
+                          ml={'2px'}
+                          color={textColor}
+                          boxSize={iconSize}
+                        />{' '}
+                        GitHub repository
+                      </Text>
+                    </Link>
                   </HStack>
                   <Spacer />
 
@@ -119,14 +116,9 @@ const Projects = () => {
                     align={'baseline'}
                     mt={4}>
                     {project.stack.map((tool, idx: number) => (
-                      <NextLink key={idx} href={`${tool.url}`} passHref>
-                        <Link isExternal>
-                          <CustomIcons
-                            iconTitle={tool.name}
-                            iconLibrary={'Si'}
-                          />
-                        </Link>
-                      </NextLink>
+                      <Link key={idx} href={`${tool.url}`} isExternal>
+                        <CustomIcons iconTitle={tool.name} iconLibrary={'Si'} />
+                      </Link>
                     ))}
                   </Flex>
                   <Divider />
