@@ -1,4 +1,4 @@
-import { Flex, Heading, useColorModeValue } from '@chakra-ui/react';
+import { Flex, Heading, Text, HStack, useColorModeValue } from '@chakra-ui/react';
 
 import React from 'react';
 import ToggleTheme from './ToggleTheme';
@@ -20,7 +20,10 @@ const Header = () => {
         fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }}>
         Christopher Vestman
       </Heading>
+      <HStack>
+      <Text>Upcoming</Text>
       <ToggleTheme />
+      </HStack>
     </Flex>
   );
 };
