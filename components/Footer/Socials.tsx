@@ -1,10 +1,9 @@
-'use client';
 import { Flex, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
 import { Link } from '@chakra-ui/next-js';
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
 
-import CustomIcons from '../CustomIcons';
+import { CustomIcon } from '../CustomIcons';
 import { ISocials } from '../../utils/interface';
 import { fetcher } from '../../utils/loadProjects';
 
@@ -22,7 +21,7 @@ const Socials = () => {
           data.socials.map((social: ISocials, idx: number) => (
             <Link key={idx} href={`${social.link}`} isExternal>
               <Text fontSize={'lg'}>
-                <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
+                <CustomIcon iconTitle={social.name} iconLibrary={'Fa'} />
               </Text>
             </Link>
           ))}
@@ -35,7 +34,7 @@ const Socials = () => {
             repeatType: 'mirror',
           }}>
           <Link href={`mailto:hello@christophervestman.dev`} isExternal>
-            <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+            <CustomIcon iconTitle="Email" iconLibrary="Tfi" />
           </Link>
         </motion.div>
       </Flex>

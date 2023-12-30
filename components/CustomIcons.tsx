@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { IconType } from 'react-icons/lib';
 
-const CustomIcons = ({
+export const CustomIcon = ({
   iconTitle,
   iconLibrary,
 }: {
@@ -22,16 +22,12 @@ const CustomIcons = ({
       createIconName;
   }
 
-  const MyIcon: React.ComponentType = dynamic(async () => {
-    const importedIcon: IconType = await import(
+  const MyIcon = dynamic<{}>(async () => {
+    const importedIcon = await import(
       `react-icons/${iconLibrary.toLowerCase()}/`
     );
-    console.log(`${importedIcon[createIconName as keyof IconType]}`);
 
     return importedIcon[createIconName as keyof IconType];
   });
-
   return <MyIcon />;
 };
-
-export default CustomIcons;

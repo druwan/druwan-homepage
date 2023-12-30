@@ -1,4 +1,3 @@
-'use client';
 import { SlGlobe } from 'react-icons/sl';
 import { VscGithub } from 'react-icons/vsc';
 
@@ -24,7 +23,7 @@ import { Link } from '@chakra-ui/next-js';
 import useSWR from 'swr';
 import { IProject } from '../../utils/interface';
 import { fetcher } from '../../utils/loadProjects';
-import CustomIcons from '../CustomIcons';
+import { CustomIcon } from '../CustomIcons';
 
 const Projects = () => {
   const textColor = useColorModeValue('xiketic.500', 'princetonOrange.500');
@@ -117,7 +116,7 @@ const Projects = () => {
                     mt={4}>
                     {project.stack.map((tool, idx: number) => (
                       <Link key={idx} href={`${tool.url}`} isExternal>
-                        <CustomIcons iconTitle={tool.name} iconLibrary={'Si'} />
+                        <CustomIcon iconTitle={tool.name} iconLibrary={'Si'} />
                       </Link>
                     ))}
                   </Flex>
