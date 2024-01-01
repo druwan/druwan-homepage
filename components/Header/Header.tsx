@@ -1,7 +1,7 @@
-import { Flex, Heading, Text, HStack, useColorModeValue } from '@chakra-ui/react';
-
+import { Flex, Heading, HStack, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import ToggleTheme from './ToggleTheme';
+import Link from 'next/link';
 
 const Header = () => {
   const textColor = useColorModeValue('xiketic.500', 'princetonOrange.500');
@@ -21,8 +21,8 @@ const Header = () => {
         Christopher Vestman
       </Heading>
       <HStack>
-      <Text>Upcoming</Text>
-      <ToggleTheme />
+        <Link href={'/cs'}>CS</Link>
+        <ToggleTheme />
       </HStack>
     </Flex>
   );
