@@ -3,20 +3,32 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "module": "esnext",
     "moduleResolution": "Node",
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "strict": true,
-    "target": "ES6",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "incremental": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2017",
+    "allowJs": true,
+    "incremental": true,
     "isolatedModules": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.tsx", "*/*/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/index.tsx",
+    "*/*/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
