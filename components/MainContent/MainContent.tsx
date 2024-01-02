@@ -1,34 +1,43 @@
-import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  Heading,
+  Spacer,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 import Projects from './Projects';
+import ToggleTheme from '../ToggleTheme';
+import Link from 'next/link';
 
 const MainContent = () => {
   const textColor = useColorModeValue('snow.500', 'princetonOrange.500');
 
   return (
-    <Box maxW={'70%'}>
-      <Flex
-        my={'16px'}
-        justifyContent={'start'}
-        flexDir={'row'}
-        align={'center'}>
+    <Box>
+      <Box my={'16px'} flexDir={'row'}>
         <Box>
-          <Heading as={'em'} fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }}>
-            Engineer &amp; Developer
-          </Heading>
+          <HStack align={'baseline'}>
+            <Heading as={'em'} fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }}>
+              Engineer &amp; Developer
+            </Heading>
+            <Spacer />
+            <Link href={'/cs'}>CS</Link>
+            <ToggleTheme />
+          </HStack>
+
           <Text my={4} fontSize={{ base: 'md' }}>
-            I have a passion for math, physics, web &amp; football. When not
-            online, I like to{' '}
+            I have a passion for math, physics &amp; football. When not online,
+            I like to{' '}
             <Text as={'s'} color={textColor}>
               eat,
             </Text>{' '}
             cook, game or listening to podcasts.
           </Text>
         </Box>
-      </Flex>
-      <Flex my={'32px'} justifyContent={'center'} maxW={'100%'}>
-        <Projects />
-      </Flex>
+      </Box>
+      <Projects />
     </Box>
   );
 };
