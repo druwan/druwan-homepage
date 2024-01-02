@@ -5,9 +5,6 @@ import {
   Badge,
   Box,
   Divider,
-  Flex,
-  Grid,
-  GridItem,
   Heading,
   HStack,
   Icon,
@@ -16,6 +13,11 @@ import {
   Spacer,
   Spinner,
   Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -28,6 +30,7 @@ import CustomIcons from '../CustomIcons';
 
 const Projects = () => {
   const textColor = useColorModeValue('xiketic.500', 'princetonOrange.500');
+
   const { data, error } = useSWR('/api/projects', fetcher);
 
   const headerFontSizes = { base: 'md', md: 'lg', lg: '2xl' };
@@ -38,104 +41,98 @@ const Projects = () => {
   if (!data) return <Spinner color={textColor} />;
 
   return (
-    <Box maxW={'full'}>
+    <Box maxW={'5xl'}>
       <Heading fontSize={headerFontSizes} mb={3}>
         Latest Projects
       </Heading>
-
-      <Flex justifyContent={'center'} align={'center'}>
-        <Grid
-          templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(2,1fr)' }}
-          justifyContent={'center'}
-          gap={8}>
+      <Spacer />
+      <Tabs align="center">
+        <TabList>
           {data.projects.map((project: IProject) => (
-            <GridItem key={project.id}>
-              <Box h={'580px'}>
-                <Box w={'100%'} mb={6}>
-                  <Image
-                    src={`${project.imageUrl!}`}
-                    alt={`Image of ${project.title}`}
-                    border={'1px'}
-                    borderColor={textColor}
-                    borderRadius={'2xl'}
-                    maxH={'285px'}
-                  />
-                </Box>
-
-                {/* Title + Badge */}
-                <HStack>
-                  <Heading fontSize={headerFontSizes}>{project.title}</Heading>
-                  <Spacer />
-                  <Badge
-                    colorScheme={
-                      project.status === 'Complete' ? 'whatsapp' : 'red'
-                    }>
-                    {project.status}
-                  </Badge>
-                </HStack>
-
-                {/* Text + Links + Stack */}
-                <Stack>
-                  <Text>{project.shortSummary}</Text>
-                  <Spacer />
-
-                  {/* Links */}
-                  <HStack mt={4}>
-                    {project.liveUrl !== null && (
-                      <NextLink href={`${project.liveUrl!}`} passHref>
-                        <Link isExternal>
-                          <Text fontSize={textFontSizes}>
-                            <Icon
-                              as={SlGlobe}
-                              ml={'2px'}
-                              color={textColor}
-                              boxSize={iconSize}
-                            />{' '}
-                            Live preview
-                          </Text>
-                        </Link>
-                      </NextLink>
-                    )}
-                    <Spacer />
-                    <NextLink href={`${project.repoUrl!}`} passHref>
-                      <Link isExternal>
-                        <Text fontSize={textFontSizes}>
-                          <Icon
-                            as={VscGithub}
-                            ml={'2px'}
-                            color={textColor}
-                            boxSize={iconSize}
-                          />{' '}
-                          GitHub repository
-                        </Text>
-                      </Link>
-                    </NextLink>
-                  </HStack>
-                  <Spacer />
-
-                  {/* Stack */}
-                  <Flex
-                    justifyContent={'space-evenly'}
-                    align={'baseline'}
-                    mt={4}>
-                    {project.stack.map((tool, idx: number) => (
-                      <NextLink key={idx} href={`${tool.url}`} passHref>
-                        <Link isExternal>
-                          <CustomIcons
-                            iconTitle={tool.name}
-                            iconLibrary={'Si'}
-                          />
-                        </Link>
-                      </NextLink>
-                    ))}
-                  </Flex>
-                  <Divider />
-                </Stack>
-              </Box>
-            </GridItem>
+            <Tab key={project.id} fontSize={textFontSizes}>
+              {project.title}
+            </Tab>
           ))}
-        </Grid>
-      </Flex>
+        </TabList>
+        <TabPanels>
+          {data.projects.map((project: IProject) => (
+            <TabPanel key={project.id}>
+              {/* Image */}
+              <Image
+                src={`${project.imageUrl}`}
+                alt={`Image of ${project.title}`}
+                border={'1px'}
+                borderColor={textColor}
+                borderRadius={'2xl'}
+              />
+
+              {/* Title + Badge  */}
+              <HStack mt={3}>
+                <Heading fontSize={headerFontSizes} textColor={textColor}>
+                  {project.title}
+                </Heading>
+                <Spacer />
+                {project.liveUrl !== null && (
+                  <NextLink href={`${project.liveUrl!}`} passHref>
+                    <Link isExternal>
+                      <Text fontSize={textFontSizes}>
+                        Live preview
+                        <Icon
+                          as={SlGlobe}
+                          color={textColor}
+                          boxSize={iconSize}
+                          ml={'10px'}
+                        />
+                      </Text>
+                    </Link>
+                  </NextLink>
+                )}
+
+                <NextLink href={`${project.repoUrl!}`} passHref>
+                  <Link isExternal>
+                    <Text fontSize={textFontSizes}>
+                      Github
+                      <Icon
+                        as={VscGithub}
+                        ml={'10px'}
+                        color={textColor}
+                        boxSize={iconSize}
+                      />
+                    </Text>
+                  </Link>
+                </NextLink>
+                <Badge
+                  colorScheme={
+                    project.status === 'Complete' ? 'whatsapp' : 'red'
+                  }
+                  fontSize={textFontSizes}>
+                  {project.status}
+                </Badge>
+              </HStack>
+
+              {/* Summary */}
+              <Stack mt={3}>
+                <Text fontSize={textFontSizes}>{project.shortSummary}</Text>
+                <Spacer />
+
+                {/* Links */}
+                <HStack mt={3}></HStack>
+              </Stack>
+              <Spacer />
+              <Divider />
+              <HStack justify={'space-between'} mt={3} align={'baseline'}>
+                {project.stack.map((tool, idx: number) => (
+                  <NextLink key={idx} href={`${tool.url}`} passHref>
+                    <Link isExternal>
+                      <CustomIcons iconTitle={tool.name} iconLibrary={'Si'} />
+                    </Link>
+                  </NextLink>
+                ))}
+              </HStack>
+            </TabPanel>
+          ))}
+        </TabPanels>
+      </Tabs>
     </Box>
   );
 };
