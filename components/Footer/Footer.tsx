@@ -3,20 +3,15 @@ import Socials from './Socials';
 
 const Footer = () => {
   const footerTextColor = useColorModeValue(
-    'spaceCadet.500',
+    'xiketic.500',
     'princetonOrange.500'
   );
 
   return (
     <Flex justify={'center'}>
-      <Stack as="footer" maxW={'50%'}>
+      <Stack as="footer">
         <Socials />
-        <Text
-          w={'100%'}
-          align={'center'}
-          fontSize={'sm'}
-          color={footerTextColor}
-          opacity={0.6}>
+        <Text w={'100%'} align={'center'} color={footerTextColor}>
           &copy; {new Date().getFullYear()} Christopher Vestman
         </Text>
       </Stack>
