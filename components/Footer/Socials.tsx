@@ -15,34 +15,32 @@ const Socials = () => {
   if (!data) return <Spinner color={textColor} />;
 
   return (
-    <>
-      <Flex justifyContent={'space-evenly'}>
-        {data.socials &&
-          data.socials.map((social: ISocials, idx: number) => (
-            <NextLink key={idx} href={`${social.link}`} passHref>
-              <Link isExternal>
-                <Text fontSize={'lg'}>
-                  <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
-                </Text>
-              </Link>
-            </NextLink>
-          ))}
-        <motion.div
-          animate={{ scale: 2 }}
-          transition={{
-            ease: 'easeInOut',
-            duration: 1.2,
-            repeat: Infinity,
-            repeatType: 'mirror',
-          }}>
-          <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
+    <Flex justifyContent={'space-evenly'}>
+      {data.socials &&
+        data.socials.map((social: ISocials, idx: number) => (
+          <NextLink key={idx} href={`${social.link}`} passHref>
             <Link isExternal>
-              <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+              <Text fontSize={'lg'}>
+                <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
+              </Text>
             </Link>
           </NextLink>
-        </motion.div>
-      </Flex>
-    </>
+        ))}
+      <motion.div
+        animate={{ scale: [1, 2, 2, 1], rotate: [0, 0, 270, 0] }}
+        transition={{
+          ease: 'easeInOut',
+          duration: 3,
+          repeat: Infinity,
+          repeatType: 'loop',
+        }}>
+        <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
+          <Link isExternal>
+            <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+          </Link>
+        </NextLink>
+      </motion.div>
+    </Flex>
   );
 };
 
