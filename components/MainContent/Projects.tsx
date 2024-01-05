@@ -3,7 +3,6 @@ import { VscGithub } from 'react-icons/vsc';
 
 import {
   Badge,
-  Box,
   Divider,
   Heading,
   HStack,
@@ -41,7 +40,7 @@ const Projects = () => {
   if (!data) return <Spinner color={textColor} />;
 
   return (
-    <Box maxW={'5xl'}>
+    <>
       <Heading fontSize={headerFontSizes} mb={3}>
         Latest Projects
       </Heading>
@@ -133,7 +132,7 @@ const Projects = () => {
           ))}
         </TabPanels>
       </Tabs>
-    </Box>
+    </>
   );
 };
 

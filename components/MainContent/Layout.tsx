@@ -8,7 +8,7 @@ type LayoutProps = { children?: ReactNode };
 const Layout = (props: LayoutProps) => {
   return (
     <>
-      <Flex as={'main'} justifyContent={'center'}>
+      <Flex as={'main'} justifyContent={'center'} mx={'14px'}>
         {props.children}
       </Flex>
       <Footer />

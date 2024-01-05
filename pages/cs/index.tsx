@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react';
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import fs from 'fs/promises';
 import { GetServerSideProps } from 'next';
 import path from 'path';
@@ -46,23 +38,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function CS({ fileContents }: { fileContents: FileContent[] }) {
   return (
-    <Box>
-      <Flex justify={'center'}>
-        <Tabs>
-          <TabList>
-            {fileContents.map(({ fileName, content }) => (
-              <Tab key={fileName}>{fileName}</Tab>
-            ))}
-          </TabList>
-          <TabPanels>
-            {fileContents.map(({ fileName, content }) => (
-              <TabPanel key={fileName}>
-                <pre>{content}</pre>
-              </TabPanel>
-            ))}
-          </TabPanels>
-        </Tabs>
-      </Flex>
-    </Box>
+    <Tabs>
+      <TabList justifyContent={'center'}>
+        {fileContents.map(({ fileName }) => (
+          <Tab key={fileName}>{fileName}</Tab>
+        ))}
+      </TabList>
+      <TabPanels>
+        {fileContents.map(({ fileName, content }) => (
+          <TabPanel key={fileName}>
+            <pre>{content}</pre>
+          </TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
   );
 }
