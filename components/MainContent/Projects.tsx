@@ -41,7 +41,7 @@ const Projects = () => {
 
   return (
     <>
-      <Heading fontSize={headerFontSizes} mb={3}>
+      <Heading fontSize={headerFontSizes} mb={3} textColor={textColor}>
         Latest Projects
       </Heading>
       <Spacer />
@@ -66,7 +66,7 @@ const Projects = () => {
               />
 
               {/* Title + Badge  */}
-              <HStack mt={3}>
+              <HStack mt={8}>
                 <Heading fontSize={headerFontSizes} textColor={textColor}>
                   {project.title}
                 </Heading>
@@ -111,7 +111,9 @@ const Projects = () => {
 
               {/* Summary */}
               <Stack mt={3}>
-                <Text fontSize={textFontSizes}>{project.shortSummary}</Text>
+                <Text fontSize={textFontSizes} textAlign={'left'}>
+                  {project.shortSummary}
+                </Text>
                 <Spacer />
 
                 {/* Links */}
