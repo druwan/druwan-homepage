@@ -15,7 +15,7 @@ const MainContent = () => {
   const textColor = useColorModeValue('snow.500', 'princetonOrange.500');
 
   return (
-    <Box mb={'16'}>
+    <Box mb={'16'} maxW={'5xl'}>
       <Box my={'16'} flexDir={'row'}>
         <Box>
           <HStack align={'baseline'}>
