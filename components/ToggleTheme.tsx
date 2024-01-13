@@ -14,7 +14,7 @@ type ToggleThemeProps = Omit<IconButtonProps, 'aria-label'>;
 const ToggleTheme = (props: ToggleThemeProps) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');
-  const iconColor = useColorModeValue('xiketic', 'princetonOrange');
+  const iconColor = useColorModeValue('raisin_black', 'princeton_orange');
   const SwitchIcon = useColorModeValue(MoonIcon, GiSun);
 
   if (!props) return <h1>error</h1>;

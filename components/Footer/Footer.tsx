@@ -3,8 +3,8 @@ import Socials from './Socials';
 
 const Footer = () => {
   const footerTextColor = useColorModeValue(
-    'xiketic.500',
-    'princetonOrange.500'
+    'night.500',
+    'princeton_orange.500'
   );
 
   return (

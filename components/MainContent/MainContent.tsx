@@ -12,14 +12,17 @@ import ToggleTheme from '../ToggleTheme';
 import Link from 'next/link';
 
 const MainContent = () => {
-  const textColor = useColorModeValue('snow.500', 'princetonOrange.500');
+  const textColor = useColorModeValue('night.500', 'princeton_orange.500');
 
   return (
     <Box mb={'16'} maxW={'5xl'}>
       <Box my={'16'} flexDir={'row'}>
         <Box>
           <HStack align={'baseline'}>
-            <Heading as={'em'} fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }}>
+            <Heading
+              as={'em'}
+              fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }}
+              textColor={textColor}>
               Engineer &amp; Developer
             </Heading>
             <Spacer />

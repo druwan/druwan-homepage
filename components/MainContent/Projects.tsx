@@ -28,7 +28,7 @@ import { fetcher } from '../../utils/loadProjects';
 import CustomIcons from '../CustomIcons';
 
 const Projects = () => {
-  const textColor = useColorModeValue('xiketic.500', 'princetonOrange.500');
+  const textColor = useColorModeValue('night.500', 'princeton_orange.500');
 
   const { data, error } = useSWR('/api/projects', fetcher);
 

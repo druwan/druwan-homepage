@@ -8,7 +8,7 @@ import { ISocials } from '../../utils/interface';
 import { fetcher } from '../../utils/loadProjects';
 
 const Socials = () => {
-  const textColor = useColorModeValue('xiketic.500', 'princetonOrange.500');
+  const textColor = useColorModeValue('night.500', 'timberwolf.500');
 
   const { data, error } = useSWR('/api/socials', fetcher);
   if (error) return <p>Error loading socials</p>;
