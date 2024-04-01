@@ -9,7 +9,6 @@ import {
 
 import Projects from './Projects';
 import ToggleTheme from '../ToggleTheme';
-import Link from 'next/link';
 
 const MainContent = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
@@ -26,7 +25,6 @@ const MainContent = () => {
               Engineer &amp; Developer
             </Heading>
             <Spacer />
-            <Link href={'/cs'}>CS</Link>
             <ToggleTheme />
           </HStack>
 
