@@ -3,7 +3,7 @@ import { IconType } from 'react-icons/lib';
 
 const CustomIcons = ({
   iconTitle,
-  iconLibrary,
+  iconLibrary = 'Si',
 }: {
   iconTitle: string;
   iconLibrary: string;
