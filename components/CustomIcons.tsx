@@ -6,7 +6,7 @@ const CustomIcons = ({
   iconLibrary = 'Si',
 }: {
   iconTitle: string;
-  iconLibrary: string;
+  iconLibrary: 'Fa' | 'Si' | 'Tfi';
 }) => {
   let createIconName = `${iconLibrary}${
     iconTitle.charAt(0).toUpperCase() + iconTitle.slice(1).toLowerCase()
@@ -14,18 +14,26 @@ const CustomIcons = ({
 
   createIconName = createIconName.replace(' ', '');
 
-  // Outliers
-  switch (createIconName) {
-    case 'SiNextjs':
-      createIconName = 'SiNextdotjs';
-    default:
-      createIconName;
+  // Outlier
+  if (createIconName === 'SiNextjs') {
+    createIconName = 'SiNextdotjs';
   }
 
   const MyIcon = dynamic(async () => {
-    const importedIcons = await import(
-      `react-icons/${iconLibrary.toLowerCase()}/`
-    );
+    let importedIcons;
+    switch (iconLibrary) {
+      case 'Fa':
+        importedIcons = await import('react-icons/fa');
+        break;
+      case 'Si':
+        importedIcons = await import('react-icons/si');
+        break;
+      case 'Tfi':
+        importedIcons = await import('react-icons/tfi');
+        break;
+      default:
+        throw new Error(`Unsupported icon lib: ${iconLibrary}`);
+    }
     return importedIcons[createIconName as keyof IconType];
   });
 

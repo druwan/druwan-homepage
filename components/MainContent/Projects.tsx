@@ -1,8 +1,6 @@
-import { SlGlobe } from 'react-icons/sl';
 import { VscGithub } from 'react-icons/vsc';
 
 import {
-  Badge,
   Divider,
   Heading,
   HStack,
@@ -65,27 +63,12 @@ const Projects = () => {
                 borderRadius={'2xl'}
               />
 
-              {/* Title + Badge  */}
+              {/* Title */}
               <HStack mt={8}>
                 <Heading fontSize={headerFontSizes} textColor={textColor}>
                   {project.title}
                 </Heading>
                 <Spacer />
-                {project.liveUrl !== null && (
-                  <NextLink href={`${project.liveUrl!}`} passHref>
-                    <Link isExternal>
-                      <Text fontSize={textFontSizes}>
-                        Live preview
-                        <Icon
-                          as={SlGlobe}
-                          color={textColor}
-                          boxSize={iconSize}
-                          ml={'10px'}
-                        />
-                      </Text>
-                    </Link>
-                  </NextLink>
-                )}
 
                 <NextLink href={`${project.repoUrl!}`} passHref>
                   <Link isExternal>
@@ -100,13 +83,6 @@ const Projects = () => {
                     </Text>
                   </Link>
                 </NextLink>
-                <Badge
-                  colorScheme={
-                    project.status === 'Complete' ? 'whatsapp' : 'red'
-                  }
-                  fontSize={textFontSizes}>
-                  {project.status}
-                </Badge>
               </HStack>
 
               {/* Summary */}
