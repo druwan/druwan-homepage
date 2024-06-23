@@ -14,7 +14,6 @@
     "test": "jest -t"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.11",
     "@chakra-ui/react": "^2.3.6",
     "@chakra-ui/theme-tools": "^2.0.12",
     "@emotion/react": "^11.10.4",
