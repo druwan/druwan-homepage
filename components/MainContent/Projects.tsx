@@ -5,7 +5,7 @@ import {
   Heading,
   HStack,
   Icon,
-  // Image,
+  Image,
   Link,
   Spacer,
   Spinner,
@@ -24,7 +24,6 @@ import useSWR from 'swr';
 import { IProject } from '../../utils/interface';
 import { fetcher } from '../../utils/loadProjects';
 import CustomIcons from '../CustomIcons';
-import Image from 'next/image';
 
 const Projects = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
@@ -59,9 +58,9 @@ const Projects = () => {
               <Image
                 src={`${project.imageUrl}`}
                 alt={`Image of ${project.title}`}
-                // border={'1px'}
-                // borderColor={textColor}
-                // borderRadius={'2xl'}
+                border={'1px'}
+                borderColor={textColor}
+                borderRadius={'2xl'}
               />
 
               {/* Title */}
