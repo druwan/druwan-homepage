@@ -1,5 +1,4 @@
-import { MoonIcon } from '@chakra-ui/icons';
-import { GiSun } from 'react-icons/gi';
+import { GiMoonOrbit, GiSun } from 'react-icons/gi';
 
 import {
   IconButton,
@@ -15,7 +14,7 @@ const ToggleTheme = (props: ToggleThemeProps) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');
   const iconColor = useColorModeValue('raisin_black', 'princeton_orange');
-  const SwitchIcon = useColorModeValue(MoonIcon, GiSun);
+  const SwitchIcon = useColorModeValue(GiMoonOrbit, GiSun);
 
   if (!props) return <h1>error</h1>;
 
