@@ -9,7 +9,6 @@ import {
 
 import Projects from './Projects';
 import ToggleTheme from '../ToggleTheme';
-import { CustomIcons } from '../icons';
 
 const MainContent = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
@@ -36,7 +35,6 @@ const MainContent = () => {
             </Text>{' '}
             cook, game or listening to podcasts.
           </Text>
-          <CustomIcons.moonOrbit fill={textColor} />{' '}
         </Box>
       </Box>
       <Projects />
