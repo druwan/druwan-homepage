@@ -9,6 +9,7 @@ import {
 
 import Projects from './Projects';
 import ToggleTheme from '../ToggleTheme';
+import { CustomIcons } from '../icons';
 
 const MainContent = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
@@ -27,7 +28,6 @@ const MainContent = () => {
             <Spacer />
             <ToggleTheme />
           </HStack>
-
           <Text my={4} fontSize={{ base: 'md' }}>
             I have a passion for math, physics &amp; football. When not online,
             I like to{' '}
@@ -36,6 +36,7 @@ const MainContent = () => {
             </Text>{' '}
             cook, game or listening to podcasts.
           </Text>
+          <CustomIcons.moonOrbit fill={textColor} />{' '}
         </Box>
       </Box>
       <Projects />
