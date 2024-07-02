@@ -5,13 +5,16 @@ import {
   chakrauiIcon,
   cypressIcon,
   dockerIcon,
+  emailIcon,
   expressIcon,
   fakerIcon,
+  githubIcon,
   hibernateIcon,
   javaIcon,
   jestIcon,
   keycloakIcon,
   leafletIcon,
+  linkedinIcon,
   mongodbIcon,
   moonorbitIcon,
   nextjsIcon,
@@ -31,13 +34,16 @@ const iconMapping: { [key: string]: ComponentWithAs<'svg', IconProps> } = {
   chakrauiIcon,
   cypressIcon,
   dockerIcon,
+  emailIcon,
   expressIcon,
   fakerIcon,
+  githubIcon,
   hibernateIcon,
   javaIcon,
   jestIcon,
   keycloakIcon,
   leafletIcon,
+  linkedinIcon,
   mongodbIcon,
   moonorbitIcon,
   nextjsIcon,
@@ -49,7 +55,13 @@ const iconMapping: { [key: string]: ComponentWithAs<'svg', IconProps> } = {
   typescriptIcon,
 };
 
-const DynamicIcon = ({ iconTitle }: { iconTitle: string }) => {
+const DynamicIcon = ({
+  iconTitle,
+  iconSize = '2rem',
+}: {
+  iconTitle: string;
+  iconSize?: string;
+}) => {
   const createIconName = iconTitle
     .toLowerCase()
     .split(' ')
@@ -60,7 +72,7 @@ const DynamicIcon = ({ iconTitle }: { iconTitle: string }) => {
   if (!specificIcon) {
     throw new Error(`Icon ${createIconName} not found.`);
   } else {
-    return <Icon as={specificIcon} />;
+    return <Icon as={specificIcon} boxSize={iconSize} />;
   }
 };
 

@@ -1,5 +1,3 @@
-import { VscGithub } from 'react-icons/vsc';
-
 import {
   Divider,
   Heading,
@@ -24,6 +22,7 @@ import useSWR from 'swr';
 import { IProject } from '../../utils/interface';
 import { fetcher } from '../../utils/loadProjects';
 import CustomIcons from '../CustomIcons';
+import { githubIcon } from '../SVGIcons';
 
 const Projects = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
@@ -32,7 +31,6 @@ const Projects = () => {
 
   const headerFontSizes = { base: 'md', md: 'lg', lg: '2xl' };
   const textFontSizes = { base: 'sm', lg: 'md' };
-  const iconSize = { base: 4 };
 
   if (error) return <p>Error loading projects</p>;
   if (!data) return <Spinner color={textColor} />;
@@ -73,12 +71,11 @@ const Projects = () => {
                 <NextLink href={`${project.repoUrl!}`} passHref>
                   <Link isExternal>
                     <Text fontSize={textFontSizes}>
-                      Github
                       <Icon
-                        as={VscGithub}
+                        as={githubIcon}
                         ml={'10px'}
                         color={textColor}
-                        boxSize={iconSize}
+                        boxSize={'2.5rem'}
                       />
                     </Text>
                   </Link>

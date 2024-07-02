@@ -1,6 +1,5 @@
-import { GiMoonOrbit, GiSun } from 'react-icons/gi';
-
 import {
+  Icon,
   IconButton,
   IconButtonProps,
   useColorMode,
@@ -8,13 +7,18 @@ import {
 } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { moonorbitIcon, sunIcon } from './SVGIcons';
+
 type ToggleThemeProps = Omit<IconButtonProps, 'aria-label'>;
 
 const ToggleTheme = (props: ToggleThemeProps) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');
   const iconColor = useColorModeValue('raisin_black', 'princeton_orange');
-  const SwitchIcon = useColorModeValue(GiMoonOrbit, GiSun);
+  const SwitchIcon = useColorModeValue(
+    <Icon as={moonorbitIcon} />,
+    <Icon as={sunIcon} />
+  );
 
   if (!props) return <h1>error</h1>;
 
@@ -30,7 +34,7 @@ const ToggleTheme = (props: ToggleThemeProps) => {
         <IconButton
           aria-label={`Switch to ${text} mode`}
           colorScheme={iconColor}
-          icon={<SwitchIcon />}
+          icon={SwitchIcon}
           onClick={toggleColorMode}
           size={'lg'}
           isRound
