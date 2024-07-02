@@ -8,7 +8,7 @@ const Footer = () => {
   );
 
   return (
-    <Flex justify={'center'}>
+    <Flex justify={'center'} as={'footer'}>
       <Stack as="footer">
         <Socials />
         <Text w={'100%'} align={'center'} color={footerTextColor}>

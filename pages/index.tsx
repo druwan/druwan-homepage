@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Layout from '../components/MainContent/Layout';
-import MainContent from '../components/MainContent/MainContent';
+import Presentation from '../components/MainContent/Presentation';
+import HeaderComponent from '../components/Header/HeaderComponent';
+import Footer from '../components/Footer/Footer';
 
 const IndexPage = () => {
   return (
@@ -28,7 +30,9 @@ const IndexPage = () => {
         <title>Christopher Vestman</title>
       </Head>
       <Layout>
-        <MainContent />
+        <HeaderComponent />
+        <Presentation />
+        <Footer />
       </Layout>
     </>
   );
