@@ -1,4 +1,4 @@
-import { Flex, Link, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
+import { Flex, Link, Spinner, useColorModeValue } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
@@ -20,9 +20,7 @@ const Socials = () => {
         data.socials.map((social: ISocials, idx: number) => (
           <NextLink key={idx} href={`${social.link}`} passHref>
             <Link isExternal>
-              <Text fontSize={'lg'}>
-                <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
-              </Text>
+              <CustomIcons iconTitle={social.name} />
             </Link>
           </NextLink>
         ))}
@@ -36,7 +34,7 @@ const Socials = () => {
         }}>
         <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
           <Link isExternal>
-            <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+            <CustomIcons iconTitle="Email" />
           </Link>
         </NextLink>
       </motion.div>

@@ -1,86 +1,79 @@
-import dynamic from 'next/dynamic';
-import { IconType } from 'react-icons/lib';
-import { FaGithub, FaLinkedin, FaJava } from 'react-icons/fa';
-import { GiNinjaVelociraptor } from 'react-icons/gi';
-import { TfiEmail } from 'react-icons/tfi';
 import {
-  SiAngular,
-  SiAuth0,
-  SiBootstrap,
-  SiChakraui,
-  SiCypress,
-  SiDocker,
-  SiExpress,
-  SiHibernate,
-  SiJest,
-  SiKeycloak,
-  SiLeaflet,
-  SiMongodb,
-  SiNextdotjs,
-  SiPostgresql,
-  SiReact,
-  SiSpringboot,
-  SiTailwindcss,
-  SiTypescript,
-} from 'react-icons/si';
+  angularIcon,
+  auth0Icon,
+  bootstrapIcon,
+  chakrauiIcon,
+  cypressIcon,
+  dockerIcon,
+  emailIcon,
+  expressIcon,
+  fakerIcon,
+  githubIcon,
+  hibernateIcon,
+  javaIcon,
+  jestIcon,
+  keycloakIcon,
+  leafletIcon,
+  linkedinIcon,
+  mongodbIcon,
+  moonorbitIcon,
+  nextjsIcon,
+  postgresqlIcon,
+  reactIcon,
+  springbootIcon,
+  sunIcon,
+  tailwindcssIcon,
+  typescriptIcon,
+} from '../components/SVGIcons';
+import { ComponentWithAs, Icon, IconProps } from '@chakra-ui/react';
 
-const iconMapping: { [key: string]: IconType } = {
-  FaGithub,
-  FaLinkedin,
-  FaJava,
-  GiNinjaVelociraptor,
-  TfiEmail,
-  SiAngular,
-  SiAuth0,
-  SiBootstrap,
-  SiChakraui,
-  SiCypress,
-  SiDocker,
-  SiExpress,
-  SiHibernate,
-  SiJest,
-  SiKeycloak,
-  SiLeaflet,
-  SiMongodb,
-  SiNextdotjs,
-  SiPostgresql,
-  SiReact,
-  SiSpringboot,
-  SiTailwindcss,
-  SiTypescript,
+const iconMapping: { [key: string]: ComponentWithAs<'svg', IconProps> } = {
+  angularIcon,
+  auth0Icon,
+  bootstrapIcon,
+  chakrauiIcon,
+  cypressIcon,
+  dockerIcon,
+  emailIcon,
+  expressIcon,
+  fakerIcon,
+  githubIcon,
+  hibernateIcon,
+  javaIcon,
+  jestIcon,
+  keycloakIcon,
+  leafletIcon,
+  linkedinIcon,
+  mongodbIcon,
+  moonorbitIcon,
+  nextjsIcon,
+  postgresqlIcon,
+  reactIcon,
+  springbootIcon,
+  sunIcon,
+  tailwindcssIcon,
+  typescriptIcon,
 };
 
-const CustomIcons = ({
+const DynamicIcon = ({
   iconTitle,
-  iconLibrary = 'Si',
+  iconSize = '2rem',
 }: {
   iconTitle: string;
-  iconLibrary: 'Fa' | 'Gi' | 'Si' | 'Tfi';
+  iconSize?: string;
 }) => {
-  let createIconName = `${iconLibrary}${
-    iconTitle.charAt(0).toUpperCase() + iconTitle.slice(1).toLowerCase()
-  }`;
+  const createIconName = iconTitle
+    .toLowerCase()
+    .split(' ')
+    .join('')
+    .concat('Icon');
 
-  createIconName = createIconName.replace(' ', '');
-
-  // Outlier
-  if (createIconName === 'SiNextjs') {
-    createIconName = 'SiNextdotjs';
-  } else if (createIconName === 'SiJava') {
-    createIconName = 'FaJava';
-  } else if (createIconName === 'SiFaker') {
-    createIconName = 'GiNinjaVelociraptor';
+  const specificIcon = iconMapping[createIconName];
+  if (!specificIcon) {
+    throw new Error(`Icon ${createIconName} not found.`);
+  } else {
+    return <Icon as={specificIcon} boxSize={iconSize} />;
   }
-
-  const MyIcon = dynamic(() => {
-    const SpecificIcon = iconMapping[createIconName];
-    if (!SpecificIcon) {
-      throw new Error(`Icon ${createIconName} not found.`);
-    }
-    return Promise.resolve(SpecificIcon);
-  });
-
-  return <MyIcon />;
 };
 
-export default CustomIcons;
+export default DynamicIcon;
