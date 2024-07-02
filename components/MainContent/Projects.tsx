@@ -101,7 +101,7 @@ const Projects = () => {
                 {project.stack.map((tool, idx: number) => (
                   <NextLink key={idx} href={`${tool.url}`} passHref>
                     <Link isExternal>
-                      <CustomIcons iconTitle={tool.name} iconLibrary={'Si'} />
+                      <CustomIcons iconTitle={tool.name} />
                     </Link>
                   </NextLink>
                 ))}

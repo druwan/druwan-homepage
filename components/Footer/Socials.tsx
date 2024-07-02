@@ -21,7 +21,7 @@ const Socials = () => {
           <NextLink key={idx} href={`${social.link}`} passHref>
             <Link isExternal>
               <Text fontSize={'lg'}>
-                <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} />
+                {/* <CustomIcons iconTitle={social.name} iconLibrary={'Fa'} /> */}
               </Text>
             </Link>
           </NextLink>
@@ -36,7 +36,7 @@ const Socials = () => {
         }}>
         <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
           <Link isExternal>
-            <CustomIcons iconTitle="Email" iconLibrary="Tfi" />
+            {/* <CustomIcons iconTitle="Email" iconLibrary="Tfi" /> */}
           </Link>
         </NextLink>
       </motion.div>
