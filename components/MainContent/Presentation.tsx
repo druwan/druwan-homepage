@@ -1,6 +1,6 @@
 import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
 
-import Projects from './Projects';
+import ProjectsComponent from './ProjectsComponent';
 
 const Presentation = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
@@ -15,7 +15,7 @@ const Presentation = () => {
         </Text>{' '}
         cook, game or listening to podcasts.
       </Text>
-      <Projects />
+      <ProjectsComponent />
     </Flex>
   );
 };

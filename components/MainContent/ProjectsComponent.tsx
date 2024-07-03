@@ -16,21 +16,21 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-
 import NextLink from 'next/link';
+
 import useSWR from 'swr';
-import { IProject } from '../../utils/interface';
-import { fetcher } from '../../utils/loadProjects';
+import { ProjectsType } from '../../utils/types';
+
 import CustomIcons from '../CustomIcons';
 import { githubIcon } from '../SVGIcons';
+import { fetcher } from '../../utils/customFetcher';
 
 const Projects = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
-
-  const { data, error } = useSWR('/api/projects', fetcher);
-
   const headerFontSizes = { base: 'md', md: 'lg', lg: '2xl' };
   const textFontSizes = { base: 'sm', lg: 'md' };
+
+  const { data, error } = useSWR<ProjectsType[]>('/api/projects', fetcher);
 
   if (error) return <p>Error loading projects</p>;
   if (!data) return <Spinner color={textColor} />;
@@ -43,14 +43,14 @@ const Projects = () => {
       <Spacer />
       <Tabs align="center">
         <TabList>
-          {data.projects.map((project: IProject) => (
+          {data.map((project: ProjectsType) => (
             <Tab key={project.id} fontSize={textFontSizes}>
               {project.title}
             </Tab>
           ))}
         </TabList>
         <TabPanels>
-          {data.projects.map((project: IProject) => (
+          {data.map((project: ProjectsType) => (
             <TabPanel key={project.id}>
               {/* Image */}
               <Image
