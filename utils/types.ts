@@ -1,15 +1,13 @@
 export type ProjectsType = {
   id: number;
-  imageUrl: string;
+  imageUrl: string | null;
   liveUrl: string | null;
   repoUrl: string;
   shortSummary: string;
-  stack: [
-    {
-      name: string;
-      url: string;
-    }
-  ];
+  stack: Array<{
+    name: string;
+    url: string;
+  }>;
   status: 'Incomplete' | 'Complete';
   title: string;
 };

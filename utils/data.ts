@@ -1,3 +1,5 @@
+import { ProjectsType } from './types';
+
 export const socialsData = [
   {
     name: 'GitHub',
@@ -9,7 +11,7 @@ export const socialsData = [
   },
 ];
 
-export const projectsData = [
+export const projectsData: ProjectsType[] = [
   {
     id: 0,
     imageUrl: '/images/sinhala-quiz-app.webp',
