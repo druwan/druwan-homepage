@@ -1,23 +1,23 @@
-import { Flex, Link, Spinner, useColorModeValue } from '@chakra-ui/react';
+import { HStack, Link, Spinner, useColorModeValue } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
 
 import CustomIcons from '../CustomIcons';
-import { ISocials } from '../../utils/interface';
-import { fetcher } from '../../utils/loadProjects';
+import { SocialsType } from '../../utils/types';
+import { fetcher } from '../../utils/customFetcher';
 
-const Socials = () => {
+const SocialsComponent = () => {
   const textColor = useColorModeValue('night.500', 'timberwolf.500');
+  const { data, error } = useSWR<SocialsType[]>('/api/socials', fetcher);
 
-  const { data, error } = useSWR('/api/socials', fetcher);
   if (error) return <p>Error loading socials</p>;
   if (!data) return <Spinner color={textColor} />;
 
   return (
-    <Flex justifyContent={'space-evenly'}>
-      {data.socials &&
-        data.socials.map((social: ISocials, idx: number) => (
+    <HStack justifyContent={'space-evenly'}>
+      {data &&
+        data.map((social: SocialsType, idx: number) => (
           <NextLink key={idx} href={`${social.link}`} passHref>
             <Link isExternal>
               <CustomIcons iconTitle={social.name} />
@@ -38,8 +38,8 @@ const Socials = () => {
           </Link>
         </NextLink>
       </motion.div>
-    </Flex>
+    </HStack>
   );
 };
 
-export default Socials;
+export default SocialsComponent;

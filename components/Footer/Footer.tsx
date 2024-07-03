@@ -1,5 +1,5 @@
 import { Flex, Stack, Text, useColorModeValue } from '@chakra-ui/react';
-import Socials from './Socials';
+import SocialsComponent from './SocialsComponent';
 
 const Footer = () => {
   const footerTextColor = useColorModeValue(
@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <Flex justify={'center'} as={'footer'}>
       <Stack as="footer">
-        <Socials />
+        <SocialsComponent />
         <Text w={'100%'} align={'center'} color={footerTextColor}>
           &copy; {new Date().getFullYear()} Christopher Vestman
         </Text>
