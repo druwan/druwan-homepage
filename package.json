@@ -20,6 +20,7 @@
     "@emotion/styled": "^11.10.4",
     "@fontsource/varela-round": "^4.5.9",
     "@fontsource/yaldevi": "^4.5.11",
+    "@next/bundle-analyzer": "^14.2.4",
     "framer-motion": "^6.5.1",
     "next": "^12.3.4",
     "react": "^18.2.0",
