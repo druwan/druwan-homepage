@@ -28,7 +28,6 @@ const Projects = () => {
       <Heading
         mb={3}
         // fontSize={headerFontSizes}
-        //  textColor={textColor}
       >
         Latest Projects
       </Heading>

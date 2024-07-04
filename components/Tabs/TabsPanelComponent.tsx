@@ -25,15 +25,12 @@ const TabsPanelComponent = ({ projects }: { projects: ProjectsType[] }) => {
           <Image
             src={`${project.imageUrl}`}
             alt={`Image of ${project.title}`}
-            border={'1px'}
-            // borderColor={textColor}
-            borderRadius={'2xl'}
           />
 
           {/* Title */}
           <HStack mt={8}>
             <Heading
-            //  fontSize={headerFontSizes} textColor={textColor}
+            //  fontSize={headerFontSizes}
             >
               {project.title}
             </Heading>
@@ -48,7 +45,7 @@ const TabsPanelComponent = ({ projects }: { projects: ProjectsType[] }) => {
                     as={githubIcon}
                     ml={'10px'}
                     // color={textColor}
-                    boxSize={'2.5rem'}
+                    // boxSize={'2rem'}
                   />
                 </Text>
               </Link>
