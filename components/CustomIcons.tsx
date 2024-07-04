@@ -57,7 +57,7 @@ const iconMapping: { [key: string]: ComponentWithAs<'svg', IconProps> } = {
 
 const DynamicIcon = ({
   iconTitle,
-  iconSize = '2rem',
+  iconSize = '1.25rem',
 }: {
   iconTitle: string;
   iconSize?: string;
