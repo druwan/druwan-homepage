@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { moonorbitIcon, sunIcon } from './SVGIcons';
+import { moonorbitIcon, sunIcon } from '../SVGIcons';
 
 type ToggleThemeProps = Omit<IconButtonProps, 'aria-label'>;
 

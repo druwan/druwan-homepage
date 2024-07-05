@@ -1,18 +1,14 @@
 import { Flex } from '@chakra-ui/react';
 
 import React, { ReactNode } from 'react';
-import Footer from '../Footer/Footer';
 
 type LayoutProps = { children?: ReactNode };
 
 const Layout = (props: LayoutProps) => {
   return (
-    <>
-      <Flex as={'main'} justifyContent={'center'} mx={'14px'}>
-        {props.children}
-      </Flex>
-      <Footer />
-    </>
+    <Flex alignContent={'center'} m={'auto'} flexDir={'column'} maxW={'5xl'}>
+      {props.children}
+    </Flex>
   );
 };
 
