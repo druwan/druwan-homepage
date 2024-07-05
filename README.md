@@ -1,8 +1,4 @@
-## Second iteration on a portfolio
-
-My second iteration on creating a portfolio / personal website
-
-Main difference from the 1st version is better utilization of the space, better responsive layout, dynamic icons and better theme.
+## My supershort portfolio / personal website
 
 ## Built with
 
