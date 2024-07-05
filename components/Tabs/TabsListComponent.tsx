@@ -5,12 +5,7 @@ const TabsListComponent = ({ projects }: { projects: ProjectsType[] }) => {
   return (
     <TabList>
       {projects.map((project: ProjectsType) => (
-        <Tab
-          key={project.id}
-          // fontSize={textFontSizes}
-        >
-          {project.title}
-        </Tab>
+        <Tab key={project.id}>{project.title}</Tab>
       ))}
     </TabList>
   );

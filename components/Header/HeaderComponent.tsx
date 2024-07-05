@@ -3,7 +3,7 @@ import ToggleTheme from './ToggleTheme';
 
 const HeaderComponent = () => {
   return (
-    <HStack as={'header'} align={'baseline'}>
+    <HStack as={'header'} align={'baseline'} alignContent={'center'}>
       <Heading as={'h2'}>Engineer &amp; Developer</Heading>
       <Spacer />
       <ToggleTheme />

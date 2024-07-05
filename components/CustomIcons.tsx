@@ -25,7 +25,12 @@ import {
   tailwindcssIcon,
   typescriptIcon,
 } from '../components/SVGIcons';
-import { ComponentWithAs, Icon, IconProps } from '@chakra-ui/react';
+import {
+  ComponentWithAs,
+  Icon,
+  IconProps,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 const iconMapping: { [key: string]: ComponentWithAs<'svg', IconProps> } = {
   angularIcon,
@@ -68,11 +73,16 @@ const DynamicIcon = ({
     .join('')
     .concat('Icon');
 
+  const borderColor = useColorModeValue(
+    'night.DEFAULT',
+    'light_sky_blue.DEFAULT'
+  );
+
   const specificIcon = iconMapping[createIconName];
   if (!specificIcon) {
     throw new Error(`Icon ${createIconName} not found.`);
   } else {
-    return <Icon as={specificIcon} boxSize={iconSize} />;
+    return <Icon as={specificIcon} boxSize={iconSize} color={borderColor} />;
   }
 };
 

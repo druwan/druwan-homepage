@@ -1,7 +1,7 @@
 import '@fontsource/yaldevi/400.css';
 import '@fontsource/varela-round/400.css';
 
-import { ComponentStyleConfig, extendTheme } from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 import type { StyleFunctionProps } from '@chakra-ui/styled-system';
 import { ThemeConfig } from '@chakra-ui/react';
@@ -85,23 +85,61 @@ const colors = {
     800: '#ccecff',
     900: '#e5f6ff',
   },
+  white: {
+    DEFAULT: '#FFFFFF',
+  },
 };
 
 const customTheme = extendTheme({
   colors: colors,
 
-  config,
-
   components: {
+    Divider: {
+      baseStyle: (props: StyleFunctionProps) => ({
+        borderColor: mode(
+          colors.night.DEFAULT,
+          colors.princeton_orange.DEFAULT
+        )(props),
+        borderRadius: '2xl',
+        size: '2xl',
+      }),
+    },
+
     Heading: {
-      baseStyle: (props: ComponentStyleConfig) => ({
+      baseStyle: (props: StyleFunctionProps) => ({
         color: mode(
           colors.night.DEFAULT,
           colors.princeton_orange.DEFAULT
         )(props),
       }),
     },
+
+    Tabs: {
+      baseStyle: (props: StyleFunctionProps) => ({
+        position: 'relative',
+        tab: {
+          color: mode(
+            colors.night.DEFAULT,
+            colors.princeton_orange.DEFAULT
+          )(props),
+        },
+        indicator: {
+          bg: mode(
+            colors.light_sky_blue.DEFAULT,
+            colors.princeton_orange.DEFAULT
+          )(props),
+        },
+      }),
+    },
+
+    Text: {
+      baseStyle: (props: StyleFunctionProps) => ({
+        color: mode(colors.night.DEFAULT, colors.light_sky_blue.DEFAULT)(props),
+      }),
+    },
   },
+
+  config,
 
   fonts: {
     heading: 'Varela round, sans-serif',
@@ -111,7 +149,8 @@ const customTheme = extendTheme({
   styles: {
     global: (props: StyleFunctionProps) => ({
       body: {
-        bg: mode(colors.timberwolf.DEFAULT, colors.raisin_black.DEFAULT)(props),
+        bg: mode(colors.white.DEFAULT, colors.raisin_black.DEFAULT)(props),
+        color: mode(colors.night.DEFAULT, colors.periwinkle.DEFAULT)(props),
       },
     }),
   },

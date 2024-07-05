@@ -6,7 +6,7 @@ type LayoutProps = { children?: ReactNode };
 
 const Layout = (props: LayoutProps) => {
   return (
-    <Flex justifyContent={'center'} m={'24px'} flexDir={'column'}>
+    <Flex alignContent={'center'} m={'auto'} flexDir={'column'} maxW={'5xl'}>
       {props.children}
     </Flex>
   );

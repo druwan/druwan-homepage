@@ -6,7 +6,7 @@ const Presentation = () => {
   const textColor = useColorModeValue('night.500', 'princeton_orange.500');
 
   return (
-    <Flex as={'main'} mb={'16'} flexDir={'column'}>
+    <Flex as={'main'} mb={'2'} flexDir={'column'}>
       <Text my={4} fontSize={{ base: 'md' }}>
         I have a passion for math, physics &amp; football. When not online, I
         like to{' '}

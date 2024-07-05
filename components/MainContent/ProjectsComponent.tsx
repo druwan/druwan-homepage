@@ -33,7 +33,7 @@ const Projects = () => {
       </Heading>
       <Spacer />
       {data && (
-        <Tabs align="center">
+        <Tabs isFitted align="center" maxW={'5xl'}>
           <TabsListComponent projects={data} />
           <TabsPanelComponent projects={data} />
         </Tabs>
