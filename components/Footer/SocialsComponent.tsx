@@ -1,11 +1,12 @@
-import { HStack, Link, Spinner, useColorModeValue } from '@chakra-ui/react';
-import NextLink from 'next/link';
+import { HStack, Spinner, useColorModeValue } from '@chakra-ui/react';
+
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
 
 import CustomIcons from '../CustomIcons';
 import { SocialsType } from '../../utils/types';
 import { fetcher } from '../../utils/customFetcher';
+import { Link } from '@chakra-ui/next-js';
 
 const SocialsComponent = () => {
   const textColor = useColorModeValue('night.500', 'timberwolf.500');
@@ -18,11 +19,9 @@ const SocialsComponent = () => {
     <HStack justifyContent={'space-evenly'}>
       {data &&
         data.map((social: SocialsType, idx: number) => (
-          <NextLink key={idx} href={`${social.link}`} passHref>
-            <Link isExternal>
+            <Link key={idx} href={social.link} isExternal>
               <CustomIcons iconTitle={social.name} />
             </Link>
-          </NextLink>
         ))}
       <motion.div
         animate={{ scale: [1, 2, 2, 1], rotate: [0, 0, 270, 0] }}
@@ -32,11 +31,9 @@ const SocialsComponent = () => {
           repeat: Infinity,
           repeatType: 'loop',
         }}>
-        <NextLink href={`mailto:hello@christophervestman.dev`} passHref>
-          <Link isExternal>
+          <Link href={`mailto:hello@christophervestman.dev`} isExternal>
             <CustomIcons iconTitle="Email" />
           </Link>
-        </NextLink>
       </motion.div>
     </HStack>
   );

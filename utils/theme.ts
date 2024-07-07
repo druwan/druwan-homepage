@@ -114,14 +114,28 @@ const customTheme = extendTheme({
       }),
     },
 
+    Spinner: {
+      baseStyle: (props: StyleFunctionProps) => ({
+        color: mode(colors.night.DEFAULT, colors.light_sky_blue.DEFAULT)(props),
+      }),
+    },
+
     Tabs: {
       baseStyle: (props: StyleFunctionProps) => ({
         position: 'relative',
         tab: {
-          color: mode(
-            colors.night.DEFAULT,
-            colors.princeton_orange.DEFAULT
-          )(props),
+          _selected: {
+            color: mode(
+              colors.night.DEFAULT,
+              colors.light_sky_blue.DEFAULT
+            )(props),
+          },
+          _hover: {
+            color: mode(
+              colors.night.DEFAULT,
+              colors.light_sky_blue.DEFAULT
+            )(props),
+          },
         },
         indicator: {
           bg: mode(
