@@ -1,4 +1,4 @@
-import Layout from '../components/MainContent/Layout';
+import LayoutComponent from '../components/MainContent/LayoutComponent';
 import Presentation from '../components/MainContent/Presentation';
 import HeaderComponent from '../components/Header/HeaderComponent';
 import Footer from '../components/Footer/Footer';
@@ -11,11 +11,11 @@ const IndexPage = () => {
         description={"Christopher Vestman's portfolio website"}
         author={'Christopher Vestman'}
       />
-      <Layout>
+      <LayoutComponent>
         <HeaderComponent />
         <Presentation />
         <Footer />
-      </Layout>
+      </LayoutComponent>
     </>
   );
 };

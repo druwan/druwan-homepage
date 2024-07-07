@@ -23,23 +23,25 @@ const ToggleTheme = (props: ToggleThemeProps) => {
   if (!props) return <h1>error</h1>;
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
-      <motion.div
-        key={text}
-        style={{ display: 'inline-block' }}
-        initial={{ y: 0, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 0, opacity: 0 }}
-        transition={{ duration: 0.1 }}>
-        <IconButton
-          aria-label={`Switch to ${text} mode`}
-          colorScheme={iconColor}
-          icon={SwitchIcon}
-          onClick={toggleColorMode}
-          size={'lg'}
-          isRound
-          variant={'link'}></IconButton>
-      </motion.div>
+    <AnimatePresence mode="wait" initial={false}>
+      {props && (
+        <motion.div
+          key={text}
+          style={{ display: 'inline-block' }}
+          initial={{ y: 0, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 0, opacity: 0 }}
+          transition={{ duration: 0.1 }}>
+          <IconButton
+            aria-label={`Switch to ${text} mode`}
+            colorScheme={iconColor}
+            icon={SwitchIcon}
+            onClick={toggleColorMode}
+            size={'lg'}
+            isRound
+            variant={'link'}></IconButton>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 };

@@ -1,10 +1,12 @@
+'use client';
+
 import { Flex } from '@chakra-ui/react';
 
 import React, { ReactNode } from 'react';
 
 type LayoutProps = { children?: ReactNode };
 
-const Layout = (props: LayoutProps) => {
+const LayoutComponent = (props: LayoutProps) => {
   return (
     <Flex alignContent={'center'} m={'auto'} flexDir={'column'} maxW={'5xl'}>
       {props.children}
@@ -12,4 +14,4 @@ const Layout = (props: LayoutProps) => {
   );
 };
 
-export default Layout;
+export default LayoutComponent;
