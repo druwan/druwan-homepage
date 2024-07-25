@@ -1,6 +1,4 @@
-import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
-
-import ProjectsComponent from './ProjectsComponent';
+import { GridItem, Text, useColorModeValue } from '@chakra-ui/react';
 
 const Presentation = () => {
   const textColor = useColorModeValue(
@@ -9,7 +7,7 @@ const Presentation = () => {
   );
 
   return (
-    <Flex as={'main'} mb={'2'} flexDir={'column'}>
+    <GridItem colSpan={3} rowSpan={1}>
       <Text my={4} fontSize={{ base: 'md' }}>
         I have a passion for math, physics &amp; football. When not online, I
         like to{' '}
@@ -18,8 +16,7 @@ const Presentation = () => {
         </Text>{' '}
         cook, game or listening to podcasts.
       </Text>
-      <ProjectsComponent />
-    </Flex>
+    </GridItem>
   );
 };
 

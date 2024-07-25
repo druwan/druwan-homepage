@@ -1,13 +1,17 @@
-import { HStack, Heading, Spacer } from '@chakra-ui/react';
+import { GridItem, Heading, HStack, Spacer } from '@chakra-ui/react';
 import ToggleTheme from './ToggleTheme';
 
 const HeaderComponent = () => {
   return (
-    <HStack as={'header'} align={'baseline'} alignContent={'center'}>
-      <Heading as={'h2'}>Engineer &amp; Developer</Heading>
-      <Spacer />
-      <ToggleTheme />
-    </HStack>
+    <>
+      <GridItem area={'header'} colSpan={3} rowSpan={1}>
+        <HStack>
+          <Heading>Engineer &amp; Developer</Heading>
+          <Spacer />
+          <ToggleTheme />
+        </HStack>
+      </GridItem>
+    </>
   );
 };
 
