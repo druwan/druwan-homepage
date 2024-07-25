@@ -25,11 +25,9 @@ import CustomIcons from '../CustomIcons';
 import { githubIcon } from '../SVGIcons';
 
 const Projects = () => {
-  // const textColor = useColorModeValue('night.500', 'princeton_orange.500');
-  // const headerFontSizes = { base: 'md', md: 'lg', lg: '2xl' };
   const borderColor = useColorModeValue(
-    'night.DEFAULT',
-    'princeton_orange.DEFAULT'
+    'swedenBlueStd.DEFAULT',
+    'swedenYellowStd.DEFAULT'
   );
 
   const { data, error } = useSWR<ProjectsType[]>('/api/projects', fetcher);
@@ -69,12 +67,7 @@ const Projects = () => {
 
                   <Link href={project.repoUrl} isExternal>
                     <Text>
-                      <Icon
-                        as={githubIcon}
-                        ml={'10px'}
-                        boxSize={'2rem'}
-                        color={borderColor}
-                      />
+                      <Icon as={githubIcon} ml={'10px'} boxSize={'1.75rem'} />
                     </Text>
                   </Link>
                 </HStack>

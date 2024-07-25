@@ -8,83 +8,46 @@ import { ThemeConfig } from '@chakra-ui/react';
 
 const config: ThemeConfig = {
   initialColorMode: 'light',
-  useSystemColorMode: false,
+  useSystemColorMode: true,
 };
 
 const colors = {
-  princeton_orange: {
-    DEFAULT: '#eb7400',
-    50: '#fdeee0',
-    100: '#f9d5b3',
-    200: '#f5ba80',
-    300: '#f19e4d',
-    400: '#ee8926',
-    500: '#eb7400',
-    600: '#e96c00',
-    700: '#e56100',
-    800: '#e25700',
-    900: '#dd4400',
+  black: {
+    DEFAULT: '#000000',
   },
-  night: {
-    DEFAULT: '#0d0d0d',
-    100: '#030303',
-    200: '#050505',
-    300: '#080808',
-    400: '#0a0a0a',
-    500: '#0d0d0d',
-    600: '#3d3d3d',
-    700: '#6e6e6e',
-    800: '#9e9e9e',
-    900: '#cfcfcf',
+  darkDawnBlue: {
+    DEFAULT: '#142638',
   },
-  raisin_black: {
-    DEFAULT: '#1a1b26',
-    100: '#050608',
-    200: '#0b0b10',
-    300: '#101118',
-    400: '#151620',
-    500: '#1a1b26',
-    600: '#3f415c',
-    700: '#636791',
-    800: '#9598b7',
-    900: '#caccdb',
+  grainYellow: {
+    DEFAULT: '#E8E3D1',
   },
-  periwinkle: {
-    DEFAULT: '#a9b1d6',
-    100: '#191e34',
-    200: '#323c67',
-    300: '#4b599b',
-    400: '#7582bd',
-    500: '#a9b1d6',
-    600: '#bac1de',
-    700: '#cbd0e6',
-    800: '#dde0ee',
-    900: '#eeeff7',
+  swedenBlueStd: {
+    DEFAULT: '#005293',
+    50: '#ddf5ff',
+    100: '#b0ddff',
+    200: '#80c7ff',
+    300: '#50b0fe',
+    400: '#279afc',
+    500: '#1580e3',
+    600: '#0964b2',
+    700: '#004780',
+    800: '#002b4f',
+    900: '#000f1f',
   },
-  timberwolf: {
-    DEFAULT: '#cfc9c2',
-    100: '#2d2923',
-    200: '#5a5147',
-    300: '#877a6a',
-    400: '#aca296',
-    500: '#cfc9c2',
-    600: '#d9d5cf',
-    700: '#e3dfdb',
-    800: '#eceae7',
-    900: '#f6f4f3',
+  swedenYellowStd: {
+    DEFAULT: '#FECB00',
+    50: '#fffada',
+    100: '#fff0ad',
+    200: '#ffe57d',
+    300: '#ffdb4b',
+    400: '#ffd11a',
+    500: '#e6b700',
+    600: '#b38f00',
+    700: '#806600',
+    800: '#4e3d00',
+    900: '#1d1400',
   },
-  light_sky_blue: {
-    DEFAULT: '#7dcfff',
-    100: '#00304d',
-    200: '#006199',
-    300: '#0091e6',
-    400: '#33b4ff',
-    500: '#7dcfff',
-    600: '#99daff',
-    700: '#b3e3ff',
-    800: '#ccecff',
-    900: '#e5f6ff',
-  },
+
   white: {
     DEFAULT: '#FFFFFF',
   },
@@ -97,8 +60,8 @@ const customTheme = extendTheme({
     Divider: {
       baseStyle: (props: StyleFunctionProps) => ({
         borderColor: mode(
-          colors.night.DEFAULT,
-          colors.princeton_orange.DEFAULT
+          colors.darkDawnBlue.DEFAULT,
+          colors.swedenYellowStd.DEFAULT
         )(props),
         borderRadius: '2xl',
         size: '2xl',
@@ -108,15 +71,18 @@ const customTheme = extendTheme({
     Heading: {
       baseStyle: (props: StyleFunctionProps) => ({
         color: mode(
-          colors.night.DEFAULT,
-          colors.princeton_orange.DEFAULT
+          colors.darkDawnBlue.DEFAULT,
+          colors.grainYellow.DEFAULT
         )(props),
       }),
     },
 
     Spinner: {
       baseStyle: (props: StyleFunctionProps) => ({
-        color: mode(colors.night.DEFAULT, colors.light_sky_blue.DEFAULT)(props),
+        color: mode(
+          colors.darkDawnBlue.DEFAULT,
+          colors.swedenYellowStd.DEFAULT
+        )(props),
       }),
     },
 
@@ -126,29 +92,23 @@ const customTheme = extendTheme({
         tab: {
           _selected: {
             color: mode(
-              colors.night.DEFAULT,
-              colors.light_sky_blue.DEFAULT
+              colors.swedenBlueStd.DEFAULT,
+              colors.swedenYellowStd.DEFAULT
             )(props),
           },
           _hover: {
             color: mode(
-              colors.night.DEFAULT,
-              colors.light_sky_blue.DEFAULT
+              colors.swedenBlueStd.DEFAULT,
+              colors.swedenYellowStd.DEFAULT
             )(props),
           },
-        },
-        indicator: {
-          bg: mode(
-            colors.light_sky_blue.DEFAULT,
-            colors.princeton_orange.DEFAULT
-          )(props),
         },
       }),
     },
 
     Text: {
       baseStyle: (props: StyleFunctionProps) => ({
-        color: mode(colors.night.DEFAULT, colors.light_sky_blue.DEFAULT)(props),
+        color: mode(colors.black.DEFAULT, colors.white.DEFAULT)(props),
       }),
     },
   },
@@ -163,8 +123,8 @@ const customTheme = extendTheme({
   styles: {
     global: (props: StyleFunctionProps) => ({
       body: {
-        bg: mode(colors.white.DEFAULT, colors.raisin_black.DEFAULT)(props),
-        color: mode(colors.night.DEFAULT, colors.periwinkle.DEFAULT)(props),
+        bg: mode(colors.white.DEFAULT, colors.darkDawnBlue.DEFAULT)(props),
+        color: mode(colors.darkDawnBlue.DEFAULT, colors.white.DEFAULT)(props),
       },
     }),
   },

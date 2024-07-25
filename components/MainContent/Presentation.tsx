@@ -3,7 +3,10 @@ import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import ProjectsComponent from './ProjectsComponent';
 
 const Presentation = () => {
-  const textColor = useColorModeValue('night.500', 'princeton_orange.500');
+  const textColor = useColorModeValue(
+    'swedenBlueStd.DEFAULT',
+    'swedenYellowStd.DEFAULT'
+  );
 
   return (
     <Flex as={'main'} mb={'2'} flexDir={'column'}>

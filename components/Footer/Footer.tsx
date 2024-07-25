@@ -3,8 +3,8 @@ import SocialsComponent from './SocialsComponent';
 
 const Footer = () => {
   const footerTextColor = useColorModeValue(
-    'night.500',
-    'princeton_orange.500'
+    'darkDawnBlue.DEFAULT',
+    'grainYellow.DEFAULT'
   );
 
   return (

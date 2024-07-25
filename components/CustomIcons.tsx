@@ -73,10 +73,7 @@ const DynamicIcon = ({
     .join('')
     .concat('Icon');
 
-  const borderColor = useColorModeValue(
-    'night.DEFAULT',
-    'light_sky_blue.DEFAULT'
-  );
+  const borderColor = useColorModeValue('black.DEFAULT', 'white.DEFAULT');
 
   const specificIcon = iconMapping[createIconName];
   if (!specificIcon) {
