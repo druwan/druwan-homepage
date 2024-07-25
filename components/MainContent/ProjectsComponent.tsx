@@ -71,7 +71,12 @@ const ProjectsComponent = () => {
 
                     <Link href={project.repoUrl} isExternal>
                       <Text>
-                        <Icon as={githubIcon} ml={'10px'} boxSize={'1.75rem'} />
+                        <Icon
+                          as={githubIcon}
+                          ml={'10px'}
+                          boxSize={'1.75rem'}
+                          aria-label={`Link to ${project.title}`}
+                        />
                       </Text>
                     </Link>
                   </HStack>
@@ -82,8 +87,15 @@ const ProjectsComponent = () => {
                   {/* Links */}
                   <HStack justify={'space-between'} mt={3} align={'baseline'}>
                     {project.stack.map((tool, idx: number) => (
-                      <Link key={idx} href={tool.url} isExternal>
-                        <CustomIcons iconTitle={tool.name} />
+                      <Link
+                        key={idx}
+                        href={tool.url}
+                        isExternal
+                        aria-label={`Link to ${tool.name}`}>
+                        <CustomIcons
+                          iconTitle={tool.name}
+                          aria-label={`Icon to ${tool.name}`}
+                        />
                       </Link>
                     ))}
                   </HStack>

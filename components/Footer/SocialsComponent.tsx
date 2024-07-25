@@ -18,8 +18,15 @@ const SocialsComponent = () => {
     <HStack justifyContent={'center'}>
       {data &&
         data.map((social: SocialsType, idx: number) => (
-          <Link key={idx} href={social.link} isExternal>
-            <CustomIcons iconTitle={social.name} />
+          <Link
+            key={idx}
+            href={social.link}
+            isExternal
+            aria-label={`Link to ${social.name}`}>
+            <CustomIcons
+              iconTitle={social.name}
+              aria-label={`Link to ${social.name}`}
+            />
           </Link>
         ))}
       <motion.div
@@ -30,7 +37,10 @@ const SocialsComponent = () => {
           repeat: Infinity,
           repeatType: 'loop',
         }}>
-        <Link href={`mailto:hello@christophervestman.dev`} isExternal>
+        <Link
+          href={`mailto:hello@christophervestman.dev`}
+          isExternal
+          aria-label={`Link to my email`}>
           <CustomIcons iconTitle="Email" />
         </Link>
       </motion.div>
