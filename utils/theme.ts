@@ -74,6 +74,7 @@ const customTheme = extendTheme({
           colors.darkDawnBlue.DEFAULT,
           colors.grainYellow.DEFAULT
         )(props),
+        fontSize: { base: 'xl', sm: '2xl', md: '3xl', lg: '4xl', xl: '5xl' },
       }),
     },
 
