@@ -6,6 +6,7 @@ import {
   Icon,
   Img,
   Link,
+  Show,
   Spacer,
   Spinner,
   Tab,
@@ -43,11 +44,13 @@ const ProjectsComponent = () => {
       </GridItem>
       {data && (
         <GridItem colSpan={3} rowSpan={3}>
-          <Tabs isFitted align="center">
+          <Tabs align="center" isLazy size={['sm', 'md', 'lg']}>
             <TabList>
               {data.map((project: ProjectsType) => (
                 <Tab key={project.id}>
-                  <Text noOfLines={[1, 2, 3]}>{project.title}</Text>
+                  <Text noOfLines={[1, 2, 3]} sx={{ wordWrap: 'break-word' }}>
+                    {project.title}
+                  </Text>
                 </Tab>
               ))}
             </TabList>
@@ -55,13 +58,15 @@ const ProjectsComponent = () => {
               {data.map((project: ProjectsType) => (
                 <TabPanel key={project.id}>
                   {/* Image */}
-                  <Img
-                    src={`${project.imageUrl}`}
-                    alt={`Image of ${project.title}`}
-                    border={'1px'}
-                    borderRadius={'2xl'}
-                    borderColor={borderColor}
-                  />
+                  <Show above="375px">
+                    <Img
+                      src={`${project.imageUrl}`}
+                      alt={`Image of ${project.title}`}
+                      border={'1px'}
+                      borderRadius={'2xl'}
+                      borderColor={borderColor}
+                    />
+                  </Show>
 
                   {/* Title */}
                   <HStack mt={8}>

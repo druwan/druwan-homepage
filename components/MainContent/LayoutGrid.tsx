@@ -12,8 +12,9 @@ const LayoutGrid = (props: LayoutProps) => {
       justifyContent={'center'}
       templateColumns={'repeat(3, 1fr)'}
       gap={4}
-      p={{ base: 4, sm: 6, md: 8, lg: 10, xl: 12 }}
-      h={'calc(100vh)'}>
+      px={{ base: 4, sm: 6, md: 8, lg: 10, xl: 12 }}
+      pt={{ base: 2, sm: 3, md: 4, lg: 5, xl: 6 }}
+      minW={'375px'}>
       {props.children}
     </Grid>
   );

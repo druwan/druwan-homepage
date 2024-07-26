@@ -14,7 +14,11 @@ const IndexPage = () => {
         author={'Christopher Vestman'}
       />
 
-      <Container maxW={'container.lg'} minW={'container.sm'} centerContent>
+      <Container
+        maxH={'container.md'}
+        maxW={'container.lg'}
+        minW={'375px'}
+        centerContent>
         <LayoutGrid>
           <HeaderComponent />
           <Presentation />
