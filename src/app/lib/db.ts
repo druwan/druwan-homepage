@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-require('dotenv').config();
+import 'dotenv/config';
 
 const pool = new Pool({
   host: 'localhost',
@@ -11,7 +11,7 @@ const pool = new Pool({
   max: 10,
 });
 
-export async function query(text: string, params?: any) {
+export async function query(text: string, params?: undefined) {
   const client = await pool.connect();
   try {
     const res = await client.query(text, params);
