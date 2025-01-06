@@ -42,34 +42,30 @@ export function ProjectCarousel() {
         {!error &&
           projects.map((project) => (
             <CarouselItem key={project.id}>
-              <div className='flex aspect-video items-center justify-center'>
-                <Card>
-                  <CardHeader className='text-2xl font-semibold tracking-tighter pb-2'>
-                    {project.title}
-                  </CardHeader>
-                  <div
-                    style={{
-                      position: 'relative',
-                      width: '100%',
-                      paddingTop: '300px',
-                      borderRadius: '15px',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <Image
-                      alt={`Image of ${project.title}`}
-                      src={project.image_url}
-                      fill
-                      priority
-                      sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <CardContent className='justify-normal'>
-                    {project.description}
-                  </CardContent>
-                </Card>
-              </div>
+              <Card>
+                <CardHeader className='text-xl font-semibold tracking-tighter pb-2'>
+                  {project.title}
+                </CardHeader>
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    paddingTop: '300px',
+                    borderRadius: '15px',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Image
+                    alt={`Image of ${project.title}`}
+                    src={project.image_url}
+                    fill
+                    priority
+                    sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+                <CardContent>{project.description}</CardContent>
+              </Card>
             </CarouselItem>
           ))}
       </CarouselContent>
