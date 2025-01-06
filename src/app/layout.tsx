@@ -5,6 +5,7 @@ import { Navbar } from './components/Nav';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeProvider';
 import { cn } from './lib/utils';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -49,6 +50,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <SpeedInsights />
           </main>
         </ThemeProvider>
       </body>
