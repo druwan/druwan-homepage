@@ -11,7 +11,7 @@ type Project = {
   image_url: string;
   live_url: string;
   repo_url: string;
-  short_summary: string;
+  description: string;
   stack: string[];
 };
 
@@ -21,7 +21,7 @@ export function ProjectCarousel() {
   useEffect(() => {
     const fetchProjects = async () => {
       const response = await fetch('/api/projects');
-      const data = await response.json();
+      const { data, error } = await response.json();
       setProjects(data);
     };
     fetchProjects();
@@ -50,12 +50,13 @@ export function ProjectCarousel() {
                     alt={`Image of ${project.title}`}
                     src={project.image_url}
                     fill
+                    priority
                     sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <CardContent className='justify-normal'>
-                  {project.short_summary}
+                  {project.description}
                 </CardContent>
               </Card>
             </div>
