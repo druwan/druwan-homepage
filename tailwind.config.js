@@ -45,6 +45,10 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
     },
+    fontFamily: {
+      sans: ['var(--font-noto-sans-sinhala)'],
+      // sans: ['var(--font-yaldevi)'],
+    },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require('tailwindcss-animate')],

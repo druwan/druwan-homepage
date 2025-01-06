@@ -1,5 +1,6 @@
 import './globals.css';
 import { Metadata } from 'next';
+import { Noto_Sans_Sinhala, Yaldevi } from 'next/font/google';
 import { baseUrl } from './sitemap';
 import { Navbar } from './components/Nav';
 import Footer from './components/Footer';
@@ -32,13 +33,29 @@ export const metadata: Metadata = {
   },
 };
 
+const noto_sans_sinhala = Noto_Sans_Sinhala({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-noto-sans-sinhala',
+});
+
+const yaldevi = Yaldevi({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-yaldevi',
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html
+      lang='en'
+      className={`${yaldevi.variable} ${noto_sans_sinhala.variable}`}
+      suppressHydrationWarning
+    >
       <body
         className={cn(
           'antialiased max-w-3xl mx-4 mt-8 lg:mx-auto flex flex-col px-2 md:px-0'
