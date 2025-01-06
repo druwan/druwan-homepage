@@ -1,8 +1,12 @@
 'use client';
 import Autoplay from 'embla-carousel-autoplay';
-import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '../components/ui/carousel';
 import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader } from './ui/card';
+import { Card, CardContent, CardHeader } from '../components/ui/card';
 import Image from 'next/image';
 
 type Project = {
@@ -15,7 +19,7 @@ type Project = {
   stack: string[];
 };
 
-export function ProjectCarousel() {
+export default function ProjectCarousel() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [error, setError] = useState<string | null>(null);
 
