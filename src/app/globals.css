@@ -49,6 +49,11 @@
   }
 }
 
+.markdown > * {
+  all: revert;
+  @apply font-sans;
+}
+
 @layer base {
   * {
     @apply border-border;

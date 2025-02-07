@@ -1,13 +1,10 @@
 'use client';
 import Autoplay from 'embla-carousel-autoplay';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '../components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader } from '../components/ui/card';
+import { Card, CardContent, CardHeader } from './ui/card';
 import Image from 'next/image';
+import { supabase } from '../lib/supabaseClient';
 
 type Project = {
   id: number;
@@ -26,12 +23,11 @@ export default function ProjectCarousel() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/projects');
-        const { data, error } = await response.json();
+        const { data, error } = await supabase.from('projects').select('*');
         if (error) {
-          setError(error);
+          setError(error.message);
         } else {
-          setProjects(data);
+          setProjects(data || []);
         }
       } catch (err) {
         setError(`Failed to fetch projects: ${err.message}`);
