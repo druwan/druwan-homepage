@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       className='markdown prose prose-lg dark:prose-invert px-6'
       remarkPlugins={[remarkGfm]}
       components={{
-        a: ({ node, ...props }) => (
+        a: ({ ...props }) => (
           <a
             {...props}
             className='text-blue-500 hover:underline font-semibold'
