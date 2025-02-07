@@ -1,6 +1,10 @@
 'use client';
 import Autoplay from 'embla-carousel-autoplay';
-import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 import { useEffect, useState } from 'react';
 import {
   Card,
@@ -8,9 +12,8 @@ import {
   CardHeader,
   CardImage,
   CardImageContainer,
-} from './ui/card';
-import Image from 'next/image';
-import { supabase } from '../lib/supabaseClient';
+} from '@/components/ui/card';
+import { supabase } from '@/lib/supabaseClient';
 
 type Project = {
   id: number;
