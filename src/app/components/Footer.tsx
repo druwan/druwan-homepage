@@ -53,15 +53,15 @@ function LinkedInIcon() {
   );
 }
 
-const currYear = new Date().getUTCFullYear();
-
 export default function Footer() {
+  const currYear = new Date().getUTCFullYear();
+
   return (
-    <footer className='mb-16'>
-      <ul className='font-sm mt-8 flex flex-row space-x-4 text-neutral-600 dark:text-neutral-300 justify-center'>
+    <footer className='mb-8 sm:mb-16 w-full px-4'>
+      <ul className='mt-8 flex justify-center space-x-6 sm:space-x-8 text-neutral-600 dark:text-neutral-300'>
         <li>
           <a
-            className='flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='https://github.com/druwan'
           >
@@ -70,7 +70,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className='flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='https://www.linkedin.com/in/christophervestman/'
           >
@@ -79,7 +79,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className='flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='mailto:hello@christophervestman.dev'
           >
@@ -87,7 +87,9 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className='mt-4 text-center'>&copy; {currYear} Christopher Vestman</p>
+      <p className='mt-4 text-center text-sm sm:text-base'>
+        &copy; {currYear} Christopher Vestman
+      </p>
     </footer>
   );
 }

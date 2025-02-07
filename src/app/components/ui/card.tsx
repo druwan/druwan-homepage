@@ -14,6 +14,22 @@ const Card = React.forwardRef<
 ));
 Card.displayName = 'Card';
 
+const CardImageContainer = React.forwardRef<
+  HTMLImageElement,
+  React.ImgHTMLAttributes<HTMLImageElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn('relative', className)} {...props} />
+));
+CardImageContainer.displayName = 'CardImageContainer';
+
+const CardImage = React.forwardRef<
+  HTMLImageElement,
+  React.ImgHTMLAttributes<HTMLImageElement>
+>(({ className, ...props }, ref) => (
+  <img ref={ref} className={cn('h-auto w-full', className)} {...props} />
+));
+CardImage.displayName = 'CardImage';
+
 const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -72,6 +88,8 @@ CardFooter.displayName = 'CardFooter';
 
 export {
   Card,
+  CardImageContainer,
+  CardImage,
   CardHeader,
   CardFooter,
   CardTitle,

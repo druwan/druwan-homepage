@@ -1,20 +1,20 @@
-import * as React from 'react';
-
 import { useTheme } from 'next-themes';
-
 import { Button } from './button';
 import { MoonIcon, Sun } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  // Prevent hydration mismatch
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return <div className='w-8 h-8' />;
 
   return (
     <Button
-      onClick={toggleTheme}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       variant='ghost'
       size='icon'
       aria-label='Toggle Theme'

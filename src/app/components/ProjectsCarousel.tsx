@@ -2,7 +2,13 @@
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader } from './ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardImage,
+  CardImageContainer,
+} from './ui/card';
 import Image from 'next/image';
 import { supabase } from '../lib/supabaseClient';
 
@@ -37,34 +43,27 @@ export default function ProjectCarousel() {
   }, []);
 
   return (
-    <Carousel plugins={[Autoplay({ delay: 3500, stopOnMouseEnter: false })]}>
+    <Carousel
+      className='pb-3'
+      plugins={[Autoplay({ delay: 3500, stopOnMouseEnter: false })]}
+    >
       <CarouselContent>
         {!error &&
           projects.map((project) => (
             <CarouselItem key={project.id}>
               <Card>
-                <CardHeader className='text-xl font-semibold tracking-tighter pb-2'>
+                <CardHeader className='text-lg font-semibold tracking-tighter pb-2'>
                   {project.title}
                 </CardHeader>
-                <div
-                  style={{
-                    position: 'relative',
-                    width: '100%',
-                    paddingTop: '300px',
-                    borderRadius: '15px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <Image
-                    alt={`Image of ${project.title}`}
+                <CardImageContainer>
+                  <CardImage
                     src={project.image_url}
-                    fill
-                    priority
-                    sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
-                    style={{ objectFit: 'cover' }}
+                    style={{ borderRadius: '15px' }}
                   />
-                </div>
-                <CardContent>{project.description}</CardContent>
+                </CardImageContainer>
+                <CardContent className='text-md line-clamp-2'>
+                  {project.description}
+                </CardContent>
               </Card>
             </CarouselItem>
           ))}
