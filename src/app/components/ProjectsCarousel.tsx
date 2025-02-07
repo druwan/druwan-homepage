@@ -14,6 +14,7 @@ import {
   CardImageContainer,
 } from '@/components/ui/card';
 import { supabase } from '@/lib/supabaseClient';
+import Link from 'next/link';
 
 type Project = {
   id: number;
@@ -48,7 +49,13 @@ export default function ProjectCarousel() {
   return (
     <Carousel
       className='pb-3'
-      plugins={[Autoplay({ delay: 3500, stopOnMouseEnter: false })]}
+      plugins={[
+        Autoplay({
+          delay: 2500,
+          stopOnInteraction: false,
+          stopOnMouseEnter: true,
+        }),
+      ]}
     >
       <CarouselContent>
         {!error &&
@@ -58,12 +65,14 @@ export default function ProjectCarousel() {
                 <CardHeader className='text-lg font-semibold tracking-tighter pb-2'>
                   {project.title}
                 </CardHeader>
-                <CardImageContainer>
-                  <CardImage
-                    src={project.image_url}
-                    style={{ borderRadius: '15px' }}
-                  />
-                </CardImageContainer>
+                <Link key={project.id} href={project.repo_url}>
+                  <CardImageContainer>
+                    <CardImage
+                      src={project.image_url}
+                      style={{ borderRadius: '15px' }}
+                    />
+                  </CardImageContainer>
+                </Link>
                 <CardContent className='text-md line-clamp-2'>
                   {project.description}
                 </CardContent>
