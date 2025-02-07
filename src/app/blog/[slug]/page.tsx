@@ -2,8 +2,12 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { supabase } from 'src/app/lib/supabaseClient';
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const slug = (await params).slug;
   const { data, error } = await supabase
     .from('blogposts')
     .select('*')
