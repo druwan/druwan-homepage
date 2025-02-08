@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { ModeToggle } from '@/components/ui/mode-toggle';
 import {
   Sheet,
   SheetContent,
@@ -16,8 +15,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='flex items-center justify-between px-6 py-4'>
-      <Link href={'/'} className='text-2xl font-semibold'>
+    <nav className='flex items-center justify-between mb-6'>
+      <Link href={'/'} className='text-3xl font-semibold tracking-tight'>
         Christopher Vestman
       </Link>
 
@@ -43,18 +42,13 @@ export function Navbar() {
                 blog
               </Link>
             </li>
-            <li>
-              <ModeToggle />
-            </li>
           </ul>
         </SheetContent>
       </Sheet>
 
       {/* Desktop */}
-
       <div className='hidden md:flex items-center space-x-4'>
         <Link href={'/blog'}>blog</Link>
-        <ModeToggle />
       </div>
     </nav>
   );

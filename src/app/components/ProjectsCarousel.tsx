@@ -62,7 +62,7 @@ export default function ProjectCarousel() {
           projects.map((project) => (
             <CarouselItem key={project.id}>
               <Card>
-                <CardHeader className='text-lg font-semibold tracking-tighter pb-2'>
+                <CardHeader className='text-xl font-semibold tracking-tighter pb-2'>
                   {project.title}
                 </CardHeader>
                 <Link key={project.id} href={project.repo_url}>

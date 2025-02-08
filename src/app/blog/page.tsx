@@ -34,26 +34,32 @@ export default function BlogPosts() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <ul className='list-none flex flex-col items-center mx-auto text-center w-full max-w-2xl'>
-      {!error &&
-        blogPosts
+    <section>
+      <h1 className='mb-8 text-2xl font-medium tracking-tight'>Some posts</h1>
+      <div>
+        {blogPosts
           .sort(
             (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
           )
           .map((blogPost) => (
-            <li key={blogPost.id} className='w-full'>
-              <Link key={blogPost.id} href={`/blog/${blogPost.title}`}>
-                <div className='w-full flex flex-col md:flex-row space-x-0 md:space-x-2 justify-center'>
-                  <p className='w-[100px] tabular-nums'>
-                    {String(blogPost.date).split('T')[0]}
-                  </p>
-                  <p className='tracking-tight'>
-                    {String(blogPost.title).replace('_', ' ').slice(0)}
-                  </p>
-                </div>
-              </Link>
-            </li>
+            <Link
+              key={blogPost.id}
+              className='flex flex-col space-y-1 mb-5 transition-opacity duration-200 hover:opacity-80'
+              href={`/blog/${blogPost.title}`}
+            >
+              <div className='w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2'>
+                <h2 className='text-black dark:text-white'>
+                  {String(blogPost.title).split('_').length > 1
+                    ? String(blogPost.title).split('_')[1]
+                    : String(blogPost.title).split('_')[0]}
+                </h2>
+                <p className='text-neutral-600 dark:text-neutral-400 tabular-nums text-sm'>
+                  {String(blogPost.date).split('T')[0]}
+                </p>
+              </div>
+            </Link>
           ))}
-    </ul>
+      </div>
+    </section>
   );
 }

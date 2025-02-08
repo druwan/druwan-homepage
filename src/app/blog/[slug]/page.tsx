@@ -23,7 +23,7 @@ export default async function Page({
 
   return (
     <Markdown
-      className='markdown prose prose-lg dark:prose-invert px-6'
+      className='markdown prose prose-lg dark:prose-invert'
       remarkPlugins={[remarkGfm]}
       components={{
         a: ({ ...props }) => (

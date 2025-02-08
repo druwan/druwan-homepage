@@ -58,7 +58,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          'antialiased min-h-3/4 w-full flex flex-col px-4 sm:px-6 md:px-0 max-w-full md:max-w-3xl mx-auto mt-8'
+          'antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40'
         )}
       >
         <ThemeProvider
@@ -67,7 +67,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className='flex-auto w-full mt-6'>
+          <main className='flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[630px] w-full'>
             <Navbar />
             {children}
             <Footer />

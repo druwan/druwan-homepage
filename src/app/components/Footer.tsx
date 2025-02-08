@@ -1,3 +1,7 @@
+'use client';
+
+import { ModeToggle } from './ui/mode-toggle';
+
 function EmailIcon() {
   return (
     <svg
@@ -85,6 +89,9 @@ export default function Footer() {
           >
             <EmailIcon />
           </a>
+        </li>
+        <li>
+          <ModeToggle />
         </li>
       </ul>
       <p className='mt-4 text-center text-sm sm:text-base'>
