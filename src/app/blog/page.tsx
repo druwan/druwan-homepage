@@ -35,7 +35,10 @@ export default function BlogPosts() {
 
   return (
     <section>
-      <h1 className='mb-8 text-2xl font-medium tracking-tight'>Some posts</h1>
+      <p className='mb-8 text-lg tracking-tight'>
+        Some notes from my life, mainly writing for tracking my progress of
+        learning <span className='text-burgundy dark:text-ochre'>Sinhala</span>.
+      </p>
       <div>
         {blogPosts
           .sort(
@@ -44,16 +47,16 @@ export default function BlogPosts() {
           .map((blogPost) => (
             <Link
               key={blogPost.id}
-              className='flex flex-col space-y-1 mb-5 transition-opacity duration-200 hover:opacity-80'
+              className='flex flex-col space-y-0.5 mb-1 transition-opacity duration-200 hover:opacity-80'
               href={`/blog/${blogPost.title}`}
             >
               <div className='w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2'>
-                <h2 className='text-black dark:text-white'>
+                <p className='text-lg text-burgundy dark:text-ochre'>
                   {String(blogPost.title).split('_').length > 1
                     ? String(blogPost.title).split('_')[1]
                     : String(blogPost.title).split('_')[0]}
-                </h2>
-                <p className='text-neutral-600 dark:text-neutral-400 tabular-nums text-sm'>
+                </p>
+                <p className='text-night/60 dark:text-antiFlashWhite/60 tabular-nums text-sm'>
                   {String(blogPost.date).split('T')[0]}
                 </p>
               </div>

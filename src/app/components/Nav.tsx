@@ -15,8 +15,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='flex items-center justify-between mb-6'>
-      <Link href={'/'} className='text-3xl font-semibold tracking-tight'>
+    <nav className='w-full flex items-center justify-between mb-6'>
+      <Link href={'/'} className='text-2xl font-medium tracking-tight'>
         Christopher Vestman
       </Link>
 
@@ -27,11 +27,16 @@ export function Navbar() {
             <Menu />
           </Button>
         </SheetTrigger>
-        <SheetContent side='top' className='p-6'>
+        <SheetContent
+          side='top'
+          className='p-6 bg-antiFlashWhite dark:bg-night'
+        >
           <SheetHeader>
-            <SheetTitle>Menu</SheetTitle>
+            <SheetTitle className='text-burgundy dark:text-ochre'>
+              Menu
+            </SheetTitle>
           </SheetHeader>
-          <ul className='space-y-4 text-lg'>
+          <ul className='space-y-4 text-lg text-burgundy dark:text-ochre'>
             <li>
               <Link href={'/'} onClick={() => setIsOpen(false)}>
                 home
@@ -47,7 +52,7 @@ export function Navbar() {
       </Sheet>
 
       {/* Desktop */}
-      <div className='hidden md:flex items-center space-x-4'>
+      <div className='hidden md:flex text-xl space-x-4 text-burgundy dark:text-ochre'>
         <Link href={'/blog'}>blog</Link>
       </div>
     </nav>

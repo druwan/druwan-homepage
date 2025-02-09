@@ -6,15 +6,11 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import { useEffect, useState } from 'react';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardImage,
-  CardImageContainer,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { supabase } from '@/lib/supabaseClient';
 import Link from 'next/link';
+import { AspectRatio } from './ui/aspect-ratio';
+import Image from 'next/image';
 
 type Project = {
   id: number;
@@ -48,7 +44,7 @@ export default function ProjectCarousel() {
 
   return (
     <Carousel
-      className='pb-3'
+      className=''
       plugins={[
         Autoplay({
           delay: 2500,
@@ -62,18 +58,27 @@ export default function ProjectCarousel() {
           projects.map((project) => (
             <CarouselItem key={project.id}>
               <Card>
-                <CardHeader className='text-xl font-semibold tracking-tighter pb-2'>
+                <CardHeader className='text-xl text-night dark:text-antiFlashWhite tracking-tighter'>
                   {project.title}
                 </CardHeader>
-                <Link key={project.id} href={project.repo_url}>
-                  <CardImageContainer>
-                    <CardImage
+                <Link
+                  key={project.id}
+                  href={project.repo_url}
+                  className='block'
+                >
+                  <AspectRatio ratio={16 / 9} className='m-0 p-0'>
+                    <Image
                       src={project.image_url}
-                      style={{ borderRadius: '15px' }}
+                      alt={`Preview image of ${project.title}`}
+                      sizes='100vw'
+                      className='object-contain rounded-3xl border-2 border-burgundy dark:border-ochre my-0'
+                      style={{ width: '100%', height: 'auto' }}
+                      width={500}
+                      height={300}
                     />
-                  </CardImageContainer>
+                  </AspectRatio>
                 </Link>
-                <CardContent className='text-md line-clamp-2'>
+                <CardContent className='text-md text:night dark:text-antiFlashWhite line-clamp-2'>
                   {project.description}
                 </CardContent>
               </Card>

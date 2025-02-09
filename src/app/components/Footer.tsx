@@ -61,11 +61,11 @@ export default function Footer() {
   const currYear = new Date().getUTCFullYear();
 
   return (
-    <footer className='mb-8 sm:mb-16 w-full px-4'>
-      <ul className='mt-8 flex justify-center space-x-6 sm:space-x-8 text-neutral-600 dark:text-neutral-300'>
+    <footer className='mb-8 sm:mb-16 w-full'>
+      <ul className='mt-8 flex justify-center sm:space-x-8 text-neutral-600 dark:text-neutral-300'>
         <li>
           <a
-            className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center py-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='https://github.com/druwan'
           >
@@ -94,7 +94,7 @@ export default function Footer() {
           <ModeToggle />
         </li>
       </ul>
-      <p className='mt-4 text-center text-sm sm:text-base'>
+      <p className='text-center text-sm sm:text-base text-burgundy dark:text-ochre'>
         &copy; {currYear} Christopher Vestman
       </p>
     </footer>
