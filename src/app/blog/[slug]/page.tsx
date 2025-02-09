@@ -1,5 +1,4 @@
 import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { supabase } from 'src/app/lib/supabaseClient';
 
 export default async function Page({
@@ -22,20 +21,7 @@ export default async function Page({
   }
 
   return (
-    <Markdown
-      className='markdown prose prose-lg dark:prose-invert'
-      remarkPlugins={[remarkGfm]}
-      components={{
-        a: ({ ...props }) => (
-          <a
-            {...props}
-            className='text-blue-500 hover:underline font-semibold'
-            target='_blank'
-            rel='noopener noreferrer'
-          />
-        ),
-      }}
-    >
+    <Markdown className='w-full max-w-full prose dark:prose-invert prose-h1:text-2xl prose-a:text-carribeanCurrent dark:prose-a:text-ochre'>
       {data[0].content}
     </Markdown>
   );

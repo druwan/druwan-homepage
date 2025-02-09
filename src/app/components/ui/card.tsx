@@ -14,29 +14,13 @@ const Card = React.forwardRef<
 ));
 Card.displayName = 'Card';
 
-const CardImageContainer = React.forwardRef<
-  HTMLImageElement,
-  React.ImgHTMLAttributes<HTMLImageElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('relative', className)} {...props} />
-));
-CardImageContainer.displayName = 'CardImageContainer';
-
-const CardImage = React.forwardRef<
-  HTMLImageElement,
-  React.ImgHTMLAttributes<HTMLImageElement>
->(({ className, ...props }, ref) => (
-  <img ref={ref} className={cn('h-auto w-full', className)} {...props} />
-));
-CardImage.displayName = 'CardImage';
-
 const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('flex flex-col space-y-1.5', className)}
+    className={cn('flex flex-col space-y-0.5', className)}
     {...props}
   />
 ));
@@ -70,7 +54,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('pt-2', className)} {...props} />
+  <div ref={ref} className={cn('pt-4', className)} {...props} />
 ));
 CardContent.displayName = 'CardContent';
 
@@ -88,8 +72,6 @@ CardFooter.displayName = 'CardFooter';
 
 export {
   Card,
-  CardImageContainer,
-  CardImage,
   CardHeader,
   CardFooter,
   CardTitle,
