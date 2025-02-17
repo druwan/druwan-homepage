@@ -46,10 +46,10 @@ async function processMarkdownFiles(): Promise<void> {
       .from('blogposts')
       .select('filename, last_modified')
       .eq('filename', file)
-      .single()
+      .single();
 
     if (fetchError && fetchError.code !== 'PGRST116') {
-      console.error(`Error fetching ${title}`, fetchError)
+      console.error(`Error fetching ${title}`, fetchError);
     }
 
     // If file exist & unmodified --> Skip
@@ -60,7 +60,7 @@ async function processMarkdownFiles(): Promise<void> {
 
     // Insert or update blog post
     const { error } = await supabase.from('blogposts').upsert(blogPost, {
-      onConflict: ['filename'],
+      onConflict: 'filename',
     });
 
     if (error) {
