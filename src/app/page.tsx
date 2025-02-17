@@ -3,7 +3,7 @@ import ProjectCarousel from './components/ProjectsCarousel';
 export default function Page() {
   return (
     <section className='w-full'>
-      <h1 className='text-2xl font-medium tracking-tight'>
+      <h1 className='text-xl font-medium tracking-tight'>
         Engineer &amp; Developer
       </h1>
       <div className='w-full max-w-full prose prose-neutral dark:prose-invert'>

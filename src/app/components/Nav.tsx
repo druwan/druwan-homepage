@@ -16,7 +16,10 @@ export function Navbar() {
 
   return (
     <nav className='w-full flex items-center justify-between mb-6'>
-      <Link href={'/'} className='text-2xl font-medium tracking-tight'>
+      <Link
+        href={'/'}
+        className='text-3xl font-medium tracking-tight text-burgundy dark:text-ochre'
+      >
         Christopher Vestman
       </Link>
 
