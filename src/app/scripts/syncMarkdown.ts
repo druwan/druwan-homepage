@@ -1,10 +1,22 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import { supabase } from './supabaseClient';
+import { supabase } from '../lib/supabaseClient';
 
 const markdownDir = process.env.MARKDOWNFILESDIR;
-export async function processMarkdownFiles() {
+
+if (!markdownDir) {
+  console.error('No MARKDOWNFILESDIR found!');
+  process.exit(1);
+}
+
+interface BlogPost {
+  date: string;
+  title: string;
+  content: string;
+}
+
+async function processMarkdownFiles(): Promise<void> {
   const files = fs
     .readdirSync(markdownDir)
     .filter((file) => file.endsWith('.md'));
@@ -18,11 +30,13 @@ export async function processMarkdownFiles() {
 
     const title = data.title || path.basename(file, '.md');
 
-    const { error } = await supabase.from('blogposts').upsert({
+    const blogPost: BlogPost = {
       date: fileCreationDate,
       title,
       content,
-    });
+    };
+
+    const { error } = await supabase.from('blogposts').upsert(blogPost);
 
     if (error) {
       console.error(`Error inserting ${title}`, error.message);
@@ -31,3 +45,10 @@ export async function processMarkdownFiles() {
     }
   }
 }
+
+processMarkdownFiles()
+  .then(() => console.log('MarkdownSync complete'))
+  .catch((err) => {
+    console.error('Error processing markdown files:', err);
+    process.exit(1);
+  });
