@@ -4,8 +4,7 @@ export const runtime = 'edge';
 
 export async function GET() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const keepAliveUrl = `${baseUrl}/api/keep-alive`;
+    const keepAliveUrl = '/api/keep-alive';
 
     const response = await fetch(keepAliveUrl, {
       method: 'POST',
