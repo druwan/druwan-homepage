@@ -4,7 +4,7 @@ export const runtime = 'edge';
 
 export async function GET() {
   try {
-    const keepAliveUrl = '/api/keep-alive';
+    const keepAliveUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/keep-alive`;
 
     console.log(
       'Attempting to trigger keep-alive at relative path:',
