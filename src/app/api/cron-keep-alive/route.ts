@@ -6,19 +6,33 @@ export async function GET() {
   try {
     const keepAliveUrl = '/api/keep-alive';
 
+    console.log(
+      'Attempting to trigger keep-alive at relative path:',
+      keepAliveUrl
+    );
+
     const response = await fetch(keepAliveUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'User-Agent': 'Vercel-Edge-Function',
       },
       body: JSON.stringify({}),
+      cache: 'no-store',
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to trigger keep-alive: ${response.status}`);
+      const errorText = await response.text();
+      console.error('Keep alive response status:', response.status);
+      console.error('Keep alive response body:', errorText);
+      throw new Error(
+        `Failed to trigger keep-alive: ${response.status} - ${errorText}`
+      );
     }
 
     const data = await response.json();
+    console.log('Keep-alive successful:', data);
     return NextResponse.json(
       { message: 'Keep-alive triggered', data },
       { status: 200 }
