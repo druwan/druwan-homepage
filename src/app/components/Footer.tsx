@@ -85,7 +85,7 @@ export default function Footer() {
           <a
             className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
-            href='mailto:hello@christophervestman.dev'
+            href='mailto:hello@christophervestman.com'
           >
             <EmailIcon />
           </a>
