@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     siteName: 'Christopher Vestman',
     locale: 'en_US',
     type: 'website',
+    images: [{
+      url: '../../public/images/preview_v5.png',
+      width: 1200,
+      height: 630,
+      alt: '5th iteration website preview.',
+    }],
   },
   robots: {
     index: true,
