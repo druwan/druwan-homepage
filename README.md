@@ -1,6 +1,8 @@
-# My supershort portfolio / personal website
+# My 5th iteration of my portfolio / personal website
 
-5th iteration.
+Check out my [Homelab repo!](https://github.com/druwan/homelab)
+
+![Preview](https://raw.githubusercontent.com/druwan/druwan-homepage/refs/heads/main/public/images/preview_v5.png)
 
 ## Built with
 
