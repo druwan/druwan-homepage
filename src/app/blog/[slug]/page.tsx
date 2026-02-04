@@ -1,18 +1,15 @@
-import Markdown from 'react-markdown';
+import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { supabase } from 'src/app/lib/supabaseClient';
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const slug = (await params).slug;
+export default async function Page({ params }: { params: { slug: string } }) {
+  const slug = params.slug;
   const { data, error } = await supabase
     .from('blogposts')
     .select('*')
-    .eq('title', `${slug}`);
+    .eq('title', `${slug}`)
+    .single();
 
-  if (error) {
+  if (error || !data || !data.content) {
     return (
       <div>
         Post not found: {error instanceof Error ? error.message : error}.
@@ -20,9 +17,5 @@ export default async function Page({
     );
   }
 
-  return (
-    <Markdown className='w-full max-w-full prose dark:prose-invert prose-h1:text-2xl prose-a:text-carribeanCurrent dark:prose-a:text-ochre'>
-      {data[0].content}
-    </Markdown>
-  );
+  return <MarkdownRenderer content={data.content} />;
 }
