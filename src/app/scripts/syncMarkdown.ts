@@ -3,13 +3,6 @@ import matter from 'gray-matter';
 import path from 'path';
 import { supabase } from '../lib/supabaseClient';
 
-const markdownDir = process.env.MARKDOWNFILESDIR;
-
-if (!markdownDir) {
-  console.error('No MARKDOWNFILESDIR found!');
-  process.exit(1);
-}
-
 interface BlogPost {
   filename: string;
   date: string;
@@ -18,7 +11,17 @@ interface BlogPost {
   last_modified: string;
 }
 
+function getMarkdownDir(): string {
+  const markdownDir = process.env.MARKDOWNFILESDIR;
+  if (!markdownDir) {
+    throw new Error('No MARKDOWNFILESDIR found!');
+  }
+  return markdownDir;
+}
+
 async function processMarkdownFiles(): Promise<void> {
+  const markdownDir = getMarkdownDir();
+
   const files = fs
     .readdirSync(markdownDir)
     .filter((file) => file.endsWith('.md'));

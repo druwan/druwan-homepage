@@ -8,7 +8,7 @@ export async function GET() {
 
     console.log(
       'Attempting to trigger keep-alive at relative path:',
-      keepAliveUrl
+      keepAliveUrl,
     );
 
     const response = await fetch(keepAliveUrl, {
@@ -27,7 +27,7 @@ export async function GET() {
       console.error('Keep alive response status:', response.status);
       console.error('Keep alive response body:', errorText);
       throw new Error(
-        `Failed to trigger keep-alive: ${response.status} - ${errorText}`
+        `Failed to trigger keep-alive: ${response.status} - ${errorText}`,
       );
     }
 
@@ -35,16 +35,19 @@ export async function GET() {
     console.log('Keep-alive successful:', data);
     return NextResponse.json(
       { message: 'Keep-alive triggered', data },
-      { status: 200 }
+      { status: 200 },
     );
-  } catch (error) {
-    console.error('Error in cron-keep-alive:', error);
-    return NextResponse.json(
-      {
-        error: 'Failed to trigger keep-alive',
-        details: error.message,
-      },
-      { status: 500 }
-    );
+  } catch (error: any) {
+    let errorMessage = 'Failed to trigger keep-alive';
+    if (error instanceof Error) {
+      console.error('Error in cron-keep-alive:', error);
+      return NextResponse.json(
+        {
+          error: errorMessage,
+          details: error.message,
+        },
+        { status: 500 },
+      );
+    }
   }
 }

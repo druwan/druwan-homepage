@@ -24,7 +24,7 @@ export default function BlogPosts() {
         } else {
           setBlogPosts(data || []);
         }
-      } catch (err) {
+      } catch (err: any) {
         setError(`Failed to fetch posts: ${err.message}`);
       }
     };
@@ -42,7 +42,7 @@ export default function BlogPosts() {
       <div>
         {blogPosts
           .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
           )
           .map((blogPost) => (
             <Link
