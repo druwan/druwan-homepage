@@ -37,8 +37,8 @@ export async function GET() {
       { message: 'Keep-alive triggered', data },
       { status: 200 },
     );
-  } catch (error: any) {
-    let errorMessage = 'Failed to trigger keep-alive';
+  } catch (error) {
+    const errorMessage = 'Failed to trigger keep-alive';
     if (error instanceof Error) {
       console.error('Error in cron-keep-alive:', error);
       return NextResponse.json(

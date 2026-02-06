@@ -20,12 +20,13 @@ export default function BlogPosts() {
       try {
         const { data, error } = await supabase.from('blogposts').select('*');
         if (error) {
-          setError(error.message);
+          if (error instanceof Error) setError(error.message);
         } else {
           setBlogPosts(data || []);
         }
-      } catch (err: any) {
-        setError(`Failed to fetch posts: ${err.message}`);
+      } catch (error) {
+        if (error instanceof Error)
+          setError(`Failed to fetch posts: ${error.message}`);
       }
     };
     fetchBlogPosts();

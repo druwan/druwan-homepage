@@ -35,8 +35,9 @@ export default function ProjectCarousel() {
         } else {
           setProjects(data || []);
         }
-      } catch (err: any) {
-        setError(`Failed to fetch projects: ${err.message}`);
+      } catch (error) {
+        if (error instanceof Error)
+          setError(`Failed to fetch projects: ${error.message}`);
       }
     };
     fetchProjects();
