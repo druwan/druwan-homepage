@@ -8,6 +8,7 @@ export function ModeToggle() {
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return <div className='w-8 h-8' />;
