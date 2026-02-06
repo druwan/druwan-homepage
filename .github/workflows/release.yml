@@ -20,13 +20,13 @@ jobs:
         id: semver
         uses: ietf-tools/semver-action@v1
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
 
       - name: Get Latest Tag
         id: get_latest_tag
         run: |
-          latest_tag=$(git describe --tags --abbrev=0 --always 2>/dev/null || echo "v.0.0.1")
+          latest_tag=$(git describe --tags --abbrev=0 --always 2>/dev/null || echo "v0.0.1")
           echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
 
       - name: Get Commits
