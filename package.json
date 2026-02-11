@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sync:md": "node src/app/lib/syncMarkdown.ts"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.8",
