@@ -3,7 +3,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-import { logger } from './utils.ts';
+import { logger } from './serverLogger.ts';
 
 interface BlogPost {
   filename: string;
