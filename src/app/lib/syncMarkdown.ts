@@ -3,6 +3,8 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
+import { logger } from './utils.ts';
+
 interface BlogPost {
   filename: string;
   date: string;
@@ -11,14 +13,7 @@ interface BlogPost {
   last_modified: string;
 }
 
-const log = {
-  info: (msg: string) =>
-    console.log(`[${new Date().toISOString()}] INFO ${msg}`),
-  warn: (msg: string) =>
-    console.warn(`[${new Date().toISOString()}] WARN ${msg}`),
-  error: (msg: string, err?: unknown) =>
-    console.error(`[${new Date().toISOString()}] ERROR ${msg}`, err ?? ''),
-};
+const isDryRun = process.argv.includes('--dry-run');
 
 function getMarkdownDir(): string {
   const markdownDir = process.env.MARKDOWNFILESDIR;
@@ -36,13 +31,13 @@ async function processMarkdownFiles(): Promise<void> {
   let skipped = 0;
   let failed = 0;
 
-  log.info(`Starting MD sync from: ${markdownDir}`);
+  logger.info(`Starting markdown sync | dry-run=${isDryRun}`);
 
   const files = fs
     .readdirSync(markdownDir)
     .filter((file) => file.endsWith('.md'));
 
-  log.info(`Found ${files.length} markdown files`);
+  logger.info(`Found ${files.length} markdown files`);
 
   for (const file of files) {
     try {
@@ -52,8 +47,8 @@ async function processMarkdownFiles(): Promise<void> {
 
       const lastModifiedDate = fileStats.mtime.toISOString();
       const fileCreationDate = fileStats.birthtime.toISOString();
-      const { data, content } = matter(fileContent);
 
+      const { data, content } = matter(fileContent);
       const title = data.title || path.basename(file, '.md');
 
       const blogPost: BlogPost = {
@@ -73,14 +68,28 @@ async function processMarkdownFiles(): Promise<void> {
 
       if (fetchError && fetchError.code !== 'PGRST116') {
         failed++;
-        log.error(`Error fetching ${title}`, fetchError);
+        logger.error(`Fetch failed for "${title}"`, { error: fetchError });
         continue;
       }
 
       // If file exist & unmodified --> Skip
-      if (existingPosts && existingPosts.last_modified === lastModifiedDate) {
+      const existingModified = existingPosts?.last_modified
+        ? new Date(existingPosts.last_modified).getTime()
+        : null;
+      const currentModified = new Date(lastModifiedDate).getTime();
+
+      if (existingModified && existingModified === currentModified) {
         skipped++;
-        log.info(`Skipping unchanged: ${title}`);
+        logger.info(
+          `Skipping unchanged post: "${title}"${isDryRun ? ' (dry-run)' : ''}`,
+        );
+        continue;
+      }
+
+      // Dry-run: log without writing
+      if (isDryRun) {
+        processed++;
+        logger.info(`DRY RUN: would upsert post "${title}"`);
         continue;
       }
 
@@ -91,24 +100,26 @@ async function processMarkdownFiles(): Promise<void> {
 
       if (error) {
         failed++;
-        log.error(`Upsert failed for: ${title}:`, error);
+        logger.error(`Upsert failed for "${title}"`, { error });
       } else {
         processed++;
-        log.info(`Synced: ${title}`);
+        logger.info(`Post synced: "${title}"`);
       }
     } catch (error) {
       failed++;
-      log.error(`Unexpected failure processing file: "${file}"`, error);
+      logger.error(`Unexpected failure processing file "${file}"`, {
+        error: error,
+      });
     }
   }
 
   const duration = ((Date.now() - start) / 1000).toFixed(2);
-  log.info(
-    `Sync complete in ${duration}s | processed=${processed} skipped=${skipped} failed=${failed}`,
+  logger.info(
+    `Markdown sync complete | processed=${processed} skipped=${skipped} failed=${failed} | duration=${duration}s`,
   );
 }
 
 processMarkdownFiles().catch((err) => {
-  log.error('Fata error during markdown sync', err);
+  logger.error('Fatal error during markdown sync', { error: err });
   process.exit(1);
 });
