@@ -5,6 +5,7 @@
   "description": "Christopher's website",
   "author": "Christopher Vestman",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
