@@ -64,7 +64,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          'antialiased flex flex-col items-center justify-center mx-auto mt-4 lg:mt-8 mb-20 lg:mb-40 max-w-[630px] px-4 sm:px-0'
+          'antialiased min-h-screen flex flex-col'
         )}
       >
         <ThemeProvider
@@ -73,10 +73,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          {children}
-          <Footer />
-          <SpeedInsights />
+          <div className='flex flex-col min-h-screen w-full items-center'>
+            <div className='w-full max-w-[630px] px-4 sm:px-0 flex flex-col flex-1'>
+              <Navbar />
+              <main className='flex-1'>
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <SpeedInsights />
+          </div>
         </ThemeProvider>
       </body>
     </html>

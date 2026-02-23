@@ -36,10 +36,11 @@ export default function BlogPosts() {
 
   return (
     <section>
-      <p className='mb-8 text-lg tracking-tight'>
+      <p className='mb-8 font-medium tracking-tight'>
         Some notes from my life, mainly writing for tracking my progress of
         learning <span className='text-burgundy dark:text-ochre'>Sinhala</span>.
       </p>
+      <hr className='my-3 h-0.5 border-t-0 bg-burgundy/30 dark:bg-ochre/40' />
       <div>
         {blogPosts
           .sort(

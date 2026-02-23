@@ -13,7 +13,7 @@ import { AspectRatio } from './ui/aspect-ratio';
 import Image from 'next/image';
 
 type Project = {
-  id: number;
+  id?: string;
   title: string;
   image_url: string;
   live_url: string;
@@ -57,9 +57,9 @@ export default function ProjectCarousel() {
       <CarouselContent>
         {!error &&
           projects.map((project) => (
-            <CarouselItem key={project.id}>
-              <Card>
-                <CardHeader className='text-xl text-night dark:text-antiFlashWhite tracking-tighter'>
+            <CarouselItem key={project.id} className='flex'>
+              <Card className='flex flex-col h-full w-full'>
+                <CardHeader className='text-xl text-night dark:text-antiFlashWhite tracking-tighter line-clamp-2 min-h-[3rem]'>
                   {project.title}
                 </CardHeader>
                 <Link
@@ -67,25 +67,25 @@ export default function ProjectCarousel() {
                   href={project.repo_url}
                   className='block'
                 >
-                  <AspectRatio ratio={16 / 9} className='m-0 p-0'>
-                    <Image
-                      src={project.image_url}
-                      alt={`Preview image of ${project.title}`}
-                      sizes='100vw'
-                      className='object-contain rounded-3xl border-2 border-burgundy dark:border-ochre my-0'
-                      style={{ width: '100%', height: 'auto' }}
-                      width={500}
-                      height={300}
-                    />
+                  <AspectRatio ratio={16 / 9} className='w-full'>
+                    <div className='relative w-full h-full overflow-hidden rounded-3xl border-2 border-burgundy dark:border-ochre bg-white dark:bg-neutral-900'>
+                      <Image
+                        src={project.image_url}
+                        alt={`Preview image of ${project.title}`}
+                        fill
+                        className='object-cover'
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
                   </AspectRatio>
                 </Link>
-                <CardContent className='text-md text:night dark:text-antiFlashWhite line-clamp-2'>
+                <CardContent className='text-md text-night dark:text-antiFlashWhite line-clamp-2 min-h-[3rem]'>
                   {project.description}
                 </CardContent>
               </Card>
             </CarouselItem>
           ))}
       </CarouselContent>
-    </Carousel>
+    </Carousel >
   );
 }
