@@ -1,6 +1,6 @@
 import { logger } from "../src/app/lib/serverLogger"
 import { supabase } from "../src/app/lib/supabaseClient"
-import { projectsSeedData } from "./projects.data.ts"
+import { projectsSeedData } from "./projects.data"
 
 export async function seedProjects() {
   logger.info("Seeding projects...")
