@@ -1,5 +1,5 @@
-import { logger } from "./serverLogger"
-import { supabase } from "./supabaseClient"
+import { logger } from "../src/app/lib/serverLogger"
+import { supabase } from "../src/app/lib/supabaseClient"
 import { projectsSeedData } from "./projects.data.ts"
 
 export async function seedProjects() {

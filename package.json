@@ -13,8 +13,8 @@
     "lint": "eslint .",
     "check:md": "node src/app/lib/syncMarkdown.ts --dry-run",
     "sync:md": "node src/app/lib/syncMarkdown.ts",
-    "seed:projects": "node src/app/lib/seed-projects.ts",
-    "seed:projects:dry": "node src/app/lib/seed-projects.ts --dry-run"
+    "seed:projects": "node ./scripts/seed-projects.ts",
+    "seed:projects:dry": "node ./scripts/seed-projects.ts --dry-run"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.8",

@@ -1,7 +1,7 @@
 import "dotenv/config"
 import { projectsSeedData } from "./projects.data.ts"
-import { logger } from "./serverLogger.ts"
-import { supabase } from "./supabaseClient.ts"
+import { logger } from "../src/app/lib/serverLogger.ts"
+import { supabase } from "../src/app/lib/supabaseClient.ts"
 
 
 const DRY_RUN = process.argv.includes("--dry-run")
