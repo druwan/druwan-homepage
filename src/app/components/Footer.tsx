@@ -62,10 +62,10 @@ export default function Footer() {
 
   return (
     <footer className='mb-8 sm:mb-16 w-full'>
-      <ul className='mt-8 flex justify-center sm:space-x-8 text-neutral-600 dark:text-neutral-300'>
+      <ul className='mt-8 flex items-center justify-center gap-6 text-neutral-600 dark:text-neutral-300'>
         <li>
           <a
-            className='flex items-center py-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center justify-center w-10 h-10 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='https://github.com/druwan'
           >
@@ -74,7 +74,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center justify-center w-10 h-10 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='https://www.linkedin.com/in/christophervestman/'
           >
@@ -83,7 +83,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className='flex items-center p-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
+            className='flex items-center justify-center w-10 h-10 transition-all hover:text-neutral-800 dark:hover:text-neutral-100'
             rel='noopener noreferrer'
             href='mailto:hello@christophervestman.com'
           >
