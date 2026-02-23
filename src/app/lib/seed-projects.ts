@@ -8,7 +8,7 @@ const DRY_RUN = process.argv.includes("--dry-run")
 
 type Project = typeof projectsSeedData[number]
 
-function isDifferent(seed: Project, db: any) {
+function isDifferent(seed: Project, db: Project) {
   if ((seed.title ?? "") !== (db.title ?? "")) return true;
   if ((seed.image_url ?? "") !== (db.image_url ?? "")) return true;
   if ((seed.live_url ?? null) !== (db.live_url ?? null)) return true;
@@ -20,7 +20,7 @@ function isDifferent(seed: Project, db: any) {
   return false;
 }
 
-function isStackDifferent(seedStack: Project['stack'], dbStack: any): boolean {
+function isStackDifferent(seedStack: Project['stack'], dbStack: Project['stack']): boolean {
   if (!Array.isArray(dbStack)) return true;
   if (seedStack.length !== dbStack.length) return true;
   for (let i = 0; i < seedStack.length; i++) {
