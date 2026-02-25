@@ -12,15 +12,9 @@ import Link from 'next/link';
 import { AspectRatio } from './ui/aspect-ratio';
 import Image from 'next/image';
 
-type Project = {
-  id?: string;
-  title: string;
-  image_url: string;
-  live_url: string;
-  repo_url: string;
-  description: string;
-  stack: string[];
-};
+import { Database } from "database.types"
+
+type Project = Database["public"]["Tables"]["projects"]["Row"]
 
 export default function ProjectCarousel() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -57,7 +51,8 @@ export default function ProjectCarousel() {
       <CarouselContent>
         {!error &&
           projects.map((project) => (
-            <CarouselItem key={project.id} className='flex'>
+            project.publish &&
+            <CarouselItem key={project.id} className='flex' >
               <Card className='flex flex-col h-full w-full'>
                 <CardHeader className='text-xl text-night dark:text-antiFlashWhite tracking-tighter line-clamp-2 min-h-[3rem]'>
                   {project.title}
