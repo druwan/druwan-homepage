@@ -4,12 +4,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { supabase } from 'src/app/lib/supabaseClient';
 
-type BlogPost = {
-  id: number;
-  date: EpochTimeStamp;
-  title: string;
-  content: string;
-};
+import { Database } from 'database.types';
+
+type BlogPost = Database["public"]["Tables"]["blogposts"]["Row"]
 
 export default function BlogPosts() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
