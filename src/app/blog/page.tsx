@@ -47,7 +47,7 @@ export default function BlogPosts() {
             <Link
               key={blogPost.id}
               className='flex flex-col space-y-0.5 mb-1 transition-opacity duration-200 hover:opacity-80'
-              href={`/blog/${blogPost.title}`}
+              href={`/blog/${blogPost.slug}`}
             >
               <div className='w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2'>
                 <p className='text-lg text-burgundy dark:text-ochre'>

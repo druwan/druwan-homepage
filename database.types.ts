@@ -18,25 +18,25 @@ export type Database = {
         Row: {
           content: string
           date: string
-          filename: string
-          id: number
+          id: string
           last_modified: string | null
+          slug: string
           title: string
         }
         Insert: {
           content: string
           date: string
-          filename: string
-          id?: never
+          id?: string
           last_modified?: string | null
+          slug: string
           title: string
         }
         Update: {
           content?: string
           date?: string
-          filename?: string
-          id?: never
+          id?: string
           last_modified?: string | null
+          slug?: string
           title?: string
         }
         Relationships: []

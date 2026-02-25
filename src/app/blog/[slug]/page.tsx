@@ -11,7 +11,7 @@ export default async function Page({
   const { data, error } = await supabase
     .from('blogposts')
     .select('*')
-    .eq('title', slug)
+    .eq('slug', slug)
     .single();
 
   if (error || !data || !data.content) {

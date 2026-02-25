@@ -4,14 +4,9 @@ import matter from 'gray-matter';
 import path from 'path';
 
 import { logger } from './serverLogger.ts';
+import type { Database } from '../../../database.types'
 
-interface BlogPost {
-  filename: string;
-  date: string;
-  title: string;
-  content: string;
-  last_modified: string;
-}
+type BlogPost = Database["public"]["Tables"]["blogposts"]["Insert"]
 
 const isDryRun = process.argv.includes('--dry-run');
 
@@ -21,6 +16,10 @@ function getMarkdownDir(): string {
     throw new Error('No MARKDOWNFILESDIR found!');
   }
   return markdownDir;
+}
+
+function createSlug(filename: string): string {
+  return path.basename(filename, '.md').toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
 }
 
 async function processMarkdownFiles(): Promise<void> {
@@ -49,10 +48,11 @@ async function processMarkdownFiles(): Promise<void> {
       const fileCreationDate = fileStats.birthtime.toISOString();
 
       const { data, content } = matter(fileContent);
-      const title = data.title || path.basename(file, '.md');
+      const slug = createSlug(file)
+      const title = data.title || slug
 
       const blogPost: BlogPost = {
-        filename: file,
+        slug,
         date: fileCreationDate,
         title,
         content,
@@ -62,8 +62,8 @@ async function processMarkdownFiles(): Promise<void> {
       // Check if post exists
       const { data: existingPosts, error: fetchError } = await supabase
         .from('blogposts')
-        .select('filename, last_modified')
-        .eq('filename', file)
+        .select('slug, last_modified')
+        .eq('slug', slug)
         .single();
 
       if (fetchError && fetchError.code !== 'PGRST116') {
@@ -95,7 +95,7 @@ async function processMarkdownFiles(): Promise<void> {
 
       // Insert or update blog post
       const { error } = await supabase.from('blogposts').upsert(blogPost, {
-        onConflict: 'filename',
+        onConflict: 'slug',
       });
 
       if (error) {
@@ -107,9 +107,16 @@ async function processMarkdownFiles(): Promise<void> {
       }
     } catch (error) {
       failed++;
-      logger.error(`Unexpected failure processing file "${file}"`, {
-        error: error,
-      });
+      if (error instanceof Error) {
+        logger.error(`Unexpected failure processing file "${file}"`, {
+          message: error.message,
+          stack: error.stack
+        });
+      } else {
+        logger.error(`Unexpected failure processing file "${file}"`, {
+          error
+        });
+      }
     }
   }
 
