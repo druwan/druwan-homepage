@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import ProjectsCarousel from '../components/ProjectsCarousel.astro'
+
+import { ExternalLink } from 'lucide-preact';
+---
+
+<Base>
+  <Nav slot="nav" />
+  <section class="w-full flex flex-col flex-1 gap-12 py-8">
+    <div class="w-full">
+      <h1 class="text-xl font-medium tracking-tight text-night dark:text-anti-flash-white">
+        Engineer &amp; Developer
+      </h1>
+      <p class="text-night dark:text-anti-flash-white leading-relaxed">
+        I have a passion for math, physics &amp; football. When not online, I
+        like to <s class="text-burgundy dark:text-ochre">eat,</s> cook,
+        game or listening to podcasts.
+      </p>
+      <p class="text-night dark:text-anti-flash-white leading-relaxed">
+      Right now I have a keen interest in DevOps. Check out my <a href="https://github.com/druwan/homelab" class="text-burgundy dark:text-ochre inline-flex items-center gap-1">Kubernetes HomeLab <ExternalLink /></a>
+      </p>
+      <hr class="my-3 w-full h-px border-0 bg-burgundy dark:bg-ochre"/>
+    </div>
+
+    <div class="w-full">
+      <ProjectsCarousel />
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Base>
