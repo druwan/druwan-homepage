@@ -7,10 +7,17 @@ export default defineConfig({
   output: 'server',
   adapter: cloudflare(),
   integrations: [
-    preact(),
+    preact({ compat: true }),
   ],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        'react': 'preact/compat',
+        'react-dom': 'preact/compat',
+        'react/jsx-runtime': 'preact/jsx-runtime'
+      },
+    },
   },
   site: 'https://christophervestman.com',
 })
