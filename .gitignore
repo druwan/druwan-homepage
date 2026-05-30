@@ -35,3 +35,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+.dev.vars
+.wrangler
+.astro

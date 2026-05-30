@@ -1,0 +1,17 @@
+---
+import MobileNav from './MobileNav.tsx'
+---
+
+<nav class="w-full flex items-center justify-between">
+  <a href="/" class="text-3xl font-medium tracking-tight text-burgundy dark:text-ochre">
+  Christopher Vestman
+  </a>
+
+  <!-- MobileNav -->
+  <MobileNav client:only="preact" />
+
+  <!-- Desktop -->
+  <div class="hidden md:flex text-xl space-x-4 text-burgundy dark:text-ochre">
+    <a href="/blog">blog</a>
+  </div>
+</nav>

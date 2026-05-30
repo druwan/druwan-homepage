@@ -1,0 +1,80 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+}
+
+const {
+  title = 'Christopher Vestman',
+  description = 'My Portfolio & Blog',
+  ogImage = '/images/preview_v6.png',
+} = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+---
+
+<!DOCTYPE html>
+<html lang="en" class="__yaldevi __noto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href={canonicalURL} rel="canonical">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Yaldevi:wght@200..700&display=swap" />
+
+    <!-- Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="indext, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Christopher Vestman" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="740" />
+
+    <!-- Prevent dark mode flash?? -->
+    <script is:inline>
+      const stored = localStorage.getItem('theme')
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+
+    <style>
+      :root {
+        --font-noto-sans-sinhala: 'Noto Sans Sinhala', sans-serif;
+        --font-yaldevi: 'Yaldevi', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="antialiased min-h-screen flex flex-col">
+    <div class="flex flex-col min-h-screen w-full items-center">
+      <div class="w-full max-w-[740px] px-4 sm:px-0 flex flex-col flex-1 pt-2">
+        <slot name="nav" />
+        <main class="flex-1 flex flex-col">
+          <slot />
+        </main>
+        <slot name="footer" />
+      </div>
+    </div>
+  </body>
+</html>

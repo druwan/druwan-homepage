@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import { supabase } from '../../lib/supabaseClient'
+import { marked } from 'marked'
+
+const { slug } = Astro.params
+
+const { data: post, error } = await supabase
+  .from('blogposts')
+  .select('*')
+  .eq('slug', slug)
+  .single()
+
+if (error || !post?.content) {
+  return Astro.redirect('/blog')
+}
+
+
+const html = marked.parse(post.content) as string
+---
+
+<Base title={`${post.title} — Christopher Vestman`}>
+  <Nav slot="nav" />
+  <article class="prose prose-neutral dark:prose-invert max-w-none" set:html={html} />
+  <Footer slot="footer" />
+</Base>
