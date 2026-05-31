@@ -1,6 +1,5 @@
 ---
 import { supabase } from '../lib/supabaseClient'
-import { Image } from 'astro:assets'
 
 const { data: projects, error } = await supabase
   .from('projects')
