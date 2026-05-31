@@ -4,29 +4,48 @@ export const BUCKET = import.meta.env.S3_BUCKET
 export const ENDPOINT = import.meta.env.S3_ENDPOINT
 export const REGION = import.meta.env.S3_REGION
 
+const cache = new Map<string, { value: string; expires: number }>()
+const TTL = 5 * 60 * 1000 // 5 min
+
 export function getS3Client() {
+  const accessKeyId = import.meta.env.S3_ACCESS_KEY_ID!
+  const secretAccessKey = import.meta.env.S3_SECRET_ACCESS_KEY!
+
+  if (!accessKeyId || !secretAccessKey) {
+    throw new Error('S3 credentials missing')
+  }
+
   return new AwsClient({
-    accessKeyId: import.meta.env.S3_ACCESS_KEY_ID!,
-    secretAccessKey: import.meta.env.S3_SECRET_ACCESS_KEY!,
+    accessKeyId,
+    secretAccessKey,
     region: REGION,
     service: 's3',
   })
 }
 
 export async function s3Get(key: string): Promise<string> {
+  const cached = cache.get(key)
+  if (cached && cached.expires > Date.now()) return cached.value
+
   const client = getS3Client()
-  const url = `${ENDPOINT}/${BUCKET}/${key}`
-  const response = await client.fetch(url)
+  const response = await client.fetch(`${ENDPOINT}/${BUCKET}/${key}`)
   if (!response.ok) throw new Error(`S3 fetch failed: ${response.status} ${key}`)
-  return response.text()
+  const value = await response.text()
+  cache.set(key, { value, expires: Date.now() + TTL })
+  return value
 }
 
 export async function s3List(prefix: string): Promise<string[]> {
+  const cacheKey = `__list__${prefix}`
+  const cached = cache.get(cacheKey)
+  if (cached && cached.expires > Date.now()) return JSON.parse(cached.value)
+
   const client = getS3Client()
   const url = `${ENDPOINT}/${BUCKET}?list-type=2&prefix=${encodeURIComponent(prefix)}`
   const response = await client.fetch(url)
   if (!response.ok) throw new Error(`S3 list failed: ${response.status}`)
   const xml = await response.text()
   const keys = [...xml.matchAll(/<Key>([^<]+)<\/Key>/g)].map(m => m[1])
+  cache.set(cacheKey, { value: JSON.stringify(keys), expires: Date.now() + TTL })
   return keys
 }
