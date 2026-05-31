@@ -1,5 +1,6 @@
 ---
-import MobileNav from './MobileNav.tsx'
+import MobileNav from './MobileNav'
+import ThemeToggle from './ThemeToggle'
 ---
 
 <nav class="w-full flex items-center justify-between">
@@ -11,7 +12,8 @@ import MobileNav from './MobileNav.tsx'
   <MobileNav client:only="preact" />
 
   <!-- Desktop -->
-  <div class="hidden md:flex text-xl space-x-4 text-burgundy dark:text-ochre">
-    <a href="/blog">blog</a>
+  <div class="hidden md:flex items-center text-xl space-x-4 text-burgundy dark:text-ochre">
+    <a href="/blog" class="flex items-center">blog</a>
+    <ThemeToggle client:only="preact" />
   </div>
 </nav>
