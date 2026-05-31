@@ -30,7 +30,6 @@
     "lucide-preact": "^0.469.0",
     "marked": "^18.0.4",
     "preact": "^10.0.0",
-    "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.8",
     "tsx": "^4.0.0",
     "winston": "^3.19.0"
