@@ -33,7 +33,7 @@ const posts = await listPosts()
               {post.title}
             </p>
             <p class="text-burgundy dark:text-ochre tabular-nums text-sm">
-              {String(post.date).split('T')[0]}
+              {new Date(Number(post.date)).toISOString().split('T')[0]}
             </p>
           </div>
         </a>

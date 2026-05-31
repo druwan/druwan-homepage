@@ -35,17 +35,36 @@ export async function s3Get(key: string): Promise<string> {
   return value
 }
 
-export async function s3List(prefix: string): Promise<string[]> {
+export async function s3List(prefix: string): Promise<string> {
   const cacheKey = `__list__${prefix}`
   const cached = cache.get(cacheKey)
-  if (cached && cached.expires > Date.now()) return JSON.parse(cached.value)
+  if (cached && cached.expires > Date.now()) return cached.value
 
   const client = getS3Client()
   const url = `${ENDPOINT}/${BUCKET}?list-type=2&prefix=${encodeURIComponent(prefix)}`
   const response = await client.fetch(url)
   if (!response.ok) throw new Error(`S3 list failed: ${response.status}`)
   const xml = await response.text()
-  const keys = [...xml.matchAll(/<Key>([^<]+)<\/Key>/g)].map(m => m[1])
-  cache.set(cacheKey, { value: JSON.stringify(keys), expires: Date.now() + TTL })
-  return keys
+  cache.set(cacheKey, { value: xml, expires: Date.now() + TTL })
+  return xml
+}
+
+export async function s3Head(key: string): Promise<Record<string, string>> {
+  const cacheKey = `__head__${key}`
+  const cached = cache.get(cacheKey)
+  if (cached && cached.expires > Date.now()) return JSON.parse(cached.value)
+
+  const client = getS3Client()
+  const response = await client.fetch(`${ENDPOINT}/${BUCKET}/${key}`, { method: 'HEAD' })
+  if (!response.ok) throw new Error(`S3 head failed: ${response.status} ${key}`)
+
+  const meta: Record<string, string> = {}
+  response.headers.forEach((value, key) => {
+    if (key.startsWith('x-amz-meta-')) {
+      meta[key.replace('x-amz-meta-', '')] = value
+    }
+  })
+
+  cache.set(cacheKey, { value: JSON.stringify(meta), expires: Date.now() + TTL })
+  return meta
 }
