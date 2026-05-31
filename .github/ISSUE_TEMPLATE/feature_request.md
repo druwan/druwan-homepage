@@ -1,10 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea
-title: "[FEATURE] "
+title: '[FEATURE] '
 labels: enhancement
 assignees: druwan
-
 ---
 
 ## What do you want?

@@ -3,47 +3,71 @@ import { getProjects } from '../lib/projects'
 
 const items = await getProjects()
 ---
-{items.length > 0 && (
-<div id="carousel" class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio: 16/9; isolation: isolate;">
 
-    {items.map((project, i) => (
-      <a
-        href={project.repo_url}
-        class="carousel-slide absolute inset-0 transition-opacity duration-700 overflow-hidden outline-none"
-        style={`opacity: ${i === 0 ? '1' : '0'}; z-index: ${i === 0 ? '1' : '0'};`}
-        tabindex={i === 0 ? '0' : '-1'}
-        data-index={i}
+{
+  items.length > 0 && (
+    <>
+      <div
+        id="carousel"
+        class="relative w-full overflow-hidden rounded-xl"
+        style="aspect-ratio: 16/9; isolation: isolate;"
       >
-        <img
-          src={project.image_url}
-          alt={`Preview of ${project.title}`}
-          class="w-full h-full object-cover"
-          loading={i === 0 ? 'eager' : 'lazy'}
-          decoding="async"
-          fetchPriority={i === 0 ? 'high' : 'auto'}
+        {items.map((project, i) => (
+          <a
+            href={project.repo_url}
+            class="carousel-slide absolute inset-0 transition-opacity duration-700 overflow-hidden outline-none"
+            style={`opacity: ${i === 0 ? '1' : '0'}; z-index: ${i === 0 ? '1' : '0'};`}
+            tabindex={i === 0 ? '0' : '-1'}
+            data-index={i}
+          >
+            <img
+              src={project.image_url}
+              alt={`Preview of ${project.title}`}
+              class="w-full h-full object-cover"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              fetchPriority={i === 0 ? 'high' : 'auto'}
+            />
+            <div
+              class="absolute inset-0"
+              style="background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.3) 55%, transparent 100%);"
+            />
+            <div class="absolute bottom-0 left-0 right-0 p-5">
+              <p
+                class="text-xs uppercase tracking-widest text-ochre mb-1"
+                style="text-shadow: 0 1px 3px rgba(0,0,0,0.9);"
+              >
+                Project
+              </p>
+              <h3
+                class="text-xl font-medium text-anti-flash-white mb-1"
+                style="text-shadow: 0 1px 4px rgba(0,0,0,0.9);"
+              >
+                {project.title}
+              </h3>
+              <p
+                class="text-sm text-anti-flash-white/60 line-clamp-2"
+                style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);"
+              >
+                {project.description}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="flex gap-2 justify-center mt-3">
+        {items.map((_, i) => (
+          <button
+            class={`carousel-dot transition-all duration-300 ${i === 0 ? 'dot-active' : 'dot-inactive'}`}
+            style={`width: ${i === 0 ? '18px' : '6px'}; height: 6px; border-radius: ${i === 0 ? '3px' : '50%'}; padding: 0; cursor: pointer;`}
+            data-index={i}
+            aria-label={`Go to project ${i + 1}`}
           />
-        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.3) 55%, transparent 100%);"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-5">
-          <p class="text-xs uppercase tracking-widest text-ochre mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.9);">Project</p>
-          <h3 class="text-xl font-medium text-anti-flash-white mb-1" style="text-shadow: 0 1px 4px rgba(0,0,0,0.9);">{project.title}</h3>
-          <p class="text-sm text-anti-flash-white/60 line-clamp-2" style="text-shadow: 0 1px 3px rgba(0,0,0,0.8);">{project.description}</p>
-        </div>
-      </a>
-    ))}
-
-  </div>
-  <!-- Dot indicators -->
-  <div class="flex gap-2 justify-center mt-3">
-    {items.map((_, i) => (
-      <button
-        class={`carousel-dot transition-all duration-300 ${i === 0 ? 'dot-active' : 'dot-inactive'}`}
-        style={`width: ${i === 0 ? '18px' : '6px'}; height: 6px; border-radius: ${i === 0 ? '3px' : '50%'}; padding: 0; cursor: pointer;`}
-        data-index={i}
-        aria-label={`Go to project ${i + 1}`}
-      />
-    ))}
-  </div>
-)}
+        ))}
+      </div>
+    </>
+  )
+}
 
 <script>
   const slides = document.querySelectorAll<HTMLElement>('.carousel-slide')
@@ -84,7 +108,7 @@ const items = await getProjects()
     clearInterval(timer)
   }
 
-  dots.forEach(dot => {
+  dots.forEach((dot) => {
     dot.addEventListener('click', () => {
       stopTimer()
       goTo(Number(dot.dataset.index))

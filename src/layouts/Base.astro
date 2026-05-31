@@ -16,12 +16,12 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="__yaldevi __noto">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href={canonicalURL} rel="canonical">
+    <link href={canonicalURL} rel="canonical" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
@@ -32,7 +32,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Yaldevi:wght@200..700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Yaldevi:wght@200..700&display=swap"
+    />
 
     <!-- Meta -->
     <title>{title}</title>
@@ -53,7 +56,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <!-- Prevent dark mode flash?? -->
     <script is:inline>
       const stored = localStorage.getItem('theme')
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches
       if (stored === 'dark' || (!stored && prefersDark)) {
         document.documentElement.classList.add('dark')
       }

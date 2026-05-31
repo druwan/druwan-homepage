@@ -11,7 +11,6 @@ const post = await getPost(slug!)
 
 if (!post) return Astro.redirect('/blog')
 
-
 const renderer = new marked.Renderer()
 renderer.code = ({ text, lang }) => {
   const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext'
@@ -25,6 +24,9 @@ const html = marked.parse(post.content) as string
 
 <Base title={`${post.title} — Christopher Vestman`}>
   <Nav slot="nav" />
-  <article class="prose prose-neutral dark:prose-invert max-w-none py-8" set:html={html} />
+  <article
+    class="prose prose-neutral dark:prose-invert max-w-none py-8"
+    set:html={html}
+  />
   <Footer slot="footer" />
 </Base>

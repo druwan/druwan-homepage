@@ -15,7 +15,7 @@ export async function getProjects(): Promise<Project[]> {
   try {
     const json = await s3Get('projects/projects.json')
     const projects: Project[] = JSON.parse(json)
-    return projects.filter(p => p.publish)
+    return projects.filter((p) => p.publish)
   } catch {
     return []
   }

@@ -4,40 +4,47 @@ import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
 import { listPosts } from '../../lib/blog'
 
-
 const posts = await listPosts()
 ---
 
-<Base title="Blog — Christopher Vestman" description="Notes from my life, mainly tracking my progress learning Sinhala.">
+<Base
+  title="Blog — Christopher Vestman"
+  description="Notes from my life, mainly tracking my progress learning Sinhala."
+>
   <Nav slot="nav" />
   <section class="w-full flex flex-col flex-1 py-8">
     <div class="w-full">
-      <h1 class="text-xl font-medium tracking-tight text-night dark:text-anti-flash-white">
+      <h1
+        class="text-xl font-medium tracking-tight text-night dark:text-anti-flash-white"
+      >
         Some notes of mine
       </h1>
       <p class="text-night dark:text-anti-flash-white leading-relaxed">
-        Mainly writing for tracking my progress of
-        learning <span class="text-burgundy dark:text-ochre">Sinhala</span> and Kubernetes
+        Mainly writing for tracking my progress of learning <span
+          class="text-burgundy dark:text-ochre">Sinhala</span
+        > and Kubernetes
       </p>
       <hr class="my-3 w-full h-px border-0 bg-burgundy dark:bg-ochre" />
     </div>
 
     <div class="flex flex-col">
-      {posts.map((post) => (
-        <a
-          href={`/blog/${post.slug}`}
-          class="flex flex-col space-y-0.5 mb-1 transition-opacity duration-200 hover:opacity-80"
-        >
-          <div class="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-            <p class="text-lg text-night dark:text-anti-flash-white">
-              {post.title}
-            </p>
-            <p class="text-burgundy dark:text-ochre tabular-nums text-sm">
-              {new Date(Number(post.date)).toISOString().split('T')[0]}
-            </p>
-          </div>
-        </a>
-      ))}
+      {
+        posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}`}
+            class="flex flex-col space-y-0.5 mb-1 transition-opacity duration-200 hover:opacity-80"
+          >
+            <div class="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
+              <p class="text-lg text-night dark:text-anti-flash-white">
+                {post.title}
+              </p>
+              <p class="text-burgundy dark:text-ochre tabular-nums text-sm">
+                {new Date(Number(post.date)).toISOString().split('T')[0]}
+              </p>
+            </div>
+          </a>
+        ))
+      }
     </div>
   </section>
   <Footer slot="footer" />

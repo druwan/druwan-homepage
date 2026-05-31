@@ -29,7 +29,8 @@ export async function s3Get(key: string): Promise<string> {
 
   const client = getS3Client()
   const response = await client.fetch(`${ENDPOINT}/${BUCKET}/${key}`)
-  if (!response.ok) throw new Error(`S3 fetch failed: ${response.status} ${key}`)
+  if (!response.ok)
+    throw new Error(`S3 fetch failed: ${response.status} ${key}`)
   const value = await response.text()
   cache.set(key, { value, expires: Date.now() + TTL })
   return value
@@ -55,7 +56,9 @@ export async function s3Head(key: string): Promise<Record<string, string>> {
   if (cached && cached.expires > Date.now()) return JSON.parse(cached.value)
 
   const client = getS3Client()
-  const response = await client.fetch(`${ENDPOINT}/${BUCKET}/${key}`, { method: 'HEAD' })
+  const response = await client.fetch(`${ENDPOINT}/${BUCKET}/${key}`, {
+    method: 'HEAD',
+  })
   if (!response.ok) throw new Error(`S3 head failed: ${response.status} ${key}`)
 
   const meta: Record<string, string> = {}
@@ -65,6 +68,9 @@ export async function s3Head(key: string): Promise<Record<string, string>> {
     }
   })
 
-  cache.set(cacheKey, { value: JSON.stringify(meta), expires: Date.now() + TTL })
+  cache.set(cacheKey, {
+    value: JSON.stringify(meta),
+    expires: Date.now() + TTL,
+  })
   return meta
 }

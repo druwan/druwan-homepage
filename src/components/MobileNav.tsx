@@ -17,7 +17,9 @@ export default function MobileNav() {
       {open && (
         <div class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6">
           <div class="flex items-center justify-between mb-8">
-            <span class="text-xl font-medium text-burgundy dark:text-ochre">Menu</span>
+            <span class="text-xl font-medium text-burgundy dark:text-ochre">
+              Menu
+            </span>
             <button
               onClick={() => setOpen(false)}
               class="flex items-center justify-center w-10 h-10 text-burgundy dark:text-ochre"
@@ -28,10 +30,14 @@ export default function MobileNav() {
           </div>
           <ul class="space-y-6 text-lg text-burgundy dark:text-ochre">
             <li>
-              <a href="/" onClick={() => setOpen(false)}>home</a>
+              <a href="/" onClick={() => setOpen(false)}>
+                home
+              </a>
             </li>
             <li>
-              <a href="/blog" onClick={() => setOpen(false)}>blog</a>
+              <a href="/blog" onClick={() => setOpen(false)}>
+                blog
+              </a>
             </li>
           </ul>
         </div>

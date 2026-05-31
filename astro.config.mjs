@@ -1,21 +1,19 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config'
 import cloudflare from '@astrojs/cloudflare'
 import preact from '@astrojs/preact'
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   output: 'server',
   adapter: cloudflare(),
-  integrations: [
-    preact({ compat: true }),
-  ],
+  integrations: [preact({ compat: true })],
   vite: {
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        'react': 'preact/compat',
+        react: 'preact/compat',
         'react-dom': 'preact/compat',
-        'react/jsx-runtime': 'preact/jsx-runtime'
+        'react/jsx-runtime': 'preact/jsx-runtime',
       },
     },
   },

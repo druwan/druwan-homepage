@@ -4,15 +4,20 @@ import ThemeToggle from './ThemeToggle'
 ---
 
 <nav class="w-full flex items-center justify-between">
-  <a href="/" class="text-3xl font-medium tracking-tight text-burgundy dark:text-ochre">
-  Christopher Vestman
+  <a
+    href="/"
+    class="text-3xl font-medium tracking-tight text-burgundy dark:text-ochre"
+  >
+    Christopher Vestman
   </a>
 
   <!-- MobileNav -->
   <MobileNav client:only="preact" />
 
   <!-- Desktop -->
-  <div class="hidden md:flex items-center text-xl space-x-4 text-burgundy dark:text-ochre">
+  <div
+    class="hidden md:flex items-center text-xl space-x-4 text-burgundy dark:text-ochre"
+  >
     <a href="/blog" class="flex items-center">blog</a>
     <ThemeToggle client:only="preact" />
   </div>
