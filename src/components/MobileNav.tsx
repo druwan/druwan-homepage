@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks'
 import { Menu, X } from 'lucide-preact'
+import ThemeToggle from './ThemeToggle'
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -38,6 +39,9 @@ export default function MobileNav() {
               <a href="/blog" onClick={() => setOpen(false)}>
                 blog
               </a>
+            </li>
+            <li>
+              <ThemeToggle />
             </li>
           </ul>
         </div>

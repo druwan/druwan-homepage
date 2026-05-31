@@ -32,16 +32,14 @@ const posts = await listPosts()
         posts.map((post) => (
           <a
             href={`/blog/${post.slug}`}
-            class="flex flex-col space-y-0.5 mb-1 transition-opacity duration-200 hover:opacity-80"
+            class="flex justify-between items-baseline mb-2 gap-4 transition-opacity duration-200 hover:opacity-80"
           >
-            <div class="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-              <p class="text-lg text-night dark:text-anti-flash-white">
-                {post.title}
-              </p>
-              <p class="text-burgundy dark:text-ochre tabular-nums text-sm">
-                {new Date(Number(post.date)).toISOString().split('T')[0]}
-              </p>
-            </div>
+            <p class="text-lg text-night dark:text-anti-flash-white truncate">
+              {post.title}
+            </p>
+            <p class="text-burgundy dark:text-ochre tabular-nums text-sm shrink-0">
+              {new Date(Number(post.date)).toISOString().split('T')[0]}
+            </p>
           </a>
         ))
       }
