@@ -2,27 +2,29 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
-import { supabase } from '../../lib/supabaseClient'
+import { getPost } from '../../lib/blog'
 import { marked } from 'marked'
+import hljs from 'highlight.js'
 
 const { slug } = Astro.params
+const post = await getPost(slug!)
 
-const { data: post, error } = await supabase
-  .from('blogposts')
-  .select('*')
-  .eq('slug', slug)
-  .single()
+if (!post) return Astro.redirect('/blog')
 
-if (error || !post?.content) {
-  return Astro.redirect('/blog')
+
+const renderer = new marked.Renderer()
+renderer.code = ({ text, lang }) => {
+  const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext'
+  const highlighted = hljs.highlight(text, { language }).value
+  return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`
 }
 
-
+marked.use({ renderer })
 const html = marked.parse(post.content) as string
 ---
 
 <Base title={`${post.title} — Christopher Vestman`}>
   <Nav slot="nav" />
-  <article class="prose prose-neutral dark:prose-invert max-w-none" set:html={html} />
+  <article class="prose prose-neutral dark:prose-invert max-w-none py-8" set:html={html} />
   <Footer slot="footer" />
 </Base>

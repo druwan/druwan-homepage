@@ -1,17 +1,8 @@
 ---
-import { supabase } from '../lib/supabaseClient'
+import { getProjects } from '../lib/projects'
 
-const { data: projects, error } = await supabase
-  .from('projects')
-  .select('*')
-  .eq('publish', true)
-  .order('id')
-
-const items = projects ?? []
+const items = await getProjects()
 ---
-
-{error && <p class="text-sm text-burgundy dark:text-ochre">Could not load projects.</p>}
-
 {items.length > 0 && (
 <div id="carousel" class="relative w-full overflow-hidden rounded-xl" style="aspect-ratio: 16/9; isolation: isolate;">
 

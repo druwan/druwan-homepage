@@ -1,3 +1,4 @@
+@import 'highlight.js/styles/tokyo-night-dark';
 @import 'tailwindcss';
 @variant dark (&:where(.dark, .dark *));
 @plugin "@tailwindcss/typography";
@@ -37,6 +38,39 @@
   .dot-active {
     background: #941E32;
     border: 1.5px solid #941E32;
+  }
+
+  .prose :where(p):not(:where([class~="not-prose"] *)) {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose :where(h1):not(:where([class~="not-prose"] *)) {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+
+  .prose :where(h2, h3):not(:where([class~="not-prose"] *)) {
+    margin-top: 1.5em;
+    margin-bottom: 0.35em;
+  }
+
+  .prose :where(pre):not(:where([class~="not-prose"] *)) {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose :where(code):not(:where([class~="not-prose"] *)) {
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.875em;
+  }
+
+  .prose :where(ul, ol):not(:where([class~="not-prose"] *)) {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
   }
 }
 
