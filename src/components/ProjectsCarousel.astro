@@ -1,7 +1,8 @@
 ---
-import { getProjects } from '../lib/projects'
+import { getLiveCollection } from 'astro:content'
 
-const items = await getProjects()
+const { entries: projectEntries } = await getLiveCollection('projects')
+const items = projectEntries?.map((e) => e.data) ?? []
 ---
 
 {

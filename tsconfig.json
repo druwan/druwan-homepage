@@ -14,6 +14,6 @@
     "jsxImportSource": "preact",
     "allowImportingTsExtensions": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", ".astro/types.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

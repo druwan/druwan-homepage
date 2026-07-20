@@ -2,43 +2,38 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
-import { listPosts } from '../../lib/blog'
+import { getLiveCollection } from 'astro:content'
 
-const posts = await listPosts()
+const { entries: posts, error } = await getLiveCollection('blog')
 ---
 
-<Base
-  title="Blog — Christopher Vestman"
-  description="Notes from my life, mainly tracking my progress learning Sinhala."
->
+<Base title="Blog — Christopher Vestman">
   <Nav slot="nav" />
-  <section class="w-full flex flex-col flex-1 py-8">
-    <div class="w-full">
-      <h1
-        class="text-xl font-medium tracking-tight text-night dark:text-anti-flash-white"
-      >
-        Some notes of mine
-      </h1>
-      <p class="text-night dark:text-anti-flash-white leading-relaxed">
-        Mainly writing for tracking my progress of learning <span
-          class="text-burgundy dark:text-ochre">Sinhala</span
-        > and Kubernetes
-      </p>
-      <hr class="my-3 w-full h-px border-0 bg-burgundy dark:bg-ochre" />
-    </div>
-
-    <div class="flex flex-col">
+  <section class="w-full flex flex-col flex-1 pb-8">
+    <p class="mb-4 font-medium tracking-tight">
+      Some notes from my life, mainly writing for tracking my progress of
+      learning <span class="text-burgundy dark:text-ochre">Sinhala</span> and Kubernetes.
+    </p>
+    <hr class="w-full mb-4 h-px border-0 bg-burgundy/30 dark:bg-ochre/40" />
+    {
+      error && (
+        <p class="text-sm text-burgundy dark:text-ochre">
+          Could not load posts.
+        </p>
+      )
+    }
+    <div>
       {
-        posts.map((post) => (
+        (posts ?? []).map((post) => (
           <a
-            href={`/blog/${post.slug}`}
+            href={`/blog/${post.id}`}
             class="flex justify-between items-baseline mb-2 gap-4 transition-opacity duration-200 hover:opacity-80"
           >
-            <p class="text-lg text-night dark:text-anti-flash-white truncate">
-              {post.title}
+            <p class="text-base sm:text-lg text-burgundy dark:text-ochre truncate">
+              {post.data.title}
             </p>
-            <p class="text-burgundy dark:text-ochre tabular-nums text-sm shrink-0">
-              {new Date(Number(post.date)).toISOString().split('T')[0]}
+            <p class="text-night/60 dark:text-anti-flash-white/60 tabular-nums text-sm shrink-0">
+              {new Date(Number(post.data.date)).toISOString().split('T')[0]}
             </p>
           </a>
         ))

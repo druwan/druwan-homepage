@@ -2,14 +2,32 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
-import { getPost } from '../../lib/blog'
 import { marked } from 'marked'
 import hljs from 'highlight.js'
+import { s3Get, s3Head } from '../../lib/s3Client'
 
 const { slug } = Astro.params
-const post = await getPost(slug!)
 
-if (!post) return Astro.redirect('/blog')
+interface Post {
+  title: string
+  date: string
+  content: string
+}
+
+let post: Post
+
+try {
+  const [content, meta] = await Promise.all([
+    s3Get(`blog/${slug}.md`),
+    s3Head(`blog/${slug}.md`),
+  ])
+  const titleLine = content.split('\n').find((l) => l.startsWith('# '))
+  const title = titleLine ? titleLine.replace('# ', '').trim() : slug!
+  const ts = meta['creation-date'] ? Number(meta['creation-date']) : Date.now()
+  post = { title, date: ts.toString(), content }
+} catch {
+  return Astro.redirect('/blog')
+}
 
 const renderer = new marked.Renderer()
 renderer.code = ({ text, lang }) => {
@@ -17,7 +35,6 @@ renderer.code = ({ text, lang }) => {
   const highlighted = hljs.highlight(text, { language }).value
   return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`
 }
-
 marked.use({ renderer })
 const html = marked.parse(post.content) as string
 ---
