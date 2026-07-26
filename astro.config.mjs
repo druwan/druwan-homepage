@@ -4,6 +4,10 @@ import preact from '@astrojs/preact'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  i18n: {
+    locales: ["en", "sv"],
+    defaultLocale: "en",
+  },
   output: 'server',
   adapter: cloudflare(),
   integrations: [preact({ compat: true })],

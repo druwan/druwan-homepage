@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro'
+import Nav from '../Nav.astro'
+import Footer from '../Footer.astro'
+import { getDictionary } from '../../i18n'
+import { listPosts } from '../../lib/blog'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
+interface Props {
+  locale: string
+}
+const { locale } = Astro.props
+const t = getDictionary(locale)
+const posts = await listPosts()
+---
+
+<Base title={`${t.nav.blog} — Christopher Vestman`}>
+  <Nav slot="nav" locale={locale} />
+  <section class="w-full flex flex-col flex-1 py-8">
+    <hr class="w-full mb-4 h-px border-0 bg-burgundy/30 dark:bg-ochre/40" />
+    <div>
+      {
+        posts.map((post) => (
+          <a
+            href={getRelativeLocaleUrl(locale, `blog/${post.slug}`)}
+            class="flex justify-between items-baseline mb-2 gap-4 transition-opacity duration-200 hover:opacity-80"
+          >
+            <p class="text-base sm:text-lg text-burgundy dark:text-ochre truncate">
+              {post.title}
+            </p>
+            <p class="text-night/60 dark:text-anti-flash-white/60 tabular-nums text-sm shrink-0">
+              {new Date(Number(post.date)).toISOString().split('T')[0]}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Base>

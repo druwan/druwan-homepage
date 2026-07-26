@@ -1,0 +1,22 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import LanguageSwitcherIsland from './LanguageSwitcherIsland.tsx'
+
+const currentLocale = Astro.currentLocale ?? 'en'
+const locales = [
+  { code: 'en', label: 'English' },
+  { code: 'sv', label: 'Svenska' },
+]
+const pathWithoutLocale = Astro.url.pathname
+  .replace(/^\/sv\//, '/')
+  .replace(/^\/sv$/, '/')
+
+const items = locales.map((loc) => ({
+  code: loc.code,
+  label: loc.label,
+  href: getRelativeLocaleUrl(loc.code, pathWithoutLocale.replace(/^\//, '')),
+  active: loc.code === currentLocale,
+}))
+---
+
+<LanguageSwitcherIsland client:only="preact" items={items} />

@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "blog": "Blogg",
+    "about": "Om"
+  },
+  "hero": {
+    "title": "Ingenjör & Utvecklare",
+    "paragraph1": "Jag brinner för matematik, fysik & fotboll. När jag inte är uppkopplad gillar jag att ~~äta,~~ laga mat, spela spel eller lyssna på poddar.",
+    "paragraph2": "Just nu har jag ett stort intresse för DevOps. Kolla in mitt [Kubernetes HomeLab ↗](https://github.com/druwan/homelab)"
+  }
+}

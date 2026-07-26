@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro'
+import Nav from '../Nav.astro'
+import Footer from '../Footer.astro'
+import { getPost } from '../../lib/blog'
+import { marked } from 'marked'
+import hljs from 'highlight.js'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
+interface Props {
+  locale: string
+  slug: string
+}
+const { locale, slug } = Astro.props
+
+interface Post {
+  title: string
+  date: string
+  content: string
+}
+
+let post: Post
+
+try {
+  const result = await getPost(slug)
+  if (!result) throw new Error('not found')
+  post = result
+} catch {
+  return Astro.redirect(getRelativeLocaleUrl(locale, 'blog'))
+}
+
+const renderer = new marked.Renderer()
+renderer.code = ({ text, lang }) => {
+  const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext'
+  const highlighted = hljs.highlight(text, { language }).value
+  return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`
+}
+marked.use({ renderer })
+const html = marked.parse(post.content) as string
+---
+
+<Base title={`${post.title} — Christopher Vestman`}>
+  <Nav slot="nav" locale={locale} />
+  <article
+    class="prose prose-neutral dark:prose-invert max-w-none py-8"
+    set:html={html}
+  />
+  <Footer slot="footer" />
+</Base>

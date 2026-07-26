@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "blog": "Blog",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Engineer & Developer",
+    "paragraph1": "I have a passion for math, physics & football. When not online, I like to ~~eat~~, cook, game or listening to podcasts.",
+    "paragraph2": "Right now I have a keen interest in DevOps. Check out my [Kubernetes HomeLab ↗](https://github.com/druwan/homelab)"
+  }
+}
