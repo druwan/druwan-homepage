@@ -3,42 +3,42 @@ import Base from '../../layouts/Base.astro'
 import Nav from '../Nav.astro'
 import Footer from '../Footer.astro'
 import ProjectsCarousel from '../ProjectsCarousel.astro'
+import ThreeDimensions from '../ThreeDimensions.astro'
+import CurrentlyExploring from '../CurrentlyExploring.astro'
+import SriLanka from '../SriLanka.astro'
 import { getDictionary } from '../../i18n'
-import { marked } from 'marked'
 
 interface Props {
   locale: string
 }
 const { locale } = Astro.props
 const t = getDictionary(locale)
-
-const paragraph1 = marked.parseInline(t.hero.paragraph1) as string
-const paragraph2 = marked.parseInline(t.hero.paragraph2) as string
 ---
 
 <Base>
   <Nav slot="nav" locale={locale} />
   <section class="w-full flex flex-col flex-1 gap-12 py-8">
     <div class="w-full">
-      <h1
-        class="text-xl font-medium tracking-tight text-night dark:text-anti-flash-white"
+      <p
+        class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
       >
-        {t.hero.title}
+        {t.hero.eyebrow}
+      </p>
+      <h1
+        class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug"
+      >
+        {t.hero.tagline}
       </h1>
-      <p
-        class="text-night dark:text-anti-flash-white leading-relaxed [&_s]:text-burgundy [&_s]:dark:text-ochre"
-        set:html={paragraph1}
-      />
-      <p
-        class="text-night dark:text-anti-flash-white leading-relaxed [&_a]:text-burgundy [&_a]:dark:text-ochre [&_a]:inline-flex [&_a]:items-center [&_a]:gap-1"
-        set:html={paragraph2}
-      />
-      <hr class="my-3 w-full h-px border-0 bg-burgundy dark:bg-ochre" />
+      <hr class="my-6 w-full h-px border-0 bg-burgundy/30 dark:bg-ochre/40" />
     </div>
+
+    <ThreeDimensions locale={locale} />
 
     <div class="w-full">
       <ProjectsCarousel />
     </div>
+    <CurrentlyExploring locale={locale} />
+    <SriLanka locale={locale} />
   </section>
   <Footer slot="footer" />
 </Base>
