@@ -7,7 +7,6 @@
   --color-night: #0d0d0d;
   --color-anti-flash-white: #f4f4f6;
   --color-ochre: #df7500;
-  --color-carribean-current: #005f56;
   --color-burgundy: #941e32;
 
   --font-sans: 'Noto Sans Sinhala', sans-serif;
@@ -33,11 +32,11 @@
 @layer utilities {
   .dot-inactive {
     background: transparent;
-    border: 1.5px solid #941e32;
+    border: 1.5px solid var(--color-burgundy);
   }
   .dot-active {
-    background: #941e32;
-    border: 1.5px solid #941e32;
+    background: var(--color-burgundy);
+    border: 1.5px solid var(--color-burgundy);
   }
 
   .prose :where(p):not(:where([class~='not-prose'] *)) {
@@ -60,7 +59,7 @@
     overflow-x: auto;
     max-width: 100%;
     -webkit-overflow-scrolling: touch;
-    color: #d4d4d4;
+    color: var(--color-anti-flash-white);
     padding: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -84,9 +83,9 @@
 }
 
 .dark .dot-inactive {
-  border-color: #df7500;
+  border-color: var(--color-ochre);
 }
 .dark .dot-active {
-  background: #df7500;
-  border-color: #df7500;
+  background: var(--color-ochre);
+  border-color: var(--color-ochre);
 }
