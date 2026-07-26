@@ -12,6 +12,7 @@ const { locale } = Astro.props
 const t = getDictionary(locale)
 const homeUrl = getRelativeLocaleUrl(locale, '')
 const blogUrl = getRelativeLocaleUrl(locale, 'blog')
+const aboutUrl = getRelativeLocaleUrl(locale, 'about')
 ---
 
 <nav class="w-full flex items-center justify-between gap-3">
@@ -31,9 +32,10 @@ const blogUrl = getRelativeLocaleUrl(locale, 'blog')
       <MobileNav client:only="preact" locale={locale} />
     </div>
     <div
-      class="hidden md:flex items-center text-xl text-burgundy dark:text-ochre mr-2"
+      class="hidden md:flex items-center text-xl text-burgundy dark:text-ochre mr-2 gap-3"
     >
       <a href={blogUrl} class="flex items-center">{t.nav.blog}</a>
+      <a href={aboutUrl} class="flex items-center">{t.nav.about}</a>
     </div>
   </div>
 </nav>

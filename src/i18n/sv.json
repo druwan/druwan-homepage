@@ -4,8 +4,49 @@
     "about": "Om"
   },
   "hero": {
-    "title": "Ingenjör & Utvecklare",
-    "paragraph1": "Jag brinner för matematik, fysik & fotboll. När jag inte är uppkopplad gillar jag att ~~äta,~~ laga mat, spela spel eller lyssna på poddar.",
-    "paragraph2": "Just nu har jag ett stort intresse för DevOps. Kolla in mitt [Kubernetes HomeLab ↗](https://github.com/druwan/homelab)"
+    "eyebrow": "Stockholm, Sverige",
+    "tagline": "Ingenjör inom rymdteknik. Kodar på fritiden. Byggare av naturen."
+  },
+  "dimensions": {
+    "engineer": {
+      "title": "Ingenjör",
+      "body": "Civilingenjör i rymdteknik med inriktning mot flyg. Arbetar för närvarande som systemingenjör inom övervakning."
+    },
+    "developer": {
+      "title": "Utvecklare",
+      "body": "Bygger mjukvara, experimenterar med DevOps och Kubernetes, driver mitt eget homelab på fritiden, tillämpar GitOps-principer."
+    },
+    "builder": {
+      "title": "Byggare",
+      "body": "Skapar produkter och verktyg — bygger just nu ett företag i Sri Lanka vid sidan av mitt mjukvaruarbete."
+    }
+  },
+  "exploring": {
+    "title": "Utforskar just nu",
+    "body": "Mitt homelab kör ett Kubernetes-kluster som hanteras deklarativt genom GitOps — infrastructure as code tillämpat på min egen hårdvara. Det är här jag testar idéer innan de når produktion någon annanstans.",
+    "link": "Kubernetes HomeLab"
+  },
+  "sriLanka": {
+    "title": "Sri Lanka",
+    "body": "Ett nytt företag med rötter i både Sri Lanka och Sverige, i sin linda. Mer information i takt med att det tar form."
+  },
+  "about": {
+    "title": "Om",
+    "teaser": "Utanför ingenjörskonst och kod följer jag fotboll, spelar spel, lagar mat och lyssnar på för många poddar. Jag lär mig också sinhala — sakta.",
+    "paragraph2": "Jag studerade rymdteknik för att jag ville förstå system vid deras gränser — och jag har tagit med mig den instinkten i allt sedan dess: hur jag bygger mjukvara, hur jag driver mitt homelab, hur jag närmar mig ett nytt företag.",
+    "readMore": "Läs mer"
+  },
+  "blog": {
+    "title": "Blogg",
+    "teaser": "Anteckningar från mitt liv — mest för att följa mina framsteg i sinhala, och enstaka infrastrukturinlägg.",
+    "allPosts": "Alla inlägg"
+  },
+  "projects": {
+    "title": "Projekt",
+    "code": "Källkod",
+    "live": "Live"
+  },
+  "footer": {
+    "copyright": "Christopher Vestman"
   }
 }

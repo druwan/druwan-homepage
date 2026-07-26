@@ -10,6 +10,7 @@ export default function MobileNav({ locale }: Props) {
   const [open, setOpen] = useState(false)
   const homeUrl = getRelativeLocaleUrl(locale, '')
   const blogUrl = getRelativeLocaleUrl(locale, 'blog')
+  const aboutUrl = getRelativeLocaleUrl(locale, 'about')
 
   return (
     <div>
@@ -39,6 +40,9 @@ export default function MobileNav({ locale }: Props) {
             </li>
             <li>
               <a href={blogUrl} onClick={() => setOpen(false)}>blog</a>
+            </li>
+            <li>
+              <a href={aboutUrl} onClick={() => setOpen(false)}>about</a>
             </li>
           </ul>
         </div>

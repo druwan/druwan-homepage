@@ -1,0 +1,58 @@
+---
+import { getDictionary } from '../i18n'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { listPosts } from '../lib/blog'
+
+interface Props {
+  locale: string
+}
+const { locale } = Astro.props
+const t = getDictionary(locale)
+const blogUrl = getRelativeLocaleUrl(locale, 'blog')
+
+let posts: Awaited<ReturnType<typeof listPosts>> = []
+try {
+  posts = (await listPosts()).slice(0, 2)
+} catch {
+  posts = []
+}
+---
+
+<div class="w-full flex flex-col sm:flex-row gap-3 sm:gap-6">
+  <div class="flex items-center gap-4 sm:contents">
+    <div class="w-0.5 h-8 sm:h-11 bg-burgundy dark:bg-ochre shrink-0 sm:mt-0.5">
+    </div>
+    <h3
+      class="text-lg sm:text-xl font-medium tracking-tight text-night dark:text-anti-flash-white sm:min-w-[130px] sm:shrink-0"
+    >
+      {t.blog.title}
+    </h3>
+  </div>
+  <div class="sm:pt-0.5 flex-1">
+    <p
+      class="text-sm text-night/60 dark:text-anti-flash-white/50 leading-relaxed mb-3"
+    >
+      {t.blog.teaser}
+    </p>
+    {
+      posts.length > 0 && (
+        <div class="flex flex-col gap-1 mb-3">
+          {posts.map((post) => (
+            <a
+              href={getRelativeLocaleUrl(locale, `blog/${post.slug}`)}
+              class="text-sm text-night dark:text-anti-flash-white hover:text-burgundy dark:hover:text-ochre transition-colors truncate"
+            >
+              {post.title}
+            </a>
+          ))}
+        </div>
+      )
+    }
+    <a
+      href={blogUrl}
+      class="inline-flex items-center gap-1 text-sm text-burgundy dark:text-ochre"
+    >
+      {t.blog.allPosts} →
+    </a>
+  </div>
+</div>
