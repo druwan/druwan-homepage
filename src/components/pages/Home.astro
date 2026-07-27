@@ -82,9 +82,7 @@ const exploreItems = [
 <Base locale={locale}>
   <Nav slot="nav" locale={locale} />
   <section class="w-full flex flex-col flex-1 py-8 gap-8">
-    <div
-      class="w-full flex flex-col-reverse sm:flex-row sm:items-center gap-6 sm:gap-10"
-    >
+    <div class="w-full flex sm:items-center gap-6 sm:gap-10">
       <div class="flex-1">
         <p
           class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
@@ -99,7 +97,7 @@ const exploreItems = [
       </div>
 
       <div
-        class="relative w-full max-w-[220px] sm:w-[150px] sm:max-w-none h-[180px] rounded-md overflow-hidden shrink-0 mx-auto sm:mx-0"
+        class="hidden sm:block relative w-[150px] h-[180px] rounded-md overflow-hidden shrink-0"
       >
         <img
           src="/images/hero-photo.jpg"
