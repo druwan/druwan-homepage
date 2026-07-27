@@ -1,12 +1,26 @@
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import { Menu, X } from 'lucide-preact'
-import ThemeToggle from './ThemeToggle'
+import { getRelativeLocaleUrl } from 'astro:i18n'
 
-export default function MobileNav() {
+interface Props {
+  locale: string
+}
+
+export default function MobileNav({ locale }: Props) {
   const [open, setOpen] = useState(false)
+  const homeUrl = getRelativeLocaleUrl(locale, '')
+  const blogUrl = getRelativeLocaleUrl(locale, 'blog')
+  const aboutUrl = getRelativeLocaleUrl(locale, 'about')
+
+  useEffect(() => {
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', handleEscape)
+  }, [])
 
   return (
-    <div class="md:hidden">
+    <div>
       <button
         onClick={() => setOpen(!open)}
         class="flex items-center justify-center w-10 h-10 text-burgundy dark:text-ochre"
@@ -16,11 +30,9 @@ export default function MobileNav() {
       </button>
 
       {open && (
-        <div class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6">
+        <div class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6" role="dialog" aria-modal="true" aria-label="Menu">
           <div class="flex items-center justify-between mb-8">
-            <span class="text-xl font-medium text-burgundy dark:text-ochre">
-              Menu
-            </span>
+            <span class="text-xl font-medium text-burgundy dark:text-ochre">Menu</span>
             <button
               onClick={() => setOpen(false)}
               class="flex items-center justify-center w-10 h-10 text-burgundy dark:text-ochre"
@@ -31,17 +43,13 @@ export default function MobileNav() {
           </div>
           <ul class="space-y-6 text-lg text-burgundy dark:text-ochre">
             <li>
-              <a href="/" onClick={() => setOpen(false)}>
-                home
-              </a>
+              <a href={homeUrl} onClick={() => setOpen(false)}>home</a>
             </li>
             <li>
-              <a href="/blog" onClick={() => setOpen(false)}>
-                blog
-              </a>
+              <a href={blogUrl} onClick={() => setOpen(false)}>blog</a>
             </li>
             <li>
-              <ThemeToggle />
+              <a href={aboutUrl} onClick={() => setOpen(false)}>about</a>
             </li>
           </ul>
         </div>

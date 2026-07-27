@@ -12,23 +12,30 @@ const { locale } = Astro.props
 const t = getDictionary(locale)
 const homeUrl = getRelativeLocaleUrl(locale, '')
 const blogUrl = getRelativeLocaleUrl(locale, 'blog')
+const aboutUrl = getRelativeLocaleUrl(locale, 'about')
 ---
 
-<nav class="w-full flex items-center justify-between">
+<nav class="w-full flex items-center justify-between gap-3">
   <a
     href={homeUrl}
-    class="text-3xl font-medium tracking-tight text-burgundy dark:text-ochre"
+    class="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-burgundy
+  dark:text-ochre truncate"
   >
     Christopher Vestman
   </a>
 
-  <MobileNav client:only="preact" />
-
-  <div
-    class="hidden md:flex items-center gap-4 text-xl text-burgundy dark:text-ochre"
-  >
-    <a href={blogUrl} class="flex items-center">{t.nav.blog}</a>
+  <div class="flex items-center gap-1 shrink-0">
     <LanguageSwitcher />
     <ThemeToggle client:only="preact" />
+
+    <div class="md:hidden">
+      <MobileNav client:only="preact" locale={locale} />
+    </div>
+    <div
+      class="hidden md:flex items-center text-xl text-burgundy dark:text-ochre mr-2 gap-3"
+    >
+      <a href={blogUrl} class="flex items-center">{t.nav.blog}</a>
+      <a href={aboutUrl} class="flex items-center">{t.nav.about}</a>
+    </div>
   </div>
 </nav>

@@ -39,7 +39,7 @@ marked.use({ renderer })
 const html = marked.parse(post.content) as string
 ---
 
-<Base title={`${post.title} — Christopher Vestman`}>
+<Base locale={locale} title={`${post.title} — Christopher Vestman`}>
   <Nav slot="nav" locale={locale} />
   <article
     class="prose prose-neutral dark:prose-invert max-w-none py-8"
