@@ -27,6 +27,17 @@
   body {
     @apply font-sans bg-anti-flash-white dark:bg-night text-night dark:text-anti-flash-white;
   }
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-burgundy);
+    outline-offset: 2px;
+  }
+  .dark a:focus-visible,
+  .dark button:focus-visible,
+  .dark select:focus-visible {
+    outline-color: var(--color-burgundy);
+  }
 }
 
 @layer utilities {
@@ -86,6 +97,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+  }
 }
 
 .dark .dot-inactive {

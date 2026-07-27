@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import { Menu, X } from 'lucide-preact'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 
@@ -12,6 +12,13 @@ export default function MobileNav({ locale }: Props) {
   const blogUrl = getRelativeLocaleUrl(locale, 'blog')
   const aboutUrl = getRelativeLocaleUrl(locale, 'about')
 
+  useEffect(() => {
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', handleEscape)
+  }, [])
+
   return (
     <div>
       <button
@@ -23,7 +30,7 @@ export default function MobileNav({ locale }: Props) {
       </button>
 
       {open && (
-        <div class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6">
+        <div class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6" role="dialog" aria-modal="true" aria-label="Menu">
           <div class="flex items-center justify-between mb-8">
             <span class="text-xl font-medium text-burgundy dark:text-ochre">Menu</span>
             <button

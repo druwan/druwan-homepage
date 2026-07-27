@@ -33,13 +33,19 @@ export default function Tabs({ items }: Props) {
   const current = items[active]
   if (!current) return null
 
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === 'Escape') {
+      (document.activeElement as HTMLElement)?.blur()
+    }
+  }
+
   return (
-    <div class="w-full">
+    <div class="w-full" onKeyDown={handleKeyDown}>
       <div class="mb-6 border-b border-night/10 dark:border-anti-flash-white/10">
         {/* Mobile: dropdown */}
         <div class="relative sm:hidden">
           <select
-            class="w-full py-2 pr-8 text-sm bg-transparent text-burgundy dark:text-ochre font-medium border-none focus:outline-none focus:ring-0 appearance-none"
+            class="w-full py-2 pr-8 text-sm bg-transparent text-burgundy dark:text-ochre font-medium border-none appearance-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy dark:focus-visible:outline-ochre"
             value={active}
             onChange={(e) => setActive(Number((e.target as HTMLSelectElement).value))}
           >
@@ -62,6 +68,7 @@ export default function Tabs({ items }: Props) {
               <li key={item.id}>
                 <button
                   onClick={() => setActive(i)}
+                  aria-current={isActive ? 'true' : undefined}
                   class={`flex items-center gap-2 whitespace-nowrap px-3 py-2 text-sm transition-colors border-b-2 -mb-px ${isActive
                     ? 'border-burgundy dark:border-ochre text-burgundy dark:text-ochre font-medium'
                     : 'border-transparent text-night/50 dark:text-anti-flash-white/50 hover:text-night dark:hover:text-anti-flash-white'
@@ -117,7 +124,7 @@ export default function Tabs({ items }: Props) {
         )}
 
         {current.meta && (
-          <p class="text-xs text-night/40 dark:text-anti-flash-white/35 tracking-wide mt-3">
+          <p class="text-xs text-night/70 dark:text-anti-flash-white/70 tracking-wide mt-3">
             {current.meta}
           </p>
         )}

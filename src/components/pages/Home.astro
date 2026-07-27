@@ -82,17 +82,35 @@ const exploreItems = [
 <Base locale={locale}>
   <Nav slot="nav" locale={locale} />
   <section class="w-full flex flex-col flex-1 py-8 gap-8">
-    <div class="w-full">
-      <p
-        class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
+    <div
+      class="w-full flex flex-col-reverse sm:flex-row sm:items-center gap-6 sm:gap-10"
+    >
+      <div class="flex-1">
+        <p
+          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
+        >
+          {t.hero.eyebrow}
+        </p>
+        <h1
+          class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug"
+        >
+          {t.hero.tagline}
+        </h1>
+      </div>
+
+      <div
+        class="relative w-full max-w-[220px] sm:w-[150px] sm:max-w-none h-[180px] rounded-md overflow-hidden shrink-0 mx-auto sm:mx-0"
       >
-        {t.hero.eyebrow}
-      </p>
-      <h1
-        class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug"
-      >
-        {t.hero.tagline}
-      </h1>
+        <img
+          src="/images/hero-photo.jpg"
+          alt="Christopher Vestman"
+          class="w-full h-full object-cover grayscale contrast-125"
+        />
+        <div
+          class="absolute inset-0 bg-burgundy dark:bg-ochre mix-blend-multiply opacity-75"
+        >
+        </div>
+      </div>
     </div>
 
     <div
