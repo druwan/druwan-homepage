@@ -14,7 +14,7 @@ const t = getDictionary(locale)
 const posts = await listPosts()
 ---
 
-<Base title={`${t.nav.blog} — Christopher Vestman`}>
+<Base locale={locale} title={`${t.nav.blog} — Christopher Vestman`}>
   <Nav slot="nav" locale={locale} />
   <section class="w-full flex flex-col flex-1 py-8">
     <hr class="w-full mb-4 h-px border-0 bg-burgundy/30 dark:bg-ochre/40" />

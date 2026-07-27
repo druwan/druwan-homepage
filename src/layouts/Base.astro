@@ -5,19 +5,21 @@ interface Props {
   title?: string
   description?: string
   ogImage?: string
+  locale?: string
 }
 
 const {
-  title = 'Christopher Vestman',
+  title = 'Christopher Vestman - Aerospace engineer. Coder on the side. Builder by nature.',
   description = 'My Portfolio & Blog',
   ogImage = '/images/preview_v6.png',
+  locale = 'en',
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

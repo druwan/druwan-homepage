@@ -1,7 +1,7 @@
 ---
 import { getDictionary } from '../i18n'
 import { getProjects } from '../lib/projects'
-import ProjectsTabs from './ProjectsTabs'
+import Tabs from './Tabs'
 
 interface Props {
   locale: string
@@ -10,6 +10,28 @@ const { locale } = Astro.props
 const t = getDictionary(locale)
 
 const items = await getProjects()
+
+const tabItems = items.map((p) => ({
+  id: p.repo_url,
+  label: p.title,
+  title: p.title,
+  body: p.description,
+  media: { image: p.image_url, href: p.repo_url },
+  meta: p.stack.map((s) => s.name).join(' · '),
+  links: [
+    { label: t.projects.code, href: p.repo_url, icon: 'code' as const },
+    ...(p.live_url
+      ? [
+          {
+            label: t.projects.live,
+            href: p.live_url,
+            icon: 'external' as const,
+            external: true,
+          },
+        ]
+      : []),
+  ],
+}))
 ---
 
 <div class="w-full">
@@ -25,17 +47,5 @@ const items = await getProjects()
     )
   }
 
-  {
-    items.length > 0 && (
-      <ProjectsTabs
-        client:only="preact"
-        items={items}
-        labels={{
-          code: t.projects.code,
-          live: t.projects.live,
-          viewProject: t.projects.code,
-        }}
-      />
-    )
-  }
+  {items.length > 0 && <Tabs client:only="preact" items={tabItems} />}
 </div>

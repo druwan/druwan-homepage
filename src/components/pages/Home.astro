@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro'
 import Nav from '../Nav.astro'
 import Footer from '../Footer.astro'
 import ProjectsPanel from '../ProjectsPanel.astro'
-import ExploreTabs from '../ExploreTabs'
+import Tabs from '../Tabs'
 import { getDictionary } from '../../i18n'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { listPosts } from '../../lib/blog'
@@ -21,48 +21,67 @@ try {
   recentPosts = []
 }
 
-const tabItems = [
+const exploreItems = [
   {
     id: 'exploring',
+    label: t.exploring.title,
     icon: 'rocket' as const,
     title: t.exploring.title,
     body: t.exploring.body,
-    href: 'https://github.com/druwan/homelab',
-    linkLabel: t.exploring.link,
-    external: true,
+    links: [
+      {
+        label: t.exploring.link,
+        href: 'https://github.com/druwan/homelab',
+        icon: 'external' as const,
+        external: true,
+      },
+    ],
   },
   {
     id: 'sriLanka',
+    label: t.sriLanka.title,
     icon: 'globe' as const,
     title: t.sriLanka.title,
     body: t.sriLanka.body,
   },
   {
     id: 'about',
+    label: t.about.title,
     icon: 'user' as const,
     title: t.about.title,
     body: t.about.teaser,
-    href: getRelativeLocaleUrl(locale, 'about'),
-    linkLabel: t.about.readMore,
+    links: [
+      {
+        label: t.about.readMore,
+        href: getRelativeLocaleUrl(locale, 'about'),
+        icon: 'arrow' as const,
+      },
+    ],
   },
   {
     id: 'blog',
+    label: t.blog.title,
     icon: 'book' as const,
     title: t.blog.title,
     body: t.blog.teaser,
-    href: getRelativeLocaleUrl(locale, 'blog'),
-    linkLabel: t.blog.allPosts,
-    extra: recentPosts.map((post) => ({
+    extraLinks: recentPosts.map((post) => ({
       label: post.title,
       href: getRelativeLocaleUrl(locale, `blog/${post.slug}`),
     })),
+    links: [
+      {
+        label: t.blog.allPosts,
+        href: getRelativeLocaleUrl(locale, 'blog'),
+        icon: 'arrow' as const,
+      },
+    ],
   },
 ]
 ---
 
-<Base>
+<Base locale={locale}>
   <Nav slot="nav" locale={locale} />
-  <section class="w-full flex flex-col flex-1 py-8">
+  <section class="w-full flex flex-col flex-1 py-8 gap-8">
     <div class="w-full">
       <p
         class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
@@ -70,7 +89,7 @@ const tabItems = [
         {t.hero.eyebrow}
       </p>
       <h1
-        class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug max-w-2xl"
+        class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug"
       >
         {t.hero.tagline}
       </h1>
@@ -121,16 +140,12 @@ const tabItems = [
       </div>
     </div>
 
-    <div
-      class="w-full py-6 border-t border-night/10 dark:border-anti-flash-white/10"
-    >
-      <ProjectsPanel locale={locale} />
-    </div>
+    <ProjectsPanel locale={locale} />
 
     <div
-      class="w-full py-6 border-t border-night/10 dark:border-anti-flash-white/10"
+      class="w-full pt-6 border-t border-night/10 dark:border-anti-flash-white/10"
     >
-      <ExploreTabs client:only="preact" items={tabItems} />
+      <Tabs client:only="preact" items={exploreItems} />
     </div>
   </section>
   <Footer slot="footer" />

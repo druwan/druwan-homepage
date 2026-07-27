@@ -11,7 +11,7 @@ const { locale } = Astro.props
 const t = getDictionary(locale)
 ---
 
-<Base title={`${t.about.title} — Christopher Vestman`}>
+<Base locale={locale} title={`${t.about.title} — Christopher Vestman`}>
   <Nav slot="nav" locale={locale} />
   <section class="w-full flex flex-col flex-1 py-8 gap-6">
     <h1
