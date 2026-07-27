@@ -6,7 +6,7 @@ import ProjectsPanel from '../ProjectsPanel.astro'
 import Tabs from '../Tabs'
 import { getDictionary } from '../../i18n'
 import { getRelativeLocaleUrl } from 'astro:i18n'
-import { listPosts } from '../../lib/blog'
+import { listPosts, type BlogPost } from '../../lib/blog'
 
 interface Props {
   locale: string
@@ -14,7 +14,7 @@ interface Props {
 const { locale } = Astro.props
 const t = getDictionary(locale)
 
-let recentPosts: Awaited<ReturnType<typeof listPosts>> = []
+let recentPosts: BlogPost[]
 try {
   recentPosts = (await listPosts()).slice(0, 2)
 } catch {
