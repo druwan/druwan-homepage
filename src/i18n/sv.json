@@ -44,7 +44,7 @@
   "projects": {
     "title": "Projekt",
     "code": "Källkod",
-    "live": "Live"
+    "live": "Demo"
   },
   "footer": {
     "copyright": "Christopher Vestman"

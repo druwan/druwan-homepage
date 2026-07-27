@@ -22,15 +22,15 @@ export default function ProjectsTabs({ items, labels }: Props) {
   if (!current) return null
 
   return (
-    <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 w-full">
-      <ul class="flex sm:flex-col gap-1 overflow-x-auto sm:overflow-visible sm:min-w-[160px] shrink-0">
+    <div class="w-full">
+      <ul class="flex gap-1 overflow-x-auto border-b border-night/10 dark:border-anti-flash-white/10 mb-6">
         {items.map((item, i) => {
           const isActive = i === active
           return (
             <li key={item.title}>
               <button
                 onClick={() => setActive(i)}
-                class={`block w-full text-left px-3 py-2 text-sm whitespace-nowrap transition-colors border-l-2 ${isActive
+                class={`block whitespace-nowrap px-3 py-2 text-sm transition-colors border-b-2 -mb-px ${isActive
                   ? 'border-burgundy dark:border-ochre text-burgundy dark:text-ochre font-medium'
                   : 'border-transparent text-night/50 dark:text-anti-flash-white/50 hover:text-night dark:hover:text-anti-flash-white'
                   }`}
@@ -42,12 +42,11 @@ export default function ProjectsTabs({ items, labels }: Props) {
         })}
       </ul>
 
-      <div class="flex-1">
+      <div>
         <a
-
           href={current.repo_url}
           class="relative flex flex-col justify-end w-full overflow-hidden rounded-xl"
-          style="aspect-ratio: 16/9;"
+          style="aspect-ratio: 21/9; max-height: 340px;"
         >
           <img
             src={current.image_url}

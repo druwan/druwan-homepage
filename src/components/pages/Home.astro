@@ -4,7 +4,6 @@ import Nav from '../Nav.astro'
 import Footer from '../Footer.astro'
 import ProjectsPanel from '../ProjectsPanel.astro'
 import ExploreTabs from '../ExploreTabs'
-import Section from '../Section.astro'
 import { getDictionary } from '../../i18n'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { listPosts } from '../../lib/blog'
@@ -71,24 +70,56 @@ const tabItems = [
         {t.hero.eyebrow}
       </p>
       <h1
-        class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug"
+        class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug max-w-2xl"
       >
         {t.hero.tagline}
       </h1>
     </div>
 
-    <Section
-      title={t.dimensions.engineer.title}
-      body={t.dimensions.engineer.body}
-    />
-    <Section
-      title={t.dimensions.developer.title}
-      body={t.dimensions.developer.body}
-    />
-    <Section
-      title={t.dimensions.builder.title}
-      body={t.dimensions.builder.body}
-    />
+    <div
+      class="w-full grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-6 py-6 border-t border-b border-night/10 dark:border-anti-flash-white/10"
+    >
+      <div>
+        <h3
+          class="text-lg font-medium tracking-tight text-night dark:text-anti-flash-white mb-2"
+        >
+          {t.dimensions.engineer.title}
+        </h3>
+        <p
+          class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed"
+        >
+          {t.dimensions.engineer.body}
+        </p>
+      </div>
+      <div
+        class="sm:border-l sm:border-night/10 sm:dark:border-anti-flash-white/10 sm:pl-8"
+      >
+        <h3
+          class="text-lg font-medium tracking-tight text-night dark:text-anti-flash-white mb-2"
+        >
+          {t.dimensions.developer.title}
+        </h3>
+        <p
+          class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed"
+        >
+          {t.dimensions.developer.body}
+        </p>
+      </div>
+      <div
+        class="sm:border-l sm:border-night/10 sm:dark:border-anti-flash-white/10 sm:pl-8"
+      >
+        <h3
+          class="text-lg font-medium tracking-tight text-night dark:text-anti-flash-white mb-2"
+        >
+          {t.dimensions.builder.title}
+        </h3>
+        <p
+          class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed"
+        >
+          {t.dimensions.builder.body}
+        </p>
+      </div>
+    </div>
 
     <div
       class="w-full py-6 border-t border-night/10 dark:border-anti-flash-white/10"

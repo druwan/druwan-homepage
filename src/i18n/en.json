@@ -43,8 +43,8 @@
   },
   "projects": {
     "title": "Projects",
-    "code": "Code",
-    "live": "Live"
+    "code": "Source Code",
+    "live": "Demo"
   },
   "footer": {
     "copyright": "Christopher Vestman"
