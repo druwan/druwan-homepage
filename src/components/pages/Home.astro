@@ -2,24 +2,68 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../Nav.astro'
 import Footer from '../Footer.astro'
-import ProjectsGrid from '../ProjectsGrid.astro'
-import ThreeDimensions from '../ThreeDimensions.astro'
-import CurrentlyExploring from '../CurrentlyExploring.astro'
-import SriLanka from '../SriLanka.astro'
-import AboutTeaser from '../AboutTeaser.astro'
-import BlogTeaser from '../BlogTeaser.astro'
+import ProjectsPanel from '../ProjectsPanel.astro'
+import ExploreTabs from '../ExploreTabs'
+import Section from '../Section.astro'
 import { getDictionary } from '../../i18n'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { listPosts } from '../../lib/blog'
 
 interface Props {
   locale: string
 }
 const { locale } = Astro.props
 const t = getDictionary(locale)
+
+let recentPosts: Awaited<ReturnType<typeof listPosts>> = []
+try {
+  recentPosts = (await listPosts()).slice(0, 2)
+} catch {
+  recentPosts = []
+}
+
+const tabItems = [
+  {
+    id: 'exploring',
+    icon: 'rocket' as const,
+    title: t.exploring.title,
+    body: t.exploring.body,
+    href: 'https://github.com/druwan/homelab',
+    linkLabel: t.exploring.link,
+    external: true,
+  },
+  {
+    id: 'sriLanka',
+    icon: 'globe' as const,
+    title: t.sriLanka.title,
+    body: t.sriLanka.body,
+  },
+  {
+    id: 'about',
+    icon: 'user' as const,
+    title: t.about.title,
+    body: t.about.teaser,
+    href: getRelativeLocaleUrl(locale, 'about'),
+    linkLabel: t.about.readMore,
+  },
+  {
+    id: 'blog',
+    icon: 'book' as const,
+    title: t.blog.title,
+    body: t.blog.teaser,
+    href: getRelativeLocaleUrl(locale, 'blog'),
+    linkLabel: t.blog.allPosts,
+    extra: recentPosts.map((post) => ({
+      label: post.title,
+      href: getRelativeLocaleUrl(locale, `blog/${post.slug}`),
+    })),
+  },
+]
 ---
 
 <Base>
   <Nav slot="nav" locale={locale} />
-  <section class="w-full flex flex-col flex-1 gap-12 py-8">
+  <section class="w-full flex flex-col flex-1 py-8">
     <div class="w-full">
       <p
         class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
@@ -31,19 +75,32 @@ const t = getDictionary(locale)
       >
         {t.hero.tagline}
       </h1>
-      <hr class="my-6 w-full h-px border-0 bg-burgundy/30 dark:bg-ochre/40" />
     </div>
 
-    <ThreeDimensions locale={locale} />
+    <Section
+      title={t.dimensions.engineer.title}
+      body={t.dimensions.engineer.body}
+    />
+    <Section
+      title={t.dimensions.developer.title}
+      body={t.dimensions.developer.body}
+    />
+    <Section
+      title={t.dimensions.builder.title}
+      body={t.dimensions.builder.body}
+    />
 
-    <div class="w-full">
-      <!-- <ProjectsCarousel /> -->
-      <ProjectsGrid locale={locale} />
+    <div
+      class="w-full py-6 border-t border-night/10 dark:border-anti-flash-white/10"
+    >
+      <ProjectsPanel locale={locale} />
     </div>
-    <CurrentlyExploring locale={locale} />
-    <SriLanka locale={locale} />
-    <AboutTeaser locale={locale} />
-    <BlogTeaser locale={locale} />
+
+    <div
+      class="w-full py-6 border-t border-night/10 dark:border-anti-flash-white/10"
+    >
+      <ExploreTabs client:only="preact" items={tabItems} />
+    </div>
   </section>
   <Footer slot="footer" />
 </Base>

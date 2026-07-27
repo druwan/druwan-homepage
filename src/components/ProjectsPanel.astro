@@ -1,0 +1,41 @@
+---
+import { getDictionary } from '../i18n'
+import { getProjects } from '../lib/projects'
+import ProjectsTabs from './ProjectsTabs'
+
+interface Props {
+  locale: string
+}
+const { locale } = Astro.props
+const t = getDictionary(locale)
+
+const items = await getProjects()
+---
+
+<div class="w-full">
+  <h3
+    class="text-lg sm:text-xl font-medium tracking-tight text-night dark:text-anti-flash-white mb-6"
+  >
+    {t.projects.title}
+  </h3>
+
+  {
+    items.length === 0 && (
+      <p class="text-sm text-night/50 dark:text-anti-flash-white/50">—</p>
+    )
+  }
+
+  {
+    items.length > 0 && (
+      <ProjectsTabs
+        client:only="preact"
+        items={items}
+        labels={{
+          code: t.projects.code,
+          live: t.projects.live,
+          viewProject: t.projects.code,
+        }}
+      />
+    )
+  }
+</div>
