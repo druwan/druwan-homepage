@@ -2,8 +2,8 @@
 import Base from '../../layouts/Base.astro'
 import Nav from '../Nav.astro'
 import Footer from '../Footer.astro'
-import ProjectsPanel from '../ProjectsPanel.astro'
-import Tabs from '../Tabs'
+import ProjectsGallery from '../ProjectsGallery.astro'
+import Chapter from '../Chapter.astro'
 import { getDictionary } from '../../i18n'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { listPosts, type BlogPost } from '../../lib/blog'
@@ -21,148 +21,161 @@ try {
   recentPosts = []
 }
 
-const exploreItems = [
-  {
-    id: 'exploring',
-    label: t.exploring.title,
-    icon: 'rocket' as const,
-    title: t.exploring.title,
-    body: t.exploring.body,
-    links: [
-      {
-        label: t.exploring.link,
-        href: 'https://github.com/druwan/homelab',
-        icon: 'external' as const,
-        external: true,
-      },
-    ],
-  },
-  {
-    id: 'sriLanka',
-    label: t.sriLanka.title,
-    icon: 'globe' as const,
-    title: t.sriLanka.title,
-    body: t.sriLanka.body,
-  },
-  {
-    id: 'about',
-    label: t.about.title,
-    icon: 'user' as const,
-    title: t.about.title,
-    body: t.about.teaser,
-    links: [
-      {
-        label: t.about.readMore,
-        href: getRelativeLocaleUrl(locale, 'about'),
-        icon: 'arrow' as const,
-      },
-    ],
-  },
-  {
-    id: 'blog',
-    label: t.blog.title,
-    icon: 'book' as const,
-    title: t.blog.title,
-    body: t.blog.teaser,
-    extraLinks: recentPosts.map((post) => ({
-      label: post.title,
-      href: getRelativeLocaleUrl(locale, `blog/${post.slug}`),
-    })),
-    links: [
-      {
-        label: t.blog.allPosts,
-        href: getRelativeLocaleUrl(locale, 'blog'),
-        icon: 'arrow' as const,
-      },
-    ],
-  },
-]
+const ledeFirst = t.hero.lede.charAt(0)
+const ledeRest = t.hero.lede.slice(1)
 ---
 
 <Base locale={locale}>
   <Nav slot="nav" locale={locale} />
-  <section class="w-full flex flex-col flex-1 py-8 gap-8">
-    <div class="w-full flex sm:items-center gap-6 sm:gap-10">
-      <div class="flex-1">
-        <p
-          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-2"
-        >
-          {t.hero.eyebrow}
-        </p>
-        <h1
-          class="text-2xl sm:text-3xl font-medium tracking-tight text-night dark:text-anti-flash-white leading-snug"
-        >
-          {t.hero.tagline}
-        </h1>
-      </div>
-
-      <div
-        class="hidden sm:block relative w-[150px] h-[180px] rounded-md overflow-hidden shrink-0"
-      >
-        <img
-          src="/images/hero-photo.jpg"
-          alt="Christopher Vestman"
-          class="w-full h-full object-cover grayscale contrast-125"
-        />
-        <div
-          class="absolute inset-0 bg-burgundy dark:bg-ochre mix-blend-multiply opacity-75"
-        >
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="w-full grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-6 py-6 border-t border-b border-night/10 dark:border-anti-flash-white/10"
+  <article class="w-full flex-1 py-8 max-w-3xl mx-auto">
+    <p
+      class="text-xs uppercase tracking-widest text-night/50 dark:text-anti-flash-white/50 mb-3"
     >
-      <div>
-        <h3
-          class="text-lg font-medium tracking-tight text-night dark:text-anti-flash-white mb-2"
+      {t.hero.eyebrow}
+    </p>
+    <h1
+      class="font-serif text-3xl sm:text-4xl text-night dark:text-anti-flash-white leading-tight mb-6"
+    >
+      {t.hero.tagline}
+    </h1>
+
+    <p
+      class="text-sm sm:text-[15px] text-night/80 dark:text-anti-flash-white/80 leading-loose"
+    >
+      <span
+        class="float-left font-serif text-5xl leading-[0.75] mr-2 mt-1 text-burgundy dark:text-ochre"
+        >{ledeFirst}</span
+      >{ledeRest}
+    </p>
+
+    <blockquote
+      class="font-serif italic text-lg sm:text-xl text-burgundy dark:text-ochre leading-snug my-6 pl-4 border-l-2 border-burgundy dark:border-ochre"
+    >
+      {t.hero.quote}
+    </blockquote>
+
+    <Chapter id="about" numeral="I" title={t.about.title}>
+      <p
+        class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed mb-3"
+      >
+        {t.about.teaser}
+      </p>
+      <p
+        class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed mb-3"
+      >
+        {t.about.paragraph2}
+      </p>
+      <a
+        href={getRelativeLocaleUrl(locale, 'about')}
+        class="text-sm text-burgundy dark:text-ochre"
+      >
+        {t.about.readMore} →
+      </a>
+    </Chapter>
+
+    <Chapter id="work" numeral="II" title={t.chapters.work}>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
         >
           {t.dimensions.engineer.title}
-        </h3>
+        </p>
         <p
-          class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed"
+          class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed"
         >
           {t.dimensions.engineer.body}
         </p>
       </div>
-      <div
-        class="sm:border-l sm:border-night/10 sm:dark:border-anti-flash-white/10 sm:pl-8"
-      >
-        <h3
-          class="text-lg font-medium tracking-tight text-night dark:text-anti-flash-white mb-2"
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
         >
           {t.dimensions.developer.title}
-        </h3>
+        </p>
         <p
-          class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed"
+          class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed"
         >
           {t.dimensions.developer.body}
         </p>
       </div>
-      <div
-        class="sm:border-l sm:border-night/10 sm:dark:border-anti-flash-white/10 sm:pl-8"
-      >
-        <h3
-          class="text-lg font-medium tracking-tight text-night dark:text-anti-flash-white mb-2"
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
         >
           {t.dimensions.builder.title}
-        </h3>
+        </p>
         <p
-          class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed"
+          class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed"
         >
           {t.dimensions.builder.body}
         </p>
       </div>
-    </div>
+    </Chapter>
 
-    <ProjectsPanel locale={locale} />
+    <Chapter id="now" numeral="III" title={t.chapters.now}>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.exploring.title}
+        </p>
+        <p
+          class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.exploring.body}
+        </p>
+        <a
+          href="https://github.com/druwan/homelab"
+          class="text-sm text-burgundy dark:text-ochre mt-1 inline-block"
+        >
+          {t.exploring.link} ↗
+        </a>
+      </div>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.sriLanka.title}
+        </p>
+        <p
+          class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.sriLanka.body}
+        </p>
+      </div>
+    </Chapter>
 
-    <div
-      class="w-full pt-6 border-t border-night/10 dark:border-anti-flash-white/10"
-    >
-      <Tabs client:only="preact" items={exploreItems} />
-    </div>
-  </section>
+    <Chapter id="selected-work" numeral="IV" title={t.chapters.selectedWork}>
+      <ProjectsGallery locale={locale} />
+    </Chapter>
+
+    <Chapter id="writing" numeral="V" title={t.chapters.writing}>
+      <p
+        class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed mb-3"
+      >
+        {t.blog.teaser}
+      </p>
+      {
+        recentPosts.length > 0 && (
+          <div class="flex flex-col gap-1 mb-3">
+            {recentPosts.map((post) => (
+              <a
+                href={getRelativeLocaleUrl(locale, `blog/${post.slug}`)}
+                class="text-sm text-night dark:text-anti-flash-white hover:text-burgundy dark:hover:text-ochre transition-colors"
+              >
+                {post.title}
+              </a>
+            ))}
+          </div>
+        )
+      }
+      <a
+        href={getRelativeLocaleUrl(locale, 'blog')}
+        class="text-sm text-burgundy dark:text-ochre"
+      >
+        {t.blog.allPosts} →
+      </a>
+    </Chapter>
+  </article>
   <Footer slot="footer" />
 </Base>

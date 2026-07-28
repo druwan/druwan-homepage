@@ -9,6 +9,7 @@ export interface Project {
   stack: { name: string; url: string }[]
   completed: boolean
   publish: boolean
+  featured: boolean
 }
 
 export async function getProjects(): Promise<Project[]> {

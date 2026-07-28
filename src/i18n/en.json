@@ -5,7 +5,15 @@
   },
   "hero": {
     "eyebrow": "Stockholm, Sweden",
-    "tagline": "Aerospace engineer. Coder on the side. Builder by nature."
+    "tagline": "Aerospace engineer. Coder on the side. Builder by nature.",
+    "lede": "I train as an engineer and think like one in everything I do. Space Engineering, Aerospace specialization, now working as a Systems Engineer within Surveillance. But the same instinct for understanding systems at their limits shows up everywhere else too — in the code I write after hours, in the homelab I maintain out of curiosity, in a new venture just taking shape.",
+    "quote": "I combine engineering, software, and curiosity to build things that solve real problems."
+  },
+  "chapters": {
+    "work": "The Work",
+    "now": "Now",
+    "selectedWork": "Selected Work",
+    "writing": "Writing"
   },
   "dimensions": {
     "engineer": {
@@ -43,6 +51,8 @@
   },
   "projects": {
     "title": "Projects",
+    "also": "Also",
+    "featured": "Featured",
     "code": "Source Code",
     "live": "Demo"
   },

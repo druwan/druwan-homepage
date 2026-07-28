@@ -36,7 +36,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Yaldevi:wght@200..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&family=Yaldevi:wght@200..700&display=swap"
     />
 
     <!-- Meta -->
@@ -67,11 +67,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     </script>
   </head>
   <body class="antialiased min-h-screen flex flex-col font-sans">
+    <header
+      class="sticky top-0 z-40 w-full bg-anti-flash-white/90 dark:bg-night/90 backdrop-blur border-b border-night/10 dark:border-anti-flash-white/10"
+    >
+      <div class="max-w-[1040px] mx-auto px-5 sm:px-6 md:px-8 lg:px-10 py-3">
+        <slot name="nav" />
+      </div>
+    </header>
     <div class="flex flex-col min-h-screen w-full items-center">
       <div
-        class="w-full max-w-[1040px] px-5 sm:px-6 md:px-8 lg:px-10 flex flex-col flex-1 pt-4 sm:pt-6"
+        class="w-full max-w-[1040px] px-5 sm:px-6 md:px-8 lg:px-10 flex flex-col flex-1 pt-6"
       >
-        <slot name="nav" />
         <main class="flex-1 flex flex-col">
           <slot />
         </main>

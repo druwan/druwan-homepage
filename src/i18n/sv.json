@@ -5,7 +5,15 @@
   },
   "hero": {
     "eyebrow": "Stockholm, Sverige",
-    "tagline": "Ingenjör inom rymdteknik. Kodar på fritiden. Byggare av naturen."
+    "lede": "Jag tränar som ingenjör och tänker som en i allt jag gör. Rymdteknik med inriktning mot flyg, och idag systemingenjör inom övervakning. Men samma instinkt för att förstå system vid deras gränser dyker upp överallt annars också — i koden jag skriver efter jobbet, i homelabbet jag underhåller av nyfikenhet, i ett nytt företag som just börjar ta form.",
+    "tagline": "Ingenjör inom rymdteknik. Kodar på fritiden. Byggare av naturen.",
+    "quote": "Jag kombinerar ingenjörskonst, mjukvara och nyfikenhet för att bygga saker som löser verkliga problem."
+  },
+  "chapters": {
+    "work": "Arbetet",
+    "now": "Nu",
+    "selectedWork": "Utvalda Projekt",
+    "writing": "Skrivet"
   },
   "dimensions": {
     "engineer": {
@@ -43,6 +51,8 @@
   },
   "projects": {
     "title": "Projekt",
+    "also": "Även",
+    "featured": "Utvalt",
     "code": "Källkod",
     "live": "Demo"
   },

@@ -1,22 +1,26 @@
-import { useEffect, useState } from 'preact/hooks'
+import { useState, useEffect } from 'preact/hooks'
 import { Menu, X } from 'lucide-preact'
-import { getRelativeLocaleUrl } from 'astro:i18n'
+
+interface Chapter {
+  id: string
+  label: string
+}
 
 interface Props {
   locale: string
+  homeUrl: string
+  chapters: Chapter[]
 }
 
-export default function MobileNav({ locale }: Props) {
+export default function MobileNav({ homeUrl, chapters }: Props) {
   const [open, setOpen] = useState(false)
-  const homeUrl = getRelativeLocaleUrl(locale, '')
-  const blogUrl = getRelativeLocaleUrl(locale, 'blog')
-  const aboutUrl = getRelativeLocaleUrl(locale, 'about')
 
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
       if (e.key === 'Escape') setOpen(false)
     }
     document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
   }, [])
 
   return (
@@ -25,6 +29,7 @@ export default function MobileNav({ locale }: Props) {
         onClick={() => setOpen(!open)}
         class="flex items-center justify-center w-10 h-10 text-burgundy dark:text-ochre"
         aria-label="Open menu"
+        aria-expanded={open}
       >
         <Menu size={24} />
       </button>
@@ -42,15 +47,13 @@ export default function MobileNav({ locale }: Props) {
             </button>
           </div>
           <ul class="space-y-6 text-lg text-burgundy dark:text-ochre">
-            <li>
-              <a href={homeUrl} onClick={() => setOpen(false)}>home</a>
-            </li>
-            <li>
-              <a href={blogUrl} onClick={() => setOpen(false)}>blog</a>
-            </li>
-            <li>
-              <a href={aboutUrl} onClick={() => setOpen(false)}>about</a>
-            </li>
+            {chapters.map((c) => (
+              <li key={c.id}>
+                <a href={`${homeUrl}#${c.id}`} onClick={() => setOpen(false)}>
+                  {c.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )}

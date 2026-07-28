@@ -9,8 +9,8 @@
   --color-ochre: #df7500;
   --color-burgundy: #941e32;
 
-  --font-sans: 'Noto Sans Sinhala', sans-serif;
-  --font-mono: 'Yaldevi', sans-serif;
+  --font-sans: 'Yaldevi', sans-serif;
+  --font-serif: 'Noto Serif', serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -36,7 +36,7 @@
   .dark a:focus-visible,
   .dark button:focus-visible,
   .dark select:focus-visible {
-    outline-color: var(--color-burgundy);
+    outline-color: var(--color-ochre);
   }
 }
 
