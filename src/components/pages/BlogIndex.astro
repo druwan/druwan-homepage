@@ -14,27 +14,44 @@ const t = getDictionary(locale)
 const posts = await listPosts()
 ---
 
-<Base locale={locale} title={`${t.nav.blog} — Christopher Vestman`}>
+<Base title={`${t.blog.title} — Christopher Vestman`} locale={locale}>
   <Nav slot="nav" locale={locale} />
-  <section class="w-full flex flex-col flex-1 py-8">
-    <hr class="w-full mb-4 h-px border-0 bg-burgundy/30 dark:bg-ochre/40" />
+  <article class="w-full flex-1 py-8 max-w-3xl mx-auto">
+    <h1
+      class="font-serif text-3xl sm:text-4xl text-night dark:text-anti-flash-white leading-tight ..."
+    >
+      {t.blog.title}
+    </h1>
+    <p
+      class="text-base text-night/70 dark:text-anti-flash-white/70 leading-relaxed mb-8"
+    >
+      {t.blog.teaser}
+    </p>
+
     <div>
+      {
+        posts.length === 0 && (
+          <p class="text-sm text-night/60 dark:text-anti-flash-white/60 py-6">
+            —
+          </p>
+        )
+      }
       {
         posts.map((post) => (
           <a
             href={getRelativeLocaleUrl(locale, `blog/${post.slug}`)}
-            class="flex justify-between items-baseline mb-2 gap-4 transition-opacity duration-200 hover:opacity-80"
+            class="flex justify-between items-baseline gap-4 py-3 group"
           >
-            <p class="text-base sm:text-lg text-burgundy dark:text-ochre truncate">
+            <h2 class="font-sans text-base text-burgundy dark:text-ochre group-hover:opacity-70 transition-opacity truncate">
               {post.title}
-            </p>
-            <p class="text-night/60 dark:text-anti-flash-white/60 tabular-nums text-sm shrink-0">
+            </h2>
+            <p class="text-sm text-night/50 dark:text-anti-flash-white/50 tabular-nums shrink-0">
               {new Date(Number(post.date)).toISOString().split('T')[0]}
             </p>
           </a>
         ))
       }
     </div>
-  </section>
+  </article>
   <Footer slot="footer" />
 </Base>

@@ -4,55 +4,54 @@
     "about": "Om"
   },
   "hero": {
-    "eyebrow": "Stockholm, Sverige",
-    "lede": "Jag tränar som ingenjör och tänker som en i allt jag gör. Rymdteknik med inriktning mot flyg, och idag systemingenjör inom övervakning. Men samma instinkt för att förstå system vid deras gränser dyker upp överallt annars också — i koden jag skriver efter jobbet, i homelabbet jag underhåller av nyfikenhet, i ett nytt företag som just börjar ta form.",
-    "tagline": "Ingenjör inom rymdteknik. Kodar på fritiden. Byggare av naturen.",
-    "quote": "Jag kombinerar ingenjörskonst, mjukvara och nyfikenhet för att bygga saker som löser verkliga problem."
+    "eyebrow": "Stockholm",
+    "lede": "Jag är ingenjör i grunden och tänker i system. Jag studerade rymdteknik med inriktning mot flygteknik och arbetar idag som systemingenjör inom övervakning. Det sättet att tänka genomsyrar den mjukvara jag utvecklar, mitt homelab och de företag jag bygger.",
+    "tagline": "Rymdingenjör. Kodar på fritiden. Bygger av nyfikenhet.",
+    "quote": "Jag kombinerar ingenjörskap, mjukvaruutveckling och nyfikenhet för att skapa lösningar på problem som faktiskt spelar roll."
   },
   "chapters": {
-    "work": "Arbetet",
-    "now": "Nu",
-    "selectedWork": "Utvalda Projekt",
-    "writing": "Skrivet"
+    "work": "Arbete",
+    "now": "Just nu",
+    "selectedWork": "Utvalda projekt"
   },
   "dimensions": {
     "engineer": {
       "title": "Ingenjör",
-      "body": "Civilingenjör i rymdteknik med inriktning mot flyg. Arbetar för närvarande som systemingenjör inom övervakning."
+      "body": "Civilingenjör i rymdteknik med inriktning mot flygteknik. Arbetar idag som systemingenjör inom övervakning."
     },
     "developer": {
       "title": "Utvecklare",
-      "body": "Bygger mjukvara, experimenterar med DevOps och Kubernetes, driver mitt eget homelab på fritiden, tillämpar GitOps-principer."
+      "body": "Utvecklar mjukvara, experimenterar med DevOps och Kubernetes, driver mitt eget homelab och arbetar enligt GitOps-principer."
     },
     "builder": {
-      "title": "Byggare",
-      "body": "Skapar produkter och verktyg — bygger just nu ett företag i Sri Lanka vid sidan av mitt mjukvaruarbete."
+      "title": "Entreprenör",
+      "body": "Bygger produkter och verktyg — just nu bygger jag ett företag mellan Sri Lanka och Sverige vid sidan av mitt arbete."
     }
   },
   "exploring": {
     "title": "Utforskar just nu",
-    "body": "Mitt homelab kör ett Kubernetes-kluster som hanteras deklarativt genom GitOps — infrastructure as code tillämpat på min egen hårdvara. Det är här jag testar idéer innan de når produktion någon annanstans.",
+    "body": "Mitt homelab kör ett fullskaligt Kubernetes-kluster som hanteras deklarativt med GitOps — Infrastructure as Code på min egen hårdvara. Där testar jag idéer innan de används i produktion.",
     "link": "Kubernetes HomeLab"
   },
   "sriLanka": {
     "title": "Sri Lanka",
-    "body": "Ett nytt företag med rötter i både Sri Lanka och Sverige, i sin linda. Mer information i takt med att det tar form."
+    "body": "Ett företag under uppbyggnad mellan Sri Lanka och Sverige. Resan har precis börjat, och mer kommer när det tar form."
   },
   "about": {
     "title": "Om",
-    "teaser": "Utanför ingenjörskonst och kod följer jag fotboll, spelar spel, lagar mat och lyssnar på för många poddar. Jag lär mig också sinhala — sakta.",
-    "paragraph2": "Jag studerade rymdteknik för att jag ville förstå system vid deras gränser — och jag har tagit med mig den instinkten i allt sedan dess: hur jag bygger mjukvara, hur jag driver mitt homelab, hur jag närmar mig ett nytt företag.",
+    "teaser": "Utanför jobbet som ingenjör och utvecklare följer jag fotboll, spelar spel, lagar mat och lyssnar på alldeles för många poddar. Jag lär mig också singalesiska — långsamt.",
+    "paragraph2": "Mitt intresse för rymden, flygplan, teknik och fysik ledde mig till rymdteknik. Samma nyfikenhet driver mig fortfarande, oavsett om jag utvecklar mjukvara, experimenterar i mitt homelab eller bygger nya företag.",
     "readMore": "Läs mer"
   },
   "blog": {
     "title": "Blogg",
-    "teaser": "Anteckningar från mitt liv — mest för att följa mina framsteg i sinhala, och enstaka infrastrukturinlägg.",
+    "teaser": "Anteckningar från vardagen — mest om min resa med singalesiska, ibland om infrastruktur.",
     "allPosts": "Alla inlägg"
   },
   "projects": {
     "title": "Projekt",
-    "also": "Även",
-    "featured": "Utvalt",
+    "also": "Övriga",
+    "featured": "Utvalda",
     "code": "Källkod",
     "live": "Demo"
   },

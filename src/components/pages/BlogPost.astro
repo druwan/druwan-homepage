@@ -3,15 +3,17 @@ import Base from '../../layouts/Base.astro'
 import Nav from '../Nav.astro'
 import Footer from '../Footer.astro'
 import { getPost } from '../../lib/blog'
+import { getDictionary } from '../../i18n'
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import { marked } from 'marked'
 import hljs from 'highlight.js'
-import { getRelativeLocaleUrl } from 'astro:i18n'
 
 interface Props {
   locale: string
   slug: string
 }
 const { locale, slug } = Astro.props
+const t = getDictionary(locale)
 
 interface Post {
   title: string
@@ -39,11 +41,24 @@ marked.use({ renderer })
 const html = marked.parse(post.content) as string
 ---
 
-<Base locale={locale} title={`${post.title} — Christopher Vestman`}>
+<Base title={`${post.title} — Christopher Vestman`} locale={locale}>
   <Nav slot="nav" locale={locale} />
-  <article
-    class="prose prose-neutral dark:prose-invert max-w-none py-8"
-    set:html={html}
-  />
+  <article class="w-full flex-1 py-8 max-w-3xl mx-auto">
+    <a
+      href={getRelativeLocaleUrl(locale, 'blog')}
+      class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-4 inline-block"
+    >
+      ← {t.blog.allPosts}
+    </a>
+    <p
+      class="text-sm text-night/50 dark:text-anti-flash-white/50 tabular-nums mb-2"
+    >
+      {new Date(Number(post.date)).toISOString().split('T')[0]}
+    </p>
+    <div
+      class="prose prose-neutral dark:prose-invert max-w-none prose-a:text-burgundy dark:prose-a:text-ochre"
+      set:html={html}
+    />
+  </article>
   <Footer slot="footer" />
 </Base>

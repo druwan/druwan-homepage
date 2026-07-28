@@ -1,19 +1,14 @@
 {
-  "nav": {
-    "blog": "Blog",
-    "about": "About"
-  },
   "hero": {
     "eyebrow": "Stockholm, Sweden",
-    "tagline": "Aerospace engineer. Coder on the side. Builder by nature.",
-    "lede": "I train as an engineer and think like one in everything I do. Space Engineering, Aerospace specialization, now working as a Systems Engineer within Surveillance. But the same instinct for understanding systems at their limits shows up everywhere else too — in the code I write after hours, in the homelab I maintain out of curiosity, in a new venture just taking shape.",
+    "tagline": "Aerospace engineer. Coder on the side. Building out of curiosity.",
+    "lede": "I'm an engineer by training and a systems thinker by nature. I studied Space Engineering with an Aerospace specialization and now work as a Systems Engineer in surveillance. That mindset extends beyond my career into the software I build, the homelab I run, and the ventures I'm creating.",
     "quote": "I combine engineering, software, and curiosity to build things that solve real problems."
   },
   "chapters": {
     "work": "The Work",
     "now": "Now",
-    "selectedWork": "Selected Work",
-    "writing": "Writing"
+    "selectedWork": "Selected Work"
   },
   "dimensions": {
     "engineer": {
@@ -41,7 +36,7 @@
   "about": {
     "title": "About",
     "teaser": "Outside of engineering and code, I follow football, play games, cook, and listen to too many podcasts. I'm also learning Sinhala — slowly.",
-    "paragraph2": "I studied Space Engineering because I wanted to understand systems at their limits — and I've carried that instinct into everything since: how I build software, how I run my homelab, how I approach a new venture.",
+    "paragraph2": "I studied Space Engineering because I was fascinated by space, aviation, physics, and engineering. That curiosity has stayed with me ever since — shaping how I build software, run my homelab, and create new ventures.",
     "readMore": "Read more"
   },
   "blog": {
@@ -50,13 +45,9 @@
     "allPosts": "All posts"
   },
   "projects": {
-    "title": "Projects",
     "also": "Also",
     "featured": "Featured",
     "code": "Source Code",
     "live": "Demo"
-  },
-  "footer": {
-    "copyright": "Christopher Vestman"
   }
 }

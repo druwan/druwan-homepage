@@ -21,6 +21,8 @@
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
   --text-5xl: 2rem;
+
+  --code-font-size: 0.8125rem;
 }
 
 @layer base {
@@ -80,7 +82,7 @@
   .prose :where(pre code):not(:where([class~='not-prose'] *)) {
     border-radius: 0.5em;
     display: block;
-    font-size: 1rem;
+    font-size: var(--code-font-size);
     line-height: 1.6;
     overflow-wrap: normal;
     padding: 1em;

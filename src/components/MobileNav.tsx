@@ -4,15 +4,15 @@ import { Menu, X } from 'lucide-preact'
 interface Chapter {
   id: string
   label: string
+  href: string
 }
 
 interface Props {
   locale: string
-  homeUrl: string
   chapters: Chapter[]
 }
 
-export default function MobileNav({ homeUrl, chapters }: Props) {
+export default function MobileNav({ chapters }: Props) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function MobileNav({ homeUrl, chapters }: Props) {
           <ul class="space-y-6 text-lg text-burgundy dark:text-ochre">
             {chapters.map((c) => (
               <li key={c.id}>
-                <a href={`${homeUrl}#${c.id}`} onClick={() => setOpen(false)}>
+                <a href={c.href} onClick={() => setOpen(false)}>
                   {c.label}
                 </a>
               </li>

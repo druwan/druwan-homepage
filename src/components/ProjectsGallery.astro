@@ -15,7 +15,7 @@ const rest = items.filter((p) => !p.featured)
 
 {
   items.length === 0 && (
-    <p class="text-sm text-night/60 dark:text-anti-flash-white/60">—</p>
+    <p class="text-base text-night/60 dark:text-anti-flash-white/60">—</p>
   )
 }
 
@@ -35,32 +35,32 @@ const rest = items.filter((p) => !p.featured)
             decoding="async"
           />
         </div>
-        <p class="text-[10px] uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1">
+        <p class="text-xs uppercase tracking-widest text-burgundy/65 dark:text-ochre/65 mb-1">
           {t.projects.featured}
         </p>
-        <h3 class="font-serif text-lg text-night dark:text-anti-flash-white mb-1 group-hover:text-burgundy dark:group-hover:text-ochre transition-colors">
+        <h3 class="font-serif text-xl text-burgundy dark:text-ochre mb-1 hover:opacity-65 transition-opacity">
           {project.title}
         </h3>
       </a>
-      <p class="text-sm text-night/70 dark:text-anti-flash-white/70 leading-relaxed">
+      <p class="text-base text-night/70 dark:text-anti-flash-white/70 leading-relaxed">
         {project.description}
       </p>
       {project.stack.length > 0 && (
-        <p class="text-xs text-night/70 dark:text-anti-flash-white/70 tracking-wide mt-2">
+        <p class="text-sm text-night/70 dark:text-anti-flash-white/70 tracking-wide mt-2">
           {project.stack.map((s) => s.name).join(' · ')}
         </p>
       )}
       <div class="flex gap-4 mt-2">
         <a
           href={project.repo_url}
-          class="text-xs text-burgundy dark:text-ochre"
+          class="text-sm text-burgundy dark:text-ochre"
         >
           {t.projects.code}
         </a>
         {project.live_url && (
           <a
             href={project.live_url}
-            class="text-xs text-burgundy dark:text-ochre"
+            class="text-sm text-burgundy dark:text-ochre"
           >
             {t.projects.live}
           </a>
@@ -73,14 +73,14 @@ const rest = items.filter((p) => !p.featured)
 {
   rest.length > 0 && (
     <p class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed">
-      <span class="text-xs uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mr-2">
+      <span class="text-sm uppercase tracking-widest text-night/65 dark:text-anti-flash-white/65 mr-2">
         {t.projects.also}
       </span>
       {rest.map((p, i) => (
         <>
           <a
             href={p.repo_url}
-            class="text-night dark:text-anti-flash-white hover:text-burgundy dark:hover:text-ochre transition-colors"
+            class="text-burgundy dark:text-ochre hover:opacity-70 transition-opacity"
           >
             {p.title}
           </a>

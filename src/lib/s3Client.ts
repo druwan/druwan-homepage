@@ -1,13 +1,13 @@
 import { AwsClient } from 'aws4fetch'
 
-export const BUCKET = import.meta.env.S3_BUCKET
-export const ENDPOINT = import.meta.env.S3_ENDPOINT
-export const REGION = import.meta.env.S3_REGION
+const BUCKET = import.meta.env.S3_BUCKET
+const ENDPOINT = import.meta.env.S3_ENDPOINT
+const REGION = import.meta.env.S3_REGION
 
 const cache = new Map<string, { value: string; expires: number }>()
 const TTL = 5 * 60 * 1000 // 5 min
 
-export function getS3Client() {
+function getS3Client() {
   const accessKeyId = import.meta.env.S3_ACCESS_KEY_ID!
   const secretAccessKey = import.meta.env.S3_SECRET_ACCESS_KEY!
 
