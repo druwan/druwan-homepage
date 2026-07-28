@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "eyebrow": "Stockholm, Sweden",
+    "tagline": "Aerospace engineer. Coder on the side. Building out of curiosity.",
+    "lede": "I'm an engineer by training and a systems thinker by nature. I studied Space Engineering with an Aerospace specialization and now work as a Systems Engineer in surveillance. That mindset extends beyond my career into the software I build, the homelab I run, and the ventures I'm creating.",
+    "quote": "I combine engineering, software, and curiosity to build things that solve real problems."
+  },
+  "chapters": {
+    "work": "Who I Am",
+    "now": "Now",
+    "selectedWork": "Selected Work"
+  },
+  "dimensions": {
+    "engineer": {
+      "title": "Engineer",
+      "body": "MSc in Space Engineering with an Aerospace specialization. Currently working as a Systems Engineer within Surveillance."
+    },
+    "developer": {
+      "title": "Developer",
+      "body": "Building software, experimenting with DevOps and Kubernetes, running my own homelab in my free time, implementing GitOps principles."
+    },
+    "builder": {
+      "title": "Builder",
+      "body": "Creating products and tools — currently building a venture in Sri Lanka alongside my software work."
+    }
+  },
+  "exploring": {
+    "title": "HomeLab",
+    "body": "My homelab runs a full Kubernetes cluster, managed declaratively through GitOps — infrastructure as code applied to my own hardware. It's where I test ideas before they reach production elsewhere.",
+    "link": "Kubernetes HomeLab"
+  },
+  "sriLanka": {
+    "title": "Sri Lanka",
+    "body": "A new venture spanning Sri Lanka and Sweden, early in its journey. More to come as it takes shape."
+  },
+  "about": {
+    "title": "About",
+    "teaser": "Outside of engineering and code, I follow football, play games, cook, and listen to too many podcasts. I'm also learning Sinhala — slowly.",
+    "paragraph2": "I studied Space Engineering because I was fascinated by space, aviation, physics, and engineering. That curiosity has stayed with me ever since — shaping how I build software, run my homelab, and create new ventures."
+  },
+  "blog": {
+    "title": "Blog",
+    "teaser": "Notes from my life — mostly tracking progress learning Sinhala, and the occasional infrastructure write-up.",
+    "allPosts": "All posts"
+  },
+  "projects": {
+    "also": "Also",
+    "featured": "Featured",
+    "code": "Source Code",
+    "live": "Demo"
+  }
+}

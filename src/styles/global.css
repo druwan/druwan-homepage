@@ -7,11 +7,10 @@
   --color-night: #0d0d0d;
   --color-anti-flash-white: #f4f4f6;
   --color-ochre: #df7500;
-  --color-carribean-current: #005f56;
   --color-burgundy: #941e32;
 
-  --font-sans: 'Noto Sans Sinhala', sans-serif;
-  --font-mono: 'Yaldevi', sans-serif;
+  --font-sans: 'Yaldevi', sans-serif;
+  --font-serif: 'Noto Serif', serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -22,22 +21,35 @@
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
   --text-5xl: 2rem;
+
+  --code-font-size: 0.8125rem;
 }
 
 @layer base {
   body {
     @apply font-sans bg-anti-flash-white dark:bg-night text-night dark:text-anti-flash-white;
   }
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-burgundy);
+    outline-offset: 2px;
+  }
+  .dark a:focus-visible,
+  .dark button:focus-visible,
+  .dark select:focus-visible {
+    outline-color: var(--color-ochre);
+  }
 }
 
 @layer utilities {
   .dot-inactive {
     background: transparent;
-    border: 1.5px solid #941e32;
+    border: 1.5px solid var(--color-burgundy);
   }
   .dot-active {
-    background: #941e32;
-    border: 1.5px solid #941e32;
+    background: var(--color-burgundy);
+    border: 1.5px solid var(--color-burgundy);
   }
 
   .prose :where(p):not(:where([class~='not-prose'] *)) {
@@ -58,9 +70,10 @@
   .prose :where(pre):not(:where([class~='not-prose'] *)) {
     background: transparent;
     overflow-x: auto;
+    overflow-y: hidden;
     max-width: 100%;
     -webkit-overflow-scrolling: touch;
-    color: #d4d4d4;
+    color: var(--color-anti-flash-white);
     padding: 0;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -69,7 +82,7 @@
   .prose :where(pre code):not(:where([class~='not-prose'] *)) {
     border-radius: 0.5em;
     display: block;
-    font-size: 1rem;
+    font-size: var(--code-font-size);
     line-height: 1.6;
     overflow-wrap: normal;
     padding: 1em;
@@ -81,12 +94,18 @@
     margin-top: 0.25em;
     margin-bottom: 0.25em;
   }
+
+  .hscroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .dark .dot-inactive {
-  border-color: #df7500;
+  border-color: var(--color-ochre);
 }
 .dark .dot-active {
-  background: #df7500;
-  border-color: #df7500;
+  background: var(--color-ochre);
+  border-color: var(--color-ochre);
 }

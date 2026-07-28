@@ -1,0 +1,89 @@
+---
+import { getDictionary } from '../i18n'
+import { getProjects } from '../lib/projects'
+
+interface Props {
+  locale: string
+}
+const { locale } = Astro.props
+const t = getDictionary(locale)
+const items = await getProjects()
+
+const featured = items.filter((p) => p.featured)
+const rest = items.filter((p) => !p.featured)
+---
+
+{
+  items.length === 0 && (
+    <p class="text-base text-night/60 dark:text-anti-flash-white/60">—</p>
+  )
+}
+
+{
+  featured.map((project) => (
+    <div class="mb-12 last:mb-0">
+      <a href={project.repo_url} class="block group">
+        <div
+          class="w-full overflow-hidden rounded-md mb-2.5"
+          style="aspect-ratio: 16/9;"
+        >
+          <img
+            src={project.image_url}
+            alt={`Preview of ${project.title}`}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <h3 class="font-serif text-xl text-night dark:text-anti-flash-white mb-1 hover:opacity-70 transition-opacity">
+          {project.title}
+        </h3>
+      </a>
+      <p class="text-base text-night/70 dark:text-anti-flash-white/70 leading-relaxed">
+        {project.description}
+      </p>
+      {project.stack.length > 0 && (
+        <p class="text-sm text-night/70 dark:text-anti-flash-white/70 tracking-wide mt-2">
+          {project.stack.map((s) => s.name).join(' · ')}
+        </p>
+      )}
+      <div class="flex gap-4 mt-2">
+        <a
+          href={project.repo_url}
+          class="text-sm text-burgundy dark:text-ochre"
+        >
+          {t.projects.code}
+        </a>
+        {project.live_url && (
+          <a
+            href={project.live_url}
+            class="text-sm text-burgundy dark:text-ochre"
+          >
+            {t.projects.live}
+          </a>
+        )}
+      </div>
+    </div>
+  ))
+}
+
+{
+  rest.length > 0 && (
+    <p class="text-sm text-night/60 dark:text-anti-flash-white/60 leading-relaxed">
+      <span class="text-sm uppercase tracking-widest text-night/65 dark:text-anti-flash-white/65 mr-2">
+        {t.projects.also}
+      </span>
+      {rest.map((p, i) => (
+        <>
+          <a
+            href={p.repo_url}
+            class="text-burgundy dark:text-ochre hover:opacity-70 transition-opacity"
+          >
+            {p.title}
+          </a>
+          {i < rest.length - 1 ? ', ' : ''}
+        </>
+      ))}
+    </p>
+  )
+}

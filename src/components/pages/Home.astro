@@ -1,0 +1,175 @@
+---
+import Base from '../../layouts/Base.astro'
+import Nav from '../Nav.astro'
+import Footer from '../Footer.astro'
+import ProjectsGallery from '../ProjectsGallery.astro'
+import Chapter from '../Chapter.astro'
+import { getDictionary } from '../../i18n'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { listPosts, type BlogPost } from '../../lib/blog'
+
+interface Props {
+  locale: string
+}
+const { locale } = Astro.props
+const t = getDictionary(locale)
+
+let recentPosts: BlogPost[]
+try {
+  recentPosts = (await listPosts()).slice(0, 2)
+} catch {
+  recentPosts = []
+}
+
+const ledeFirst = t.hero.lede.charAt(0)
+const ledeRest = t.hero.lede.slice(1)
+---
+
+<Base locale={locale}>
+  <Nav slot="nav" locale={locale} />
+  <article class="w-full flex-1 py-8">
+    <h1
+      class="font-serif text-2xl sm:text-5xl text-night dark:text-anti-flash-white leading-tight mb-6"
+    >
+      {t.hero.tagline}
+    </h1>
+    <p
+      class="text-sm uppercase tracking-widest text-night/50 dark:text-anti-flash-white/50 mb-3"
+    >
+      {t.hero.eyebrow}
+    </p>
+
+    <p
+      class="text-base sm:text-lg text-night/80 dark:text-anti-flash-white/80 leading-loose"
+    >
+      <span
+        class="float-left font-serif text-6xl leading-[0.75] mr-2 mt-1 text-burgundy dark:text-ochre"
+        >{ledeFirst}</span
+      >{ledeRest}
+    </p>
+
+    <blockquote
+      class="font-serif italic text-xl sm:text-2xl text-burgundy dark:text-ochre leading-snug my-6 pl-4 border-l-2 border-burgundy dark:border-ochre"
+    >
+      {t.hero.quote}
+    </blockquote>
+
+    <Chapter id="about" numeral="I" title={t.about.title}>
+      <p
+        class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed mb-3"
+      >
+        {t.about.teaser}
+      </p>
+      <p
+        class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed mb-3"
+      >
+        {t.about.paragraph2}
+      </p>
+    </Chapter>
+
+    <Chapter id="work" numeral="II" title={t.chapters.work}>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-base uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.dimensions.engineer.title}
+        </p>
+        <p
+          class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.dimensions.engineer.body}
+        </p>
+      </div>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-base uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.dimensions.developer.title}
+        </p>
+        <p
+          class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.dimensions.developer.body}
+        </p>
+      </div>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.dimensions.builder.title}
+        </p>
+        <p
+          class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.dimensions.builder.body}
+        </p>
+      </div>
+    </Chapter>
+
+    <Chapter id="now" numeral="III" title={t.chapters.now}>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.exploring.title}
+        </p>
+        <p
+          class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.exploring.body}
+        </p>
+        <a
+          href="https://github.com/druwan/homelab"
+          class="text-base text-burgundy dark:text-ochre mt-1 inline-block"
+        >
+          {t.exploring.link} ↗
+        </a>
+      </div>
+      <div class="mb-5 last:mb-0">
+        <p
+          class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
+        >
+          {t.sriLanka.title}
+        </p>
+        <p
+          class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed"
+        >
+          {t.sriLanka.body}
+        </p>
+      </div>
+    </Chapter>
+
+    <Chapter id="selected-work" numeral="IV" title={t.chapters.selectedWork}>
+      <ProjectsGallery locale={locale} />
+    </Chapter>
+
+    <Chapter id="blog" numeral="V" title={t.blog.title}>
+      <p
+        class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed mb-3"
+      >
+        {t.blog.teaser}
+      </p>
+      {
+        recentPosts.length > 0 && (
+          <div class="flex flex-col gap-1 mb-3">
+            {recentPosts.map((post) => (
+              <a
+                href={getRelativeLocaleUrl(locale, `blog/${post.slug}`)}
+                class="text-base text-burgundy dark:text-ochre hover:opacity-70 transition-opacity"
+              >
+                {post.title}
+              </a>
+            ))}
+          </div>
+        )
+      }
+      <a
+        href={getRelativeLocaleUrl(locale, 'blog')}
+        class="text-base text-burgundy dark:text-ochre"
+      >
+        {t.blog.allPosts} →
+      </a>
+    </Chapter>
+  </article>
+  <Footer slot="footer" />
+</Base>
