@@ -6,7 +6,7 @@
     "quote": "I combine engineering, software, and curiosity to build things that solve real problems."
   },
   "chapters": {
-    "work": "The Work",
+    "work": "Who I Am",
     "now": "Now",
     "selectedWork": "Selected Work"
   },
@@ -25,7 +25,7 @@
     }
   },
   "exploring": {
-    "title": "Currently Exploring",
+    "title": "HomeLab",
     "body": "My homelab runs a full Kubernetes cluster, managed declaratively through GitOps — infrastructure as code applied to my own hardware. It's where I test ideas before they reach production elsewhere.",
     "link": "Kubernetes HomeLab"
   },
@@ -36,8 +36,7 @@
   "about": {
     "title": "About",
     "teaser": "Outside of engineering and code, I follow football, play games, cook, and listen to too many podcasts. I'm also learning Sinhala — slowly.",
-    "paragraph2": "I studied Space Engineering because I was fascinated by space, aviation, physics, and engineering. That curiosity has stayed with me ever since — shaping how I build software, run my homelab, and create new ventures.",
-    "readMore": "Read more"
+    "paragraph2": "I studied Space Engineering because I was fascinated by space, aviation, physics, and engineering. That curiosity has stayed with me ever since — shaping how I build software, run my homelab, and create new ventures."
   },
   "blog": {
     "title": "Blog",

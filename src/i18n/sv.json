@@ -10,7 +10,7 @@
     "quote": "Jag kombinerar ingenjörskap, mjukvaruutveckling och nyfikenhet för att skapa lösningar på problem som faktiskt spelar roll."
   },
   "chapters": {
-    "work": "Arbete",
+    "work": "Vem är jag",
     "now": "Just nu",
     "selectedWork": "Utvalda projekt"
   },
@@ -29,7 +29,7 @@
     }
   },
   "exploring": {
-    "title": "Utforskar just nu",
+    "title": "HomeLab",
     "body": "Mitt homelab kör ett fullskaligt Kubernetes-kluster som hanteras deklarativt med GitOps — Infrastructure as Code på min egen hårdvara. Där testar jag idéer innan de används i produktion.",
     "link": "Kubernetes HomeLab"
   },
@@ -40,8 +40,7 @@
   "about": {
     "title": "Om",
     "teaser": "Utanför jobbet som ingenjör och utvecklare följer jag fotboll, spelar spel, lagar mat och lyssnar på alldeles för många poddar. Jag lär mig också singalesiska — långsamt.",
-    "paragraph2": "Mitt intresse för rymden, flygplan, teknik och fysik ledde mig till rymdteknik. Samma nyfikenhet driver mig fortfarande, oavsett om jag utvecklar mjukvara, experimenterar i mitt homelab eller bygger nya företag.",
-    "readMore": "Läs mer"
+    "paragraph2": "Mitt intresse för rymden, flygplan, teknik och fysik ledde mig till rymdteknik. Samma nyfikenhet driver mig fortfarande, oavsett om jag utvecklar mjukvara, experimenterar i mitt homelab eller bygger nya företag."
   },
   "blog": {
     "title": "Blogg",
