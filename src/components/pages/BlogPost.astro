@@ -43,7 +43,7 @@ const html = marked.parse(post.content) as string
 
 <Base title={`${post.title} — Christopher Vestman`} locale={locale}>
   <Nav slot="nav" locale={locale} />
-  <article class="w-full flex-1 py-8 max-w-3xl mx-auto">
+  <article class="w-full flex-1 py-8">
     <a
       href={getRelativeLocaleUrl(locale, 'blog')}
       class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-4 inline-block"
