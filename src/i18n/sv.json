@@ -1,7 +1,6 @@
 {
   "nav": {
     "blog": "Blogg",
-    "about": "Om"
   },
   "hero": {
     "eyebrow": "Stockholm",
@@ -38,7 +37,6 @@
     "body": "Ett företag under uppbyggnad mellan Sri Lanka och Sverige. Resan har precis börjat, och mer kommer när det tar form."
   },
   "about": {
-    "title": "Om",
     "teaser": "Utanför jobbet som ingenjör och utvecklare följer jag fotboll, spelar spel, lagar mat och lyssnar på alldeles för många poddar. Jag lär mig också singalesiska — långsamt.",
     "paragraph2": "Mitt intresse för rymden, flygplan, teknik och fysik ledde mig till rymdteknik. Samma nyfikenhet driver mig fortfarande, oavsett om jag utvecklar mjukvara, experimenterar i mitt homelab eller bygger nya företag."
   },

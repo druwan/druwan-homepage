@@ -5,8 +5,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   i18n: {
-    locales: ["en", "sv"],
-    defaultLocale: "en",
+    locales: ['en', 'sv'],
+    defaultLocale: 'en',
   },
   output: 'server',
   adapter: cloudflare(),

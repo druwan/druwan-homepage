@@ -7,7 +7,11 @@ export interface BlogPost {
   content: string
 }
 
-function extractTitle(content: string, meta: Record<string, string>, slug: string): string {
+function extractTitle(
+  content: string,
+  meta: Record<string, string>,
+  slug: string,
+): string {
   // Prefer Outline title
   if (meta['outline-title']) return meta['outline-title']
 
@@ -26,7 +30,9 @@ export async function listPosts(): Promise<BlogPost[]> {
       const [content, meta] = await Promise.all([s3Get(key), s3Head(key)])
       const slug = key.replace('blog/', '').replace('.md', '')
       const title = extractTitle(content, meta, slug)
-      const ts = meta['creation-date'] ? Number(meta['creation-date']) : Date.now()
+      const ts = meta['creation-date']
+        ? Number(meta['creation-date'])
+        : Date.now()
       return { slug, title, date: ts.toString(), content }
     }),
   )
@@ -41,7 +47,9 @@ export async function getPost(slug: string): Promise<BlogPost | null> {
       s3Head(`blog/${slug}.md`),
     ])
     const title = extractTitle(content, meta, slug)
-    const ts = meta['creation-date'] ? Number(meta['creation-date']) : Date.now()
+    const ts = meta['creation-date']
+      ? Number(meta['creation-date'])
+      : Date.now()
     return { slug, title, date: ts.toString(), content }
   } catch {
     return null

@@ -35,9 +35,16 @@ export default function MobileNav({ chapters }: Props) {
       </button>
 
       {open && (
-        <div class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6" role="dialog" aria-modal="true" aria-label="Menu">
+        <div
+          class="fixed inset-0 z-50 bg-anti-flash-white dark:bg-night flex flex-col p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+        >
           <div class="flex items-center justify-between mb-8">
-            <span class="text-xl font-medium text-burgundy dark:text-ochre">Menu</span>
+            <span class="text-xl font-medium text-burgundy dark:text-ochre">
+              Menu
+            </span>
             <button
               onClick={() => setOpen(false)}
               class="flex items-center justify-center w-10 h-10 text-burgundy dark:text-ochre"

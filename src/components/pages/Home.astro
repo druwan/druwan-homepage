@@ -54,7 +54,7 @@ const ledeRest = t.hero.lede.slice(1)
       {t.hero.quote}
     </blockquote>
 
-    <Chapter id="about" numeral="I" title={t.about.title}>
+    <Chapter id="about" numeral="I" title={t.chapters.work}>
       <p
         class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed mb-3"
       >
@@ -65,9 +65,7 @@ const ledeRest = t.hero.lede.slice(1)
       >
         {t.about.paragraph2}
       </p>
-    </Chapter>
 
-    <Chapter id="work" numeral="II" title={t.chapters.work}>
       <div class="mb-5 last:mb-0">
         <p
           class="text-base uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
@@ -80,6 +78,7 @@ const ledeRest = t.hero.lede.slice(1)
           {t.dimensions.engineer.body}
         </p>
       </div>
+
       <div class="mb-5 last:mb-0">
         <p
           class="text-base uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
@@ -92,6 +91,7 @@ const ledeRest = t.hero.lede.slice(1)
           {t.dimensions.developer.body}
         </p>
       </div>
+
       <div class="mb-5 last:mb-0">
         <p
           class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
@@ -106,7 +106,7 @@ const ledeRest = t.hero.lede.slice(1)
       </div>
     </Chapter>
 
-    <Chapter id="now" numeral="III" title={t.chapters.now}>
+    <Chapter id="now" numeral="II" title={t.chapters.now}>
       <div class="mb-5 last:mb-0">
         <p
           class="text-sm uppercase tracking-widest text-burgundy/70 dark:text-ochre/70 mb-1"
@@ -139,11 +139,11 @@ const ledeRest = t.hero.lede.slice(1)
       </div>
     </Chapter>
 
-    <Chapter id="selected-work" numeral="IV" title={t.chapters.selectedWork}>
+    <Chapter id="selected-work" numeral="III" title={t.chapters.selectedWork}>
       <ProjectsGallery locale={locale} />
     </Chapter>
 
-    <Chapter id="blog" numeral="V" title={t.blog.title}>
+    <Chapter id="blog" numeral="IV" title={t.blog.title}>
       <p
         class="text-base text-night/65 dark:text-anti-flash-white/70 leading-relaxed mb-3"
       >

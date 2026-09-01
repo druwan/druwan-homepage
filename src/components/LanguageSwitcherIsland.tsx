@@ -7,7 +7,11 @@ interface LocaleItem {
   active: boolean
 }
 
-export default function LanguageSwitcherIsland({ items }: { items: LocaleItem[] }) {
+export default function LanguageSwitcherIsland({
+  items,
+}: {
+  items: LocaleItem[]
+}) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout>>()
@@ -34,7 +38,12 @@ export default function LanguageSwitcherIsland({ items }: { items: LocaleItem[] 
   const current = items.find((i) => i.active)
 
   return (
-    <div class="relative" ref={ref} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+    <div
+      class="relative"
+      ref={ref}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    >
       <button
         onClick={() => setOpen((o) => !o)}
         class="flex items-center justify-center gap-1 h-10 px-2 transition-all text-burgundy dark:text-ochre hover:text-burgundy/80 dark:hover:text-ochre/60"
@@ -49,10 +58,11 @@ export default function LanguageSwitcherIsland({ items }: { items: LocaleItem[] 
           {items.map((item) => (
             <a
               href={item.href}
-              class={`block px-3 py-2 text-sm transition-colors ${item.active
-                ? 'text-burgundy dark:text-ochre font-medium bg-burgundy/5 dark:bg-ochre/10'
-                : 'text-night dark:text-anti-flash-white hover:bg-burgundy/5 dark:hover:bg-ochre/10'
-                }`}
+              class={`block px-3 py-2 text-sm transition-colors ${
+                item.active
+                  ? 'text-burgundy dark:text-ochre font-medium bg-burgundy/5 dark:bg-ochre/10'
+                  : 'text-night dark:text-anti-flash-white hover:bg-burgundy/5 dark:hover:bg-ochre/10'
+              }`}
             >
               {item.label}
             </a>
