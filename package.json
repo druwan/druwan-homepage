@@ -26,7 +26,6 @@
     "astro": "^7.2.1",
     "aws4fetch": "^1.0.20",
     "dotenv": "^17.2.4",
-    "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "lucide-preact": "^0.469.0",
     "marked": "^18.0.4",
