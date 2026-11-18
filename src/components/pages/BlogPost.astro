@@ -31,13 +31,85 @@ try {
   return Astro.redirect(getRelativeLocaleUrl(locale, 'blog'))
 }
 
+const calloutStyles = {
+  tip: {
+    label: 'Tip',
+    classes:
+      'border-emerald-500 bg-emerald-50 text-emerald-950 dark:bg-emerald-950/30 dark:text-emerald-100',
+  },
+  note: {
+    label: 'Note',
+    classes:
+      'border-blue-500 bg-blue-50 text-blue-950 dark:bg-blue-950/30 dark:text-blue-100',
+  },
+  warning: {
+    label: 'Warning',
+    classes:
+      'border-amber-500 bg-amber-50 text-amber-950 dark:bg-amber-950/30 dark:text-amber-100',
+  },
+  danger: {
+    label: 'Danger',
+    classes:
+      'border-red-500 bg-red-50 text-red-950 dark:bg-red-950/30 dark:text-red-100',
+  },
+} as const
+
+type CalloutKind = keyof typeof calloutStyles
+
+const calloutExtension = {
+  name: 'callout',
+  level: 'block' as const,
+
+  start(src: string) {
+    return src.match(/^:::(?:tip|note|warning|danger)\b/m)?.index
+  },
+
+  tokenizer(src: string) {
+    const match =
+      /^:::(tip|note|warning|danger)(?:[ \t]+([^\n]*))?\n([\s\S]*?)\n:::[ \t]*(?:\n|$)/.exec(
+        src,
+      )
+
+    if (!match) return
+
+    const kind = match[1] as CalloutKind
+    const body = [match[2], match[3]].filter(Boolean).join('\n')
+    const tokens = this.lexer.blockTokens(body)
+
+    return {
+      type: 'callout',
+      raw: match[0],
+      kind,
+      tokens,
+    }
+  },
+
+  renderer(token: { kind: CalloutKind; tokens: import('marked').Token[] }) {
+    const style = calloutStyles[token.kind]
+
+    return `
+      <aside class="my-6 rounded-lg border-l-4 p-4 not-italic ${style.classes}">
+        <p class="mb-2 font-semibold">${style.label}</p>
+        ${this.parser.parse(token.tokens)}
+      </aside>
+    `
+  },
+}
+
 const renderer = new marked.Renderer()
+
 renderer.code = ({ text, lang }) => {
   const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext'
   const highlighted = hljs.highlight(text, { language }).value
+
   return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>`
 }
-marked.use({ renderer })
+
+marked.use({
+  renderer,
+  extensions: [calloutExtension],
+})
+
 const html = marked.parse(post.content) as string
 ---
 
