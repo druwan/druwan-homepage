@@ -36,6 +36,16 @@ export async function s3Get(key: string): Promise<string> {
   return value
 }
 
+export async function s3Stream(
+  key: string,
+  range?: string | null,
+): Promise<Response> {
+  const client = getS3Client()
+  return client.fetch(`${ENDPOINT}/${BUCKET}/${key}`, {
+    headers: range ? { Range: range } : {},
+  })
+}
+
 export async function s3List(prefix: string): Promise<string> {
   const cacheKey = `__list__${prefix}`
   const cached = cache.get(cacheKey)
